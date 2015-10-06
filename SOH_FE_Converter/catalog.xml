@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/C:/Users/STE14179/Downloads/635797276424557505_testlightdata.xml.xsd" uri="xml-resources/jaxb/SOH_databaseèv1/635797276424557505_testlightdata.xml.xsd"/>
+    <system systemId="file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/../../../../../Dev/Logiciels/trang-20081028/test_data.xsd" uri="xml-resources/jaxb/soh_database_starmap/test_data.xsd"/>
+</catalog>

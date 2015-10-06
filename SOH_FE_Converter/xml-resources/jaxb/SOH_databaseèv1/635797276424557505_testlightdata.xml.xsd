@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="resource">
+    <xs:complexType>
+      <xs:attribute name="name" type="xs:string" />
+      <xs:attribute name="quality" type="xs:string" />
+      <xs:attribute name="abundance" type="xs:string" />
+      <xs:attribute name="qualityZone1" type="xs:string" />
+      <xs:attribute name="abundanceZone1" type="xs:string" />
+      <xs:attribute name="qualityZone2" type="xs:string" />
+      <xs:attribute name="abundanceZone2" type="xs:string" />
+      <xs:attribute name="qualityZone3" type="xs:string" />
+      <xs:attribute name="abundanceZone3" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="starmap">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="galaxy" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="sector" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="system" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="wormhole" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:attribute name="destX" type="xs:string" />
+                              <xs:attribute name="destY" type="xs:string" />
+                              <xs:attribute name="destZ" type="xs:string" />
+                              <xs:attribute name="destSystemId" type="xs:string" />
+                              <xs:attribute name="polarity" type="xs:string" />
+                              <xs:attribute name="explored" type="xs:string" />
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="star" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element ref="resource" minOccurs="0" maxOccurs="unbounded" />
+                              </xs:sequence>
+                              <xs:attribute name="starId" type="xs:string" />
+                              <xs:attribute name="name" type="xs:string" />
+                              <xs:attribute name="orbit" type="xs:string" />
+                              <xs:attribute name="spectralClass" type="xs:string" />
+                              <xs:attribute name="size" type="xs:string" />
+                              <xs:attribute name="hab" type="xs:string" />
+                              <xs:attribute name="shell" type="xs:string" />
+                              <xs:attribute name="diameter" type="xs:string" />
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="planet" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="geosphere" minOccurs="0" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element ref="resource" minOccurs="0" maxOccurs="unbounded" />
+                                    </xs:sequence>
+                                    <xs:attribute name="diameter" type="xs:string" />
+                                    <xs:attribute name="resourceZones" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="hydrosphere" minOccurs="0" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element ref="resource" minOccurs="0" maxOccurs="unbounded" />
+                                    </xs:sequence>
+                                    <xs:attribute name="surfaceLiquid" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="atmosphere" minOccurs="0" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element ref="resource" minOccurs="0" maxOccurs="unbounded" />
+                                    </xs:sequence>
+                                    <xs:attribute name="composition" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="biosphere" minOccurs="0" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element ref="resource" minOccurs="0" maxOccurs="unbounded" />
+                                    </xs:sequence>
+                                    <xs:attribute name="fauna" type="xs:string" />
+                                    <xs:attribute name="flora" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                              <xs:attribute name="planetId" type="xs:string" />
+                              <xs:attribute name="name" type="xs:string" />
+                              <xs:attribute name="bodyType" type="xs:string" />
+                              <xs:attribute name="orbit" type="xs:string" />
+                              <xs:attribute name="zone" type="xs:string" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="systemId" type="xs:string" />
+                        <xs:attribute name="name" type="xs:string" />
+                        <xs:attribute name="x" type="xs:string" />
+                        <xs:attribute name="y" type="xs:string" />
+                        <xs:attribute name="z" type="xs:string" />
+                        <xs:attribute name="eod" type="xs:string" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="sectorId" type="xs:string" />
+                  <xs:attribute name="name" type="xs:string" />
+                  <xs:attribute name="x" type="xs:string" />
+                  <xs:attribute name="y" type="xs:string" />
+                  <xs:attribute name="z" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="empire" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="resource" />
+        <xs:element ref="starmap" />
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

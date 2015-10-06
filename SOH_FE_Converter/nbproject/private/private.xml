@@ -3,20 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Share/tests/JAVAFX/SOH_FE_Converter/src/soh_fe_converter/TableTreeExplorer.java</file>
-            <file>file:/C:/Share/tests/JAVAFX/SOH_FE_Converter/src/models/Employee.java</file>
-            <file>file:/C:/Share/tests/JAVAFX/SOH_FE_Converter/src/models/Galaxy.java</file>
-            <file>file:/C:/Share/tests/JAVAFX/SOH_FE_Converter/src/models/System.java</file>
-            <file>file:/C:/Share/tests/JAVAFX/SOH_FE_Converter/src/soh_fe_converter/BBCodeExporter.java</file>
-            <file>file:/C:/Share/tests/JAVAFX/SOH_FE_Converter/src/models/Body.java</file>
-            <file>file:/C:/Share/tests/JAVAFX/SOH_FE_Converter/src/soh_fe_converter/GUILoader.java</file>
-            <file>file:/C:/Share/tests/JAVAFX/SOH_FE_Converter/src/soh_fe_converter/MenuLoader.java</file>
-            <file>file:/C:/Share/tests/JAVAFX/SOH_FE_Converter/src/interfaces/Validation.java</file>
-            <file>file:/C:/Share/tests/JAVAFX/SOH_FE_Converter/src/soh_fe_converter/SOH_FE_Converter.java</file>
-            <file>file:/C:/Share/tests/JAVAFX/SOH_FE_Converter/src/models/Ressource.java</file>
-            <file>file:/C:/Share/tests/JAVAFX/SOH_FE_Converter/src/models/Universe.java</file>
-            <file>file:/C:/Share/tests/JAVAFX/SOH_FE_Converter/src/models/Sector.java</file>
-            <file>file:/C:/Share/tests/JAVAFX/SOH_FE_Converter/src/soh_fe_converter/SearchModule.java</file>
+            <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/models/Biosphere.java</file>
+            <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/build/generated-sources/jaxb/generated/Galaxy.java</file>
+            <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/core/MenuLoader.java</file>
+            <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/build/generated-sources/jaxb/generated/System.java</file>
+            <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/core/SearchModule.java</file>
+            <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/core/SOH_FE_Converter.java</file>
+            <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/models/Atmosphere.java</file>
+            <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/core/BBCodeExporter.java</file>
+            <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/build/generated-sources/jaxb/generated/Sector.java</file>
         </group>
     </open-files>
 </project-private>

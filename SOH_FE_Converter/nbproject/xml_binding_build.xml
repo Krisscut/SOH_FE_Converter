@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+            *** GENERATED FROM xml_binding_cfg.xml - DO NOT EDIT  ***
+            *** Configure thru JAXB Wizard.                       ***
+        --><project name="SOH_FE_Converter_jaxb" default="default" basedir=".">
+    <target name="xjc-typedef-target" depends="-init-project">
+        <typedef classname="com.sun.tools.xjc.XJCTask" name="xjc" xmlns:s="http://xml.netbeans.org/schema/JAXBWizConfig">
+            <classpath path="${jaxbwiz.xjcdef.classpath}"/>
+        </typedef>
+    </target>
+    <target name="jaxb-clean-code-generation" depends="clean,jaxb-code-generation"/>
+    <target name="jaxb-code-generation" depends="xjc-typedef-target,-do-init,-init-macrodef-javac">
+        <mkdir dir="${build.generated.sources.dir}/jaxb" xmlns:s="http://xml.netbeans.org/schema/JAXBWizConfig"/>
+        <mkdir dir="build/generated/jaxbCache" xmlns:s="http://xml.netbeans.org/schema/JAXBWizConfig"/>
+        <mkdir dir="build/generated/jaxbCache/SOH_databaseèv1"/>
+        <xjc destdir="build/generated/jaxbCache/SOH_databaseèv1" catalog="catalog.xml">
+            <classpath>
+                <pathelement location="${src.dir}"/>
+                <pathelement path="${jaxbwiz.xjcrun.classpath}"/>
+            </classpath>
+            <arg value="-xmlschema"/>
+            <schema file="xml-resources/jaxb/SOH_databaseèv1/635797276424557505_testlightdata.xml.xsd"/>
+            <depends file="xml-resources/jaxb/SOH_databaseèv1/635797276424557505_testlightdata.xml.xsd"/>
+            <produces dir="build/generated/jaxbCache/SOH_databaseèv1"/>
+        </xjc>
+        <copy todir="${build.generated.sources.dir}/jaxb">
+            <fileset dir="build/generated/jaxbCache/SOH_databaseèv1"/>
+        </copy>
+        <mkdir dir="build/generated/jaxbCache/soh_database_starmap"/>
+        <xjc destdir="build/generated/jaxbCache/soh_database_starmap" catalog="catalog.xml">
+            <classpath>
+                <pathelement location="${src.dir}"/>
+                <pathelement path="${jaxbwiz.xjcrun.classpath}"/>
+            </classpath>
+            <arg value="-xmlschema"/>
+            <schema file="xml-resources/jaxb/soh_database_starmap/test_data.xsd"/>
+            <depends file="xml-resources/jaxb/soh_database_starmap/test_data.xsd"/>
+            <produces dir="build/generated/jaxbCache/soh_database_starmap"/>
+        </xjc>
+        <copy todir="${build.generated.sources.dir}/jaxb">
+            <fileset dir="build/generated/jaxbCache/soh_database_starmap"/>
+        </copy>
+    </target>
+</project>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="starmap">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="galaxy"/>
+      </xs:sequence>
+      <xs:attribute name="empire" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="galaxy">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="sector"/>
+      </xs:sequence>
+      <xs:attribute name="name" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sector">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="system"/>
+      </xs:sequence>
+      <xs:attribute name="name" use="required"/>
+      <xs:attribute name="sectorId" use="required" type="xs:NCName"/>
+      <xs:attribute name="x" use="required" type="xs:integer"/>
+      <xs:attribute name="y" use="required" type="xs:integer"/>
+      <xs:attribute name="z" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="system">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="wormhole"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="city"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="planet"/>
+          <xs:element ref="star"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="eod" use="required" type="xs:NCName"/>
+      <xs:attribute name="name" use="required"/>
+      <xs:attribute name="systemId" use="required" type="xs:NCName"/>
+      <xs:attribute name="x" use="required" type="xs:decimal"/>
+      <xs:attribute name="y" use="required" type="xs:decimal"/>
+      <xs:attribute name="z" use="required" type="xs:decimal"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="wormhole">
+    <xs:complexType>
+      <xs:attribute name="destSystemId" type="xs:NCName"/>
+      <xs:attribute name="destX" use="required" type="xs:decimal"/>
+      <xs:attribute name="destY" use="required" type="xs:decimal"/>
+      <xs:attribute name="destZ" use="required" type="xs:decimal"/>
+      <xs:attribute name="explored" type="xs:NCName"/>
+      <xs:attribute name="polarity" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="city">
+    <xs:complexType>
+      <xs:attribute name="capital" type="xs:NCName"/>
+      <xs:attribute name="cityId" use="required" type="xs:NCName"/>
+      <xs:attribute name="empire"/>
+      <xs:attribute name="name" use="required"/>
+      <xs:attribute name="stance" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="planet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="geosphere"/>
+        <xs:element minOccurs="0" ref="hydrosphere"/>
+        <xs:element ref="atmosphere"/>
+        <xs:element minOccurs="0" ref="biosphere"/>
+      </xs:sequence>
+      <xs:attribute name="bodyType" use="required"/>
+      <xs:attribute name="name" use="required"/>
+      <xs:attribute name="orbit" use="required"/>
+      <xs:attribute name="planetId" use="required" type="xs:NCName"/>
+      <xs:attribute name="zone" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="geosphere">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="resource"/>
+      </xs:sequence>
+      <xs:attribute name="diameter" use="required"/>
+      <xs:attribute name="resourceZones" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="hydrosphere">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="resource"/>
+      </xs:sequence>
+      <xs:attribute name="surfaceLiquid" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="atmosphere">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="resource"/>
+      </xs:sequence>
+      <xs:attribute name="composition"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="biosphere">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="resource"/>
+      </xs:sequence>
+      <xs:attribute name="fauna" use="required" type="xs:NCName"/>
+      <xs:attribute name="flora" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="star">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="resource"/>
+      </xs:sequence>
+      <xs:attribute name="diameter" use="required"/>
+      <xs:attribute name="hab" use="required"/>
+      <xs:attribute name="name" use="required"/>
+      <xs:attribute name="orbit" use="required"/>
+      <xs:attribute name="shell" use="required" type="xs:NCName"/>
+      <xs:attribute name="size" use="required"/>
+      <xs:attribute name="spectralClass"/>
+      <xs:attribute name="starId" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="resource">
+    <xs:complexType>
+      <xs:attribute name="abundance" type="xs:integer"/>
+      <xs:attribute name="abundanceZone1" type="xs:integer"/>
+      <xs:attribute name="abundanceZone2" type="xs:integer"/>
+      <xs:attribute name="abundanceZone3" type="xs:integer"/>
+      <xs:attribute name="name" use="required"/>
+      <xs:attribute name="quality" type="xs:integer"/>
+      <xs:attribute name="qualityZone1" type="xs:integer"/>
+      <xs:attribute name="qualityZone2" type="xs:integer"/>
+      <xs:attribute name="qualityZone3" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

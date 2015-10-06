@@ -8,11 +8,11 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="SOH_FE_Converter.jar" size="23064" download="eager" />
+    <jar href="SOH_FE_Converter.jar" size="34787" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="SOH_FE_Converter" >
     <param name="requiredFXVersion" value="8.0+"/>
   </applet-desc>
-  <jfx:javafx-desc  width="800" height="600" main-class="soh_fe_converter.SOH_FE_Converter"  name="SOH_FE_Converter" />
+  <jfx:javafx-desc  width="800" height="600" main-class="com.shores.fe.starmap.viewer.core.SOH_FE_Converter"  name="SOH_FE_Converter" />
   <update check="always"/>
 </jnlp>

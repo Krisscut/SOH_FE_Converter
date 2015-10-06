@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<schemas xmlns='http://xml.netbeans.org/schema/JAXBWizConfig' destdir='build/generated-sources/jaxb' projectName='SOH_FE_Converter' version='1.0'>
+	<schema type='-xmlschema' package='' name='SOH_databaseèv1'>
+		<xjc-options>
+		</xjc-options>
+		<schema-sources>
+			<schema-source location='xml-resources/jaxb/SOH_databaseèv1/635797276424557505_testlightdata.xml.xsd' origLocation='C:\Users\STE14179\Downloads\635797276424557505_testlightdata.xml.xsd'/>
+		</schema-sources>
+		<bindings>
+		</bindings>
+		<catalog/>
+	</schema>
+	<schema type='-xmlschema' package='' name='soh_database_starmap'>
+		<xjc-options>
+		</xjc-options>
+		<schema-sources>
+			<schema-source location='xml-resources/jaxb/soh_database_starmap/test_data.xsd' origLocation='../../../../../Dev/Logiciels/trang-20081028/test_data.xsd'/>
+		</schema-sources>
+		<bindings>
+		</bindings>
+		<catalog/>
+	</schema>
+</schemas>
