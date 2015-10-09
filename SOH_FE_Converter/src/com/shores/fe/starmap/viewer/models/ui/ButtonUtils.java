@@ -28,7 +28,7 @@ public abstract class ButtonUtils {
                 }
         });
         
-        tmpButton.setStyle("-fx-font: 22 arial; -fx-base: #b6e7c9;");
+        tmpButton.setStyle("-fx-font: 18 arial; -fx-base:#90C3D4;");
         
         return tmpButton;
     } 

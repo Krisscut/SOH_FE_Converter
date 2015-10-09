@@ -8,6 +8,7 @@ import java.io.File;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
+import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -24,6 +25,9 @@ public class MenuView implements IView, Observer{
     private MenuBar menuBar;
     private MenuController menuController;
     
+    Menu menuView;
+    CheckMenuItem displaySearch, displayTableTree, displayExporter;
+            
     public MenuView(Stage stage, MenuController menuController) {
         /**
          * DEBUG
@@ -82,7 +86,39 @@ public class MenuView implements IView, Observer{
         menuEdit.getItems().addAll(paste,loadXML);
         
         // --- Menu View
-        Menu menuView = new Menu("View");
+        menuView = new Menu("View");
+        
+        displaySearch = new CheckMenuItem("Show Search Fields");
+        displaySearch.setSelected(true);
+        displaySearch.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent t) {
+                menuController.handleShowSearchFieldsAction(displaySearch.isSelected());
+                
+            }
+        });
+        
+        displayTableTree = new CheckMenuItem("Show data table");
+        displayTableTree.setSelected(true);
+        displayTableTree.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent t) {
+                menuController.handleShowTableTreeAction(displayTableTree.isSelected());
+                
+            }
+        });
+        
+        displayExporter = new CheckMenuItem("Show Exporter");
+        displayExporter.setSelected(true);
+        displayExporter.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent t) {
+                menuController.handleShowExporterAction(displayExporter.isSelected());
+                
+            }
+        });
+        
+        menuView.getItems().addAll(displaySearch,displayTableTree, displayExporter);
         
         Menu menuHelp = new Menu("?");
         menuBar.getMenus().addAll(menuFile, menuEdit, menuView);
@@ -92,9 +128,35 @@ public class MenuView implements IView, Observer{
     public Node getViewElement() {
         return menuBar;
     }
+    
+    private void updateViewMenuItems(){
+        displayExporter.setSelected(menuController.getModel().isShowViewExporter());
+        displaySearch.setSelected(menuController.getModel().isShowViewSearch());
+        displayTableTree.setSelected(menuController.getModel().isShowViewTableTree());
+    }
 
     @Override
     public void update(FeedbackCode code) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        switch(code) {
+            case EXPORTER_VIEW_CHANGED:
+            case GLOBAL_VIEW_CHANGED:
+            case SEARCH_VIEW_CHANGED:
+            case TREETABLE_VIEW_CHANGED:
+                updateViewMenuItems();
+        } 
     }
+
+    public CheckMenuItem getDisplaySearch() {
+        return displaySearch;
+    }
+
+    public CheckMenuItem getDisplayTableTree() {
+        return displayTableTree;
+    }
+
+    public CheckMenuItem getDisplayExporter() {
+        return displayExporter;
+    }
+    
+    
 }

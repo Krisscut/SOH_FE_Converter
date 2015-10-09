@@ -6,10 +6,21 @@ import generated.Star;
 import javafx.scene.control.TreeItem;
 
 public class StarImpl extends Star implements ITreeItemSOH{
+    Star star = null;
+    StarImpl(Star star) {
+        this.star = star;
+    }
 
     @Override
     public TreeItem<TreeItemSOH> getTreeItem() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        TreeItem<TreeItemSOH> treeRoot = new TreeItem<>(new TreeItemSOH(
+                star.getName()+ " (id : " + star.getStarId()+ ")",
+                SOHObjectType.Star,
+                " ")); //, depIcon);
+        
+        treeRoot.getChildren().add(new ResourceImpl(star.getResource()).getTreeItem());
+        
+        return treeRoot;
     }
     
 }

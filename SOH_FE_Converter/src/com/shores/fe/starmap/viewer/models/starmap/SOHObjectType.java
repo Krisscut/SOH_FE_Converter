@@ -4,5 +4,15 @@ public enum SOHObjectType {
     Starmap,
     Galaxy,
     Sector,
-    Unknown
+    System,
+    PlanetOrStar,
+    Planet,
+    Star,
+    Moon,
+    Atmosphere,
+    Biosphere,
+    Geosphere,
+    Hydrosphere,
+    Unknown,
+    Resource
 }

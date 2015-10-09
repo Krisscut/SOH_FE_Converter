@@ -8,6 +8,9 @@
             <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/interfaces/ITreeItemSOH.java</file>
             <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/models/TreeItemSOH.java</file>
             <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/views/SearchModuleView.java</file>
+            <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/models/starmap/GeosphereImpl.java</file>
+            <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/build/generated-sources/jaxb/generated/Resource.java</file>
+            <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/models/starmap/AtmosphereImpl.java</file>
             <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/models/starmap/SectorImpl.java</file>
             <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/interfaces/IController.java</file>
             <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/models/starmap/SystemImpl.java</file>
@@ -15,17 +18,22 @@
             <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/controllers/BBCodeExporterController.java</file>
             <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/views/MenuView.java</file>
             <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/controllers/SearchModuleController.java</file>
+            <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/build/generated-sources/jaxb/generated/Planet.java</file>
             <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/models/observability/Observer.java</file>
             <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/models/starmap/GalaxyImpl.java</file>
             <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/models/FeedbackCode.java</file>
+            <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/models/starmap/StarImpl.java</file>
+            <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/models/ui/QualityColorization.java</file>
             <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/models/starmap/PlanetImpl.java</file>
             <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/core/SOH_FE_Converter.java</file>
             <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/models/starmap/HydrosphereImpl.java</file>
+            <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/models/starmap/ResourceImpl.java</file>
             <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/models/observability/Observable.java</file>
             <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/models/ConverterData.java</file>
             <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/views/BBCodeExporterView.java</file>
             <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/models/starmap/SOHObjectType.java</file>
             <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/views/TableTreeExplorerView.java</file>
+            <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/models/starmap/BiosphereImpl.java</file>
             <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/models/ui/ButtonUtils.java</file>
             <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/models/AbstractModel.java</file>
             <file>file:/D:/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/controllers/MenuController.java</file>

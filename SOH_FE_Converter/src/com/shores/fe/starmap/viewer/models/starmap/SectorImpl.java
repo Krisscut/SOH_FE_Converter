@@ -15,14 +15,12 @@ public class SectorImpl extends Sector implements ITreeItemSOH{
     @Override
     public TreeItem<TreeItemSOH> getTreeItem() {
         TreeItem<TreeItemSOH> treeRoot = new TreeItem<>(new TreeItemSOH(
-                sector.getName()+ " Sector (id : " + sector.getSectorId() + ")",
+                sector.getName()+ " (id : " + sector.getSectorId() + ")",
                 SOHObjectType.Sector,
                 "[" + sector.getX() + "," + sector.getY() + "," + sector.getZ() + "]")); //, depIcon);
-        /**
-        for (Sector sector : galaxy.getSector()) {
-            treeRoot.getChildren().add(new SectorImpl(sector).getTreeItem());
+        for (generated.System system : sector.getSystem()) {
+            treeRoot.getChildren().add(new SystemImpl(system).getTreeItem());
         }
-        */
         return treeRoot;
     }
     

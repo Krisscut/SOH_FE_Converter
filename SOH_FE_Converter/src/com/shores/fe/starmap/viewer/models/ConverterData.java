@@ -8,6 +8,11 @@ import javafx.scene.control.TreeItem;
 public class ConverterData extends AbstractModel{
     StarmapImpl starmap = null;
     
+    /** Views state */
+    boolean showViewSearch = true;
+    boolean showViewTableTree = true;
+    boolean showViewExporter = true;
+    
     TreeItem<TreeItemSOH> treeRoot = new TreeItem<>(new TreeItemSOH("My Body", SOHObjectType.Unknown, "coordinates")); //, depIcon);
     ObservableList<TreeItem<TreeItemSOH>> currentSelection = null;
     String generatedBBCode = "";
@@ -68,4 +73,33 @@ public class ConverterData extends AbstractModel{
         }
         return tmpBBCode;
     }
+
+    public boolean isShowViewSearch() {
+        return showViewSearch;
+    }
+
+    public void setShowViewSearch(boolean showViewSearch) {
+        this.showViewSearch = showViewSearch;
+        notifyObservers(FeedbackCode.SEARCH_VIEW_CHANGED);
+    }
+
+    public boolean isShowViewTableTree() {
+        return showViewTableTree;
+    }
+
+    public void setShowViewTableTree(boolean showViewTableTree) {
+        this.showViewTableTree = showViewTableTree;
+        notifyObservers(FeedbackCode.TREETABLE_VIEW_CHANGED);
+    }
+
+    public boolean isShowViewExporter() {
+        return showViewExporter;
+    }
+
+    public void setShowViewExporter(boolean showViewExporter) {
+        this.showViewExporter = showViewExporter;
+        notifyObservers(FeedbackCode.EXPORTER_VIEW_CHANGED);
+    }
+    
+    
 }

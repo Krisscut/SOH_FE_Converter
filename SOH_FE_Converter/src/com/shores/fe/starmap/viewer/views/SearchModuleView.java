@@ -12,8 +12,11 @@ import javafx.scene.layout.GridPane;
 
 public class SearchModuleView implements IView, Observer{
     private GridPane searchBar;
+    private SearchModuleController controller;
 
     public SearchModuleView(SearchModuleController searchModuleController) {
+        this.controller = searchModuleController;
+        
         //Creating a GridPane container
         searchBar = new GridPane();
         searchBar.setPadding(new Insets(10, 10, 10, 10));
@@ -31,6 +34,8 @@ public class SearchModuleView implements IView, Observer{
         Button submit = new Button("Search");
         GridPane.setConstraints(submit, 1, 0);
         searchBar.getChildren().add(submit);
+        
+        searchBar.setStyle("-fx-background-color: #336699;");
     }
 
     @Override
@@ -38,9 +43,26 @@ public class SearchModuleView implements IView, Observer{
        return searchBar;
     }
 
+    private void updateVisibility() {
+        if (controller.getModel().isShowViewSearch()) {
+           this.controller.getCore().getVbox().getChildren().add(0,this.searchBar);
+        }
+        else {
+           this.controller.getCore().getVbox().getChildren().remove(this.searchBar);
+            
+        }
+    }
+    
     @Override
     public void update(FeedbackCode code) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        switch(code) {
+            case REFRESH_ALL:
+            case MAIN_DATA_CHANGED:
+            case BBCODE_GENERATED:
+                break;
+            case SEARCH_VIEW_CHANGED:
+                updateVisibility();
+        } 
     }
     
 }

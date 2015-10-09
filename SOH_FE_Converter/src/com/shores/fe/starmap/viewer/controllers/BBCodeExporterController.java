@@ -1,17 +1,18 @@
 package com.shores.fe.starmap.viewer.controllers;
 
+import com.shores.fe.starmap.viewer.core.SOH_FE_Converter;
 import com.shores.fe.starmap.viewer.interfaces.IController;
 import com.shores.fe.starmap.viewer.models.AbstractModel;
 import com.shores.fe.starmap.viewer.models.ConverterData;
 import com.shores.fe.starmap.viewer.models.FeedbackCode;
 import com.shores.fe.starmap.viewer.models.TreeItemSOH;
 import com.shores.fe.starmap.viewer.models.starmap.SOHObjectType;
-import javafx.event.EventType;
 import javafx.scene.control.TreeItem;
 import org.apache.log4j.Logger;
 
 
 public class BBCodeExporterController implements IController{
+    private SOH_FE_Converter core;
     private ConverterData model = null;
     private static final Logger LOG = Logger.getLogger(BBCodeExporterController.class.getName());
     private static BBCodeExporterController instance = null;
@@ -27,8 +28,9 @@ public class BBCodeExporterController implements IController{
     }
 
     @Override
-    public void init(AbstractModel model) {
+    public void init(AbstractModel model, SOH_FE_Converter core) {
         this.model = (ConverterData) model;
+        this.core = core;
     }
     
     public ConverterData getModel(){
@@ -52,5 +54,9 @@ public class BBCodeExporterController implements IController{
     public void handleFilteredExport() {
         model.setGeneratedBBCode(model.generateBBCode(model.getTreeRoot()));
         model.notifyObservers(FeedbackCode.BBCODE_GENERATED);
+    }
+    
+    public SOH_FE_Converter getCore() {
+        return core;
     }
 }

@@ -10,10 +10,17 @@ import com.shores.fe.starmap.viewer.views.MenuView;
 import com.shores.fe.starmap.viewer.views.SearchModuleView;
 import com.shores.fe.starmap.viewer.views.TableTreeExplorerView;
 import javafx.application.Application;
+import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.SplitPane;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class SOH_FE_Converter extends Application {
@@ -29,45 +36,75 @@ public class SOH_FE_Converter extends Application {
     private SearchModuleView searchModuleView = null;
     private TableTreeExplorerView tableTreeExplorerView = null;
     
+    VBox vbox , mainVBox= null;
+    SplitPane split =null;
+    
     @Override
     public void start(Stage stage) {
-        VBox vbox = new VBox();
-        //New frame for the application
-        Scene scene = new Scene(vbox, 1200, 700);
+        mainVBox = new VBox();
+        mainVBox.setAlignment(Pos.TOP_CENTER);
+        
+        vbox = new VBox();
         
         //Create global model 
         ConverterData model = new ConverterData();
 
         menuController = MenuController.getInstance();
-        menuController.init(model);
+        menuController.init(model, this);
         menuView = new MenuView(stage, menuController);
-        vbox.getChildren().add(menuView.getViewElement());
         
-        TextField field = new TextField("THIS IS A WORK IN PROGRESS SOFTWARE");
-        field.setDisable(true);
-        field.setStyle("-fx-font: 22 arial; -fx-text-fill: rgb(49, 0, 23); -fx-base: #b6e7c9;");
-        vbox.getChildren().add(field);
+        Label label = new Label("This is a WORK IN PROGRESS software");
+        label.setPrefWidth(5000);
+        label.setStyle(""
+                + " -fx-font: 50px Tahoma;"
+                + " -fx-text-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);"
+                + " -fx-stroke: black;"
+                + " -fx-background-color: #A7BDDB;"
+                + " -fx-stroke-width: 1;");
+        label.setAlignment(Pos.CENTER);
         
         searchModuleController = SearchModuleController.getInstance();
-        searchModuleController.init(model);
+        searchModuleController.init(model, this);
         searchModuleView = new SearchModuleView(searchModuleController);
         vbox.getChildren().add(searchModuleView.getViewElement());
         
+        //Split pane to hold the main view
+        split = new SplitPane();
+        split.setOrientation(Orientation.VERTICAL);
+        split.setDividerPositions(0.8f);
+        
         tableTreeExplorerController = TableTreeExplorerController.getInstance();
-        tableTreeExplorerController.init(model);
+        tableTreeExplorerController.init(model, this);
         tableTreeExplorerView = new TableTreeExplorerView(tableTreeExplorerController);
-        vbox.getChildren().add(tableTreeExplorerView.getViewElement());
+        //vbox.getChildren().add(tableTreeExplorerView.getViewElement());
         
         bbCodeExporterController = BBCodeExporterController.getInstance();
-        bbCodeExporterController.init(model);
+        bbCodeExporterController.init(model, this);
         bbCodeExporterView = new BBCodeExporterView(bbCodeExporterController);
 
-        vbox.getChildren().add(bbCodeExporterView.getViewElement());
+        split.getItems().addAll(tableTreeExplorerView.getViewElement(),bbCodeExporterView.getViewElement());
+        //vbox.getChildren().add(bbCodeExporterView.getViewElement());
+        vbox.getChildren().add(split);
         
         model.addObserver(menuView);
         model.addObserver(searchModuleView);
         model.addObserver(tableTreeExplorerView);
         model.addObserver(bbCodeExporterView);
+
+        /**
+        TabPane tabPane = new TabPane();
+        Tab tab = new Tab();
+        tab.setText("Database Converter");
+        tab.setContent(vbox);
+        tabPane.getTabs().add(tab);
+        * */
+        
+        mainVBox.getChildren().addAll(menuView.getViewElement(), label, vbox);
+        
+        Scene scene = new Scene(mainVBox, 1200, 700);
+        
+        //Global CSS
+        //scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
         stage.setTitle("SOH FE Converter");
         stage.setScene(scene);
@@ -80,4 +117,50 @@ public class SOH_FE_Converter extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
+    public BBCodeExporterController getBbCodeExporterController() {
+        return bbCodeExporterController;
+    }
+
+    public MenuController getMenuController() {
+        return menuController;
+    }
+
+    public SearchModuleController getSearchModuleController() {
+        return searchModuleController;
+    }
+
+    public TableTreeExplorerController getTableTreeExplorerController() {
+        return tableTreeExplorerController;
+    }
+
+    public BBCodeExporterView getBbCodeExporterView() {
+        return bbCodeExporterView;
+    }
+
+    public MenuView getMenuView() {
+        return menuView;
+    }
+
+    public SearchModuleView getSearchModuleView() {
+        return searchModuleView;
+    }
+
+    public TableTreeExplorerView getTableTreeExplorerView() {
+        return tableTreeExplorerView;
+    }
+
+    public VBox getVbox() {
+        return vbox;
+    }
+
+    public VBox getMainVBox() {
+        return mainVBox;
+    }
+
+    public SplitPane getSplit() {
+        return split;
+    }
+    
+    
 }

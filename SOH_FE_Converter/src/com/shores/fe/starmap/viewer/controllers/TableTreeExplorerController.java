@@ -1,6 +1,7 @@
 
 package com.shores.fe.starmap.viewer.controllers;
 
+import com.shores.fe.starmap.viewer.core.SOH_FE_Converter;
 import com.shores.fe.starmap.viewer.interfaces.IController;
 import com.shores.fe.starmap.viewer.models.AbstractModel;
 import com.shores.fe.starmap.viewer.models.ConverterData;
@@ -11,6 +12,7 @@ import org.apache.log4j.Logger;
 
 
 public class TableTreeExplorerController implements IController{
+    private SOH_FE_Converter core;
     private ConverterData model = null;
 
     private static final Logger LOG = Logger.getLogger(TableTreeExplorerController.class.getName());
@@ -28,8 +30,9 @@ public class TableTreeExplorerController implements IController{
 
 
     @Override
-    public void init(AbstractModel model) {
+    public void init(AbstractModel model, SOH_FE_Converter core) {
         this.model = (ConverterData) model;
+        this.core = core;
     }
     
     public ConverterData getModel() {
@@ -43,5 +46,8 @@ public class TableTreeExplorerController implements IController{
     public void treeSelectionChanged(ObservableList<TreeItem<TreeItemSOH>> selectedItems) {
         model.setCurrentSelection(selectedItems);
     }
-    
+
+    public SOH_FE_Converter getCore() {
+        return core;
+    }
 }
