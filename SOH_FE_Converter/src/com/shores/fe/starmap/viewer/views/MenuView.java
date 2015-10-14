@@ -4,10 +4,15 @@ import com.shores.fe.starmap.viewer.controllers.MenuController;
 import com.shores.fe.starmap.viewer.interfaces.IView;
 import com.shores.fe.starmap.viewer.models.FeedbackCode;
 import com.shores.fe.starmap.viewer.models.observability.Observer;
+import com.shores.fe.starmap.viewer.utils.DialogUtils;
 import java.io.File;
+import java.util.Optional;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -27,12 +32,13 @@ public class MenuView implements IView, Observer{
     
     Menu menuView;
     CheckMenuItem displaySearch, displayTableTree, displayExporter;
+    
+    private File lastDataLocation = new File("D:\\Dev\\Projects\\tests\\JAVAFX\\JAVAFX");
             
     public MenuView(Stage stage, MenuController menuController) {
         /**
          * DEBUG
          */
-        fileChooser.setInitialDirectory(new File("D:\\Projects\\tests\\JAVAFX\\JAVAFX"));
         fileChooser.getExtensionFilters().clear();
         ExtensionFilter filter = new ExtensionFilter("XML Files", "*.xml");
         fileChooser.getExtensionFilters().add(filter);
@@ -50,14 +56,25 @@ public class MenuView implements IView, Observer{
         clear.setAccelerator(KeyCombination.keyCombination("Ctrl+X"));
         clear.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent t) {
-                //vbox.setVisible(false);
+                DialogUtils.notImplementedYetDialog();
             }
         });
         
         MenuItem exit = new MenuItem("Exit");
         exit.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent t) {
-                System.exit(0);
+                Alert alert = new Alert(AlertType.CONFIRMATION);
+                alert.setTitle("Confirmation Dialog");
+                alert.setHeaderText("Exit application ?");
+                alert.setContentText("Are you sure you want to close the application?");
+
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK){
+                    System.exit(0);
+                } else {
+                    // ... user chose CANCEL or closed the dialog
+                }
+
             }
         });
         menuFile.getItems().addAll(clear, new SeparatorMenuItem(), exit);
@@ -69,18 +86,28 @@ public class MenuView implements IView, Observer{
         paste.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent t) {
-                String data = Clipboard.getSystemClipboard().getContent(DataFormat.PLAIN_TEXT).toString(); 
-                
+                DialogUtils.notImplementedYetDialog();
+                //String data = Clipboard.getSystemClipboard().getContent(DataFormat.PLAIN_TEXT).toString(); 
             }
         });
         
         MenuItem loadXML = new MenuItem("Load XML File");
         loadXML.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent t) {
-                
+                if (lastDataLocation.exists()) {
+                    fileChooser.setInitialDirectory(lastDataLocation);
+                }
                 File file = fileChooser.showOpenDialog(stage );
-                menuController.loadXMLFromFile(file);
-                
+                if (file != null && file.exists()){
+                    lastDataLocation = file.getParentFile();
+                    menuController.loadXMLFromFile(file);
+                } else {
+                    Alert alert = new Alert(AlertType.ERROR);
+                    alert.setTitle("Error Dialog");
+                    alert.setHeaderText("Error !");
+                    alert.setContentText("There is an error with the given file, maybe it's missing or not selected.");
+                    alert.showAndWait();
+                }
             }
         });
         menuEdit.getItems().addAll(paste,loadXML);

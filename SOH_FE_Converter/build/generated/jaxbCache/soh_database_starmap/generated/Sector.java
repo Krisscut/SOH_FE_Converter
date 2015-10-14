@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.5-2 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par l'implÃ©mentation de rÃ©fÃ©rence JavaTM Architecture for XML Binding (JAXB), v2.2.5-2 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2015.10.06 à 02:17:29 PM CEST 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2015.10.14 Ã  11:11:20 AM CEST 
 //
 
 
@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 /**
  * <p>Classe Java pour anonymous complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * <p>Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType>
@@ -99,7 +99,7 @@ public class Sector {
     }
 
     /**
-     * Obtient la valeur de la propriété name.
+     * Obtient la valeur de la propriÃ©tÃ© name.
      * 
      * @return
      *     possible object is
@@ -111,7 +111,7 @@ public class Sector {
     }
 
     /**
-     * Définit la valeur de la propriété name.
+     * DÃ©finit la valeur de la propriÃ©tÃ© name.
      * 
      * @param value
      *     allowed object is
@@ -123,7 +123,7 @@ public class Sector {
     }
 
     /**
-     * Obtient la valeur de la propriété sectorId.
+     * Obtient la valeur de la propriÃ©tÃ© sectorId.
      * 
      * @return
      *     possible object is
@@ -135,7 +135,7 @@ public class Sector {
     }
 
     /**
-     * Définit la valeur de la propriété sectorId.
+     * DÃ©finit la valeur de la propriÃ©tÃ© sectorId.
      * 
      * @param value
      *     allowed object is
@@ -147,7 +147,7 @@ public class Sector {
     }
 
     /**
-     * Obtient la valeur de la propriété x.
+     * Obtient la valeur de la propriÃ©tÃ© x.
      * 
      * @return
      *     possible object is
@@ -159,7 +159,7 @@ public class Sector {
     }
 
     /**
-     * Définit la valeur de la propriété x.
+     * DÃ©finit la valeur de la propriÃ©tÃ© x.
      * 
      * @param value
      *     allowed object is
@@ -171,7 +171,7 @@ public class Sector {
     }
 
     /**
-     * Obtient la valeur de la propriété y.
+     * Obtient la valeur de la propriÃ©tÃ© y.
      * 
      * @return
      *     possible object is
@@ -183,7 +183,7 @@ public class Sector {
     }
 
     /**
-     * Définit la valeur de la propriété y.
+     * DÃ©finit la valeur de la propriÃ©tÃ© y.
      * 
      * @param value
      *     allowed object is
@@ -195,7 +195,7 @@ public class Sector {
     }
 
     /**
-     * Obtient la valeur de la propriété z.
+     * Obtient la valeur de la propriÃ©tÃ© z.
      * 
      * @return
      *     possible object is
@@ -207,7 +207,7 @@ public class Sector {
     }
 
     /**
-     * Définit la valeur de la propriété z.
+     * DÃ©finit la valeur de la propriÃ©tÃ© z.
      * 
      * @param value
      *     allowed object is

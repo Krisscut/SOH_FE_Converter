@@ -4,6 +4,9 @@ import com.shores.fe.starmap.viewer.controllers.SearchModuleController;
 import com.shores.fe.starmap.viewer.interfaces.IView;
 import com.shores.fe.starmap.viewer.models.FeedbackCode;
 import com.shores.fe.starmap.viewer.models.observability.Observer;
+import com.shores.fe.starmap.viewer.utils.DialogUtils;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -33,6 +36,12 @@ public class SearchModuleView implements IView, Observer{
         //Defining the Submit button
         Button submit = new Button("Search");
         GridPane.setConstraints(submit, 1, 0);
+        submit.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                DialogUtils.notImplementedYetDialog();
+            }
+        });
+
         searchBar.getChildren().add(submit);
         
         searchBar.setStyle("-fx-background-color: #336699;");

@@ -2,6 +2,7 @@ package com.shores.fe.starmap.viewer.controllers;
 
 import com.shores.fe.starmap.viewer.core.SOH_FE_Converter;
 import com.shores.fe.starmap.viewer.interfaces.IController;
+import com.shores.fe.starmap.viewer.interfaces.ITreeItemSOH;
 import com.shores.fe.starmap.viewer.models.AbstractModel;
 import com.shores.fe.starmap.viewer.models.ConverterData;
 import com.shores.fe.starmap.viewer.models.FeedbackCode;
@@ -43,8 +44,8 @@ public class BBCodeExporterController implements IController{
     }
 
     public void handleExportSelection() {
-        TreeItem<TreeItemSOH> treeRoot = new TreeItem<>(new TreeItemSOH("Root", SOHObjectType.Unknown, ""));
-        for (TreeItem<TreeItemSOH> item : model.getCurrentSelection() ) {
+        TreeItem<ITreeItemSOH> treeRoot = new TreeItem<>(new TreeItemSOH("Root", SOHObjectType.Unknown, ""));
+        for (TreeItem<ITreeItemSOH> item : model.getCurrentSelection() ) {
             treeRoot.getChildren().add(item);
         }
         model.setGeneratedBBCode(model.generateBBCode(treeRoot));

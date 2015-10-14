@@ -1,14 +1,14 @@
 
 package com.shores.fe.starmap.viewer.models.ui;
 
-import com.shores.fe.starmap.viewer.models.TreeItemSOH;
+import com.shores.fe.starmap.viewer.interfaces.ITreeItemSOH;
 import javafx.scene.Node;
 import javafx.scene.control.TreeTableCell;
 import javafx.scene.control.TreeTableColumn;
 import javafx.util.Callback;
 
 
-public final class QualityColorization extends TreeTableCell<TreeItemSOH, String> {
+public final class QualityColorization extends TreeTableCell<ITreeItemSOH, String> {
 
 
     @Override
@@ -19,7 +19,7 @@ public final class QualityColorization extends TreeTableCell<TreeItemSOH, String
         String style = "";
         if (value != null && !value.equals("null")&& !empty && !value.isEmpty()) {
             text = value;
-            final TreeItemSOH item = getTreeTableRow().getItem();
+            final ITreeItemSOH item = getTreeTableRow().getItem();
             
             String[] parts = text.split("\\(");
             int quality = Integer.parseInt(parts[0]);
@@ -36,6 +36,9 @@ public final class QualityColorization extends TreeTableCell<TreeItemSOH, String
             } else {
                 style = "-fx-text-fill: #C028DE;";
             }
+        } else {
+            //style = "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);";
+           // style += "-fx-background : linear-gradient(to bottom, rgba(245,246,246,1) 0%,rgba(219,220,226,1) 21%,rgba(184,186,198,1) 49%,rgba(221,223,227,1) 80%,rgba(245,246,246,1) 100%);";
         }
         style += "-fx-font-weight: bold;";
         setText(text);
@@ -44,7 +47,7 @@ public final class QualityColorization extends TreeTableCell<TreeItemSOH, String
     }
 
     // Fabrique statique.
-    public static Callback<TreeTableColumn<TreeItemSOH, String>, TreeTableCell<TreeItemSOH, String>> forTreeTableColumn() {
-        return (TreeTableColumn<TreeItemSOH, String> p) -> new QualityColorization();
+    public static Callback<TreeTableColumn<ITreeItemSOH, String>, TreeTableCell<ITreeItemSOH, String>> forTreeTableColumn() {
+        return (TreeTableColumn<ITreeItemSOH, String> p) -> new QualityColorization();
     }
 }

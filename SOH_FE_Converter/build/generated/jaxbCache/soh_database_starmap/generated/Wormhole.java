@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.5-2 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par l'implÃ©mentation de rÃ©fÃ©rence JavaTM Architecture for XML Binding (JAXB), v2.2.5-2 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2015.10.06 à 02:17:29 PM CEST 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2015.10.14 Ã  11:11:20 AM CEST 
 //
 
 
@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 /**
  * <p>Classe Java pour anonymous complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * <p>Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType>
@@ -66,7 +66,7 @@ public class Wormhole {
     protected String polarity;
 
     /**
-     * Obtient la valeur de la propriété destSystemId.
+     * Obtient la valeur de la propriÃ©tÃ© destSystemId.
      * 
      * @return
      *     possible object is
@@ -78,7 +78,7 @@ public class Wormhole {
     }
 
     /**
-     * Définit la valeur de la propriété destSystemId.
+     * DÃ©finit la valeur de la propriÃ©tÃ© destSystemId.
      * 
      * @param value
      *     allowed object is
@@ -90,7 +90,7 @@ public class Wormhole {
     }
 
     /**
-     * Obtient la valeur de la propriété destX.
+     * Obtient la valeur de la propriÃ©tÃ© destX.
      * 
      * @return
      *     possible object is
@@ -102,7 +102,7 @@ public class Wormhole {
     }
 
     /**
-     * Définit la valeur de la propriété destX.
+     * DÃ©finit la valeur de la propriÃ©tÃ© destX.
      * 
      * @param value
      *     allowed object is
@@ -114,7 +114,7 @@ public class Wormhole {
     }
 
     /**
-     * Obtient la valeur de la propriété destY.
+     * Obtient la valeur de la propriÃ©tÃ© destY.
      * 
      * @return
      *     possible object is
@@ -126,7 +126,7 @@ public class Wormhole {
     }
 
     /**
-     * Définit la valeur de la propriété destY.
+     * DÃ©finit la valeur de la propriÃ©tÃ© destY.
      * 
      * @param value
      *     allowed object is
@@ -138,7 +138,7 @@ public class Wormhole {
     }
 
     /**
-     * Obtient la valeur de la propriété destZ.
+     * Obtient la valeur de la propriÃ©tÃ© destZ.
      * 
      * @return
      *     possible object is
@@ -150,7 +150,7 @@ public class Wormhole {
     }
 
     /**
-     * Définit la valeur de la propriété destZ.
+     * DÃ©finit la valeur de la propriÃ©tÃ© destZ.
      * 
      * @param value
      *     allowed object is
@@ -162,7 +162,7 @@ public class Wormhole {
     }
 
     /**
-     * Obtient la valeur de la propriété explored.
+     * Obtient la valeur de la propriÃ©tÃ© explored.
      * 
      * @return
      *     possible object is
@@ -174,7 +174,7 @@ public class Wormhole {
     }
 
     /**
-     * Définit la valeur de la propriété explored.
+     * DÃ©finit la valeur de la propriÃ©tÃ© explored.
      * 
      * @param value
      *     allowed object is
@@ -186,7 +186,7 @@ public class Wormhole {
     }
 
     /**
-     * Obtient la valeur de la propriété polarity.
+     * Obtient la valeur de la propriÃ©tÃ© polarity.
      * 
      * @return
      *     possible object is
@@ -198,7 +198,7 @@ public class Wormhole {
     }
 
     /**
-     * Définit la valeur de la propriété polarity.
+     * DÃ©finit la valeur de la propriÃ©tÃ© polarity.
      * 
      * @param value
      *     allowed object is

@@ -1,5 +1,6 @@
 package com.shores.fe.starmap.viewer.models;
 
+import com.shores.fe.starmap.viewer.interfaces.ITreeItemSOH;
 import com.shores.fe.starmap.viewer.models.starmap.SOHObjectType;
 import com.shores.fe.starmap.viewer.models.starmap.StarmapImpl;
 import javafx.collections.ObservableList;
@@ -13,8 +14,8 @@ public class ConverterData extends AbstractModel{
     boolean showViewTableTree = true;
     boolean showViewExporter = true;
     
-    TreeItem<TreeItemSOH> treeRoot = new TreeItem<>(new TreeItemSOH("My Body", SOHObjectType.Unknown, "coordinates")); //, depIcon);
-    ObservableList<TreeItem<TreeItemSOH>> currentSelection = null;
+    TreeItem<ITreeItemSOH> treeRoot = new TreeItem<>(new TreeItemSOH("My Body", SOHObjectType.Unknown, "coordinates")); //, depIcon);
+    ObservableList<TreeItem<ITreeItemSOH>> currentSelection = null;
     String generatedBBCode = "";
     
     /** 
@@ -28,11 +29,11 @@ public class ConverterData extends AbstractModel{
         GETTERS & SETTERS
     */
     
-    public void setCurrentSelection(ObservableList<TreeItem<TreeItemSOH>> selectedItems) {
+    public void setCurrentSelection(ObservableList<TreeItem<ITreeItemSOH>> selectedItems) {
         currentSelection = selectedItems;
     }
     
-    public ObservableList<TreeItem<TreeItemSOH>> getCurrentSelection() {
+    public ObservableList<TreeItem<ITreeItemSOH>> getCurrentSelection() {
         return currentSelection;
     }
     
@@ -45,11 +46,11 @@ public class ConverterData extends AbstractModel{
         this.starmap = starmap;
     }
 
-    public TreeItem<TreeItemSOH> getTreeRoot() {
+    public TreeItem<ITreeItemSOH> getTreeRoot() {
         return treeRoot;
     }
 
-    public void setTreeRoot(TreeItem<TreeItemSOH> treeRoot) {
+    public void setTreeRoot(TreeItem<ITreeItemSOH> treeRoot) {
         this.treeRoot = treeRoot;
     }
 
@@ -65,10 +66,14 @@ public class ConverterData extends AbstractModel{
         this.generatedBBCode = "";
     }
 
-    public String generateBBCode(TreeItem<TreeItemSOH> treeItem) {
-        String tmpBBCode = treeItem.getValue().toString();
-        for (TreeItem<TreeItemSOH> item : treeItem.getChildren()) {
-            tmpBBCode += "\n";
+    public String generateBBCode(TreeItem<ITreeItemSOH> treeItem) {
+        ITreeItemSOH tmpItem = treeItem.getValue();
+        String tmpBBCode = "";
+        if (tmpItem.getType() == SOHObjectType.Resource ){
+            tmpBBCode = treeItem.getValue().getExportBBCode();
+        }
+        for (TreeItem<ITreeItemSOH> item : treeItem.getChildren()) {
+            if (!tmpBBCode.isEmpty()) tmpBBCode += "\n";
             tmpBBCode += generateBBCode(item);
         }
         return tmpBBCode;

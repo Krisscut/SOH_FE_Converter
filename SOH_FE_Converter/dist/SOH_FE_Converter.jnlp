@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="SOH_FE_Converter.jar" size="91765" download="eager" />
+    <jar href="SOH_FE_Converter.jar" size="85547" download="eager" />
     <jar href="lib\log4j-1.2.17.jar" size="489883" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="SOH_FE_Converter" >

@@ -1,24 +1,89 @@
 package com.shores.fe.starmap.viewer.models.starmap;
 
 import com.shores.fe.starmap.viewer.interfaces.ITreeItemSOH;
-import com.shores.fe.starmap.viewer.models.TreeItemSOH;
 import generated.Galaxy;
 import generated.Sector;
+import java.util.ArrayList;
+import java.util.List;
 import javafx.scene.control.TreeItem;
 
-public class GalaxyImpl extends Galaxy implements ITreeItemSOH{
-    Galaxy galaxy = null;
+public class GalaxyImpl implements ITreeItemSOH{
+    /** Parent */
+    StarmapImpl starmap;
+    /** Memo data */
+    Galaxy galaxy;
+    /** Children */
+    List<SectorImpl> sectors = new ArrayList<>();;
     
-    GalaxyImpl(Galaxy galaxy) {
+    GalaxyImpl(StarmapImpl starmap,Galaxy galaxy) {
         this.galaxy = galaxy;
+        for (Sector sector : galaxy.getSector()) {
+            sectors.add(new SectorImpl(this, sector));
+        }
+    }
+    
+    @Override
+    public TreeItem<ITreeItemSOH> getTreeItem() {
+        TreeItem<ITreeItemSOH> treeRoot = new TreeItem<>(this); //, depIcon);
+        for (SectorImpl sector : sectors) {
+            treeRoot.getChildren().add(sector.getTreeItem());
+        }
+        return treeRoot;
+    }
+    @Override
+    public String getName() {
+        return galaxy.getName();
     }
 
     @Override
-    public TreeItem<TreeItemSOH> getTreeItem() {
-        TreeItem<TreeItemSOH> treeRoot = new TreeItem<>(new TreeItemSOH(galaxy.getName(), SOHObjectType.Galaxy, "")); //, depIcon);
-        for (Sector sector : galaxy.getSector()) {
-            treeRoot.getChildren().add(new SectorImpl(sector).getTreeItem());
+    public String getCoordinates() {
+        return DEFAULT_VALUE_STRING;
+    }
+
+    @Override
+    public SOHObjectType getType() {
+        return SOHObjectType.Galaxy;
+    }
+
+    @Override
+    public String getZone() {
+        return DEFAULT_VALUE_STRING;
+    }
+
+    @Override
+    public String getQualityZone1() {
+       return DEFAULT_VALUE_STRING;
+    }
+
+    @Override
+    public String getQualityZone2() {
+        return DEFAULT_VALUE_STRING;
+    }
+
+    @Override
+    public String getQualityZone3() {
+        return DEFAULT_VALUE_STRING;
+    }
+
+    @Override
+    public String getExportBBCode() {
+        return toString();
+    }
+
+    @Override
+    public ITreeItemSOH getParent() {
+        return starmap;
+    }
+    
+    @Override
+    public boolean isValidData() {
+        boolean test = false;
+        ArrayList<Object> toRemove = new ArrayList<>();
+        for (SectorImpl sector : sectors) {
+            if (sector.isValidData()) test = true;
+            else toRemove.add(sector);
         }
-        return treeRoot;
+        sectors.removeAll(toRemove);
+        return test;
     }
 }

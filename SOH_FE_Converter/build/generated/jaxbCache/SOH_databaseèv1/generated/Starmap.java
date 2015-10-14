@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.5-2 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par l'implÃ©mentation de rÃ©fÃ©rence JavaTM Architecture for XML Binding (JAXB), v2.2.5-2 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2015.10.06 à 02:17:28 PM CEST 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2015.10.14 Ã  11:11:20 AM CEST 
 //
 
 
@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>Classe Java pour anonymous complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * <p>Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType>
@@ -217,7 +217,7 @@ public class Starmap {
     }
 
     /**
-     * Obtient la valeur de la propriété empire.
+     * Obtient la valeur de la propriÃ©tÃ© empire.
      * 
      * @return
      *     possible object is
@@ -229,7 +229,7 @@ public class Starmap {
     }
 
     /**
-     * Définit la valeur de la propriété empire.
+     * DÃ©finit la valeur de la propriÃ©tÃ© empire.
      * 
      * @param value
      *     allowed object is
@@ -244,7 +244,7 @@ public class Starmap {
     /**
      * <p>Classe Java pour anonymous complex type.
      * 
-     * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+     * <p>Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
      * 
      * <pre>
      * &lt;complexType>
@@ -429,7 +429,7 @@ public class Starmap {
         }
 
         /**
-         * Obtient la valeur de la propriété name.
+         * Obtient la valeur de la propriÃ©tÃ© name.
          * 
          * @return
          *     possible object is
@@ -441,7 +441,7 @@ public class Starmap {
         }
 
         /**
-         * Définit la valeur de la propriété name.
+         * DÃ©finit la valeur de la propriÃ©tÃ© name.
          * 
          * @param value
          *     allowed object is
@@ -456,7 +456,7 @@ public class Starmap {
         /**
          * <p>Classe Java pour anonymous complex type.
          * 
-         * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+         * <p>Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
          * 
          * <pre>
          * &lt;complexType>
@@ -638,7 +638,7 @@ public class Starmap {
             }
 
             /**
-             * Obtient la valeur de la propriété sectorId.
+             * Obtient la valeur de la propriÃ©tÃ© sectorId.
              * 
              * @return
              *     possible object is
@@ -650,7 +650,7 @@ public class Starmap {
             }
 
             /**
-             * Définit la valeur de la propriété sectorId.
+             * DÃ©finit la valeur de la propriÃ©tÃ© sectorId.
              * 
              * @param value
              *     allowed object is
@@ -662,7 +662,7 @@ public class Starmap {
             }
 
             /**
-             * Obtient la valeur de la propriété name.
+             * Obtient la valeur de la propriÃ©tÃ© name.
              * 
              * @return
              *     possible object is
@@ -674,7 +674,7 @@ public class Starmap {
             }
 
             /**
-             * Définit la valeur de la propriété name.
+             * DÃ©finit la valeur de la propriÃ©tÃ© name.
              * 
              * @param value
              *     allowed object is
@@ -686,7 +686,7 @@ public class Starmap {
             }
 
             /**
-             * Obtient la valeur de la propriété x.
+             * Obtient la valeur de la propriÃ©tÃ© x.
              * 
              * @return
              *     possible object is
@@ -698,7 +698,7 @@ public class Starmap {
             }
 
             /**
-             * Définit la valeur de la propriété x.
+             * DÃ©finit la valeur de la propriÃ©tÃ© x.
              * 
              * @param value
              *     allowed object is
@@ -710,7 +710,7 @@ public class Starmap {
             }
 
             /**
-             * Obtient la valeur de la propriété y.
+             * Obtient la valeur de la propriÃ©tÃ© y.
              * 
              * @return
              *     possible object is
@@ -722,7 +722,7 @@ public class Starmap {
             }
 
             /**
-             * Définit la valeur de la propriété y.
+             * DÃ©finit la valeur de la propriÃ©tÃ© y.
              * 
              * @param value
              *     allowed object is
@@ -734,7 +734,7 @@ public class Starmap {
             }
 
             /**
-             * Obtient la valeur de la propriété z.
+             * Obtient la valeur de la propriÃ©tÃ© z.
              * 
              * @return
              *     possible object is
@@ -746,7 +746,7 @@ public class Starmap {
             }
 
             /**
-             * Définit la valeur de la propriété z.
+             * DÃ©finit la valeur de la propriÃ©tÃ© z.
              * 
              * @param value
              *     allowed object is
@@ -761,7 +761,7 @@ public class Starmap {
             /**
              * <p>Classe Java pour anonymous complex type.
              * 
-             * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+             * <p>Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
              * 
              * <pre>
              * &lt;complexType>
@@ -992,7 +992,7 @@ public class Starmap {
                 }
 
                 /**
-                 * Obtient la valeur de la propriété systemId.
+                 * Obtient la valeur de la propriÃ©tÃ© systemId.
                  * 
                  * @return
                  *     possible object is
@@ -1004,7 +1004,7 @@ public class Starmap {
                 }
 
                 /**
-                 * Définit la valeur de la propriété systemId.
+                 * DÃ©finit la valeur de la propriÃ©tÃ© systemId.
                  * 
                  * @param value
                  *     allowed object is
@@ -1016,7 +1016,7 @@ public class Starmap {
                 }
 
                 /**
-                 * Obtient la valeur de la propriété name.
+                 * Obtient la valeur de la propriÃ©tÃ© name.
                  * 
                  * @return
                  *     possible object is
@@ -1028,7 +1028,7 @@ public class Starmap {
                 }
 
                 /**
-                 * Définit la valeur de la propriété name.
+                 * DÃ©finit la valeur de la propriÃ©tÃ© name.
                  * 
                  * @param value
                  *     allowed object is
@@ -1040,7 +1040,7 @@ public class Starmap {
                 }
 
                 /**
-                 * Obtient la valeur de la propriété x.
+                 * Obtient la valeur de la propriÃ©tÃ© x.
                  * 
                  * @return
                  *     possible object is
@@ -1052,7 +1052,7 @@ public class Starmap {
                 }
 
                 /**
-                 * Définit la valeur de la propriété x.
+                 * DÃ©finit la valeur de la propriÃ©tÃ© x.
                  * 
                  * @param value
                  *     allowed object is
@@ -1064,7 +1064,7 @@ public class Starmap {
                 }
 
                 /**
-                 * Obtient la valeur de la propriété y.
+                 * Obtient la valeur de la propriÃ©tÃ© y.
                  * 
                  * @return
                  *     possible object is
@@ -1076,7 +1076,7 @@ public class Starmap {
                 }
 
                 /**
-                 * Définit la valeur de la propriété y.
+                 * DÃ©finit la valeur de la propriÃ©tÃ© y.
                  * 
                  * @param value
                  *     allowed object is
@@ -1088,7 +1088,7 @@ public class Starmap {
                 }
 
                 /**
-                 * Obtient la valeur de la propriété z.
+                 * Obtient la valeur de la propriÃ©tÃ© z.
                  * 
                  * @return
                  *     possible object is
@@ -1100,7 +1100,7 @@ public class Starmap {
                 }
 
                 /**
-                 * Définit la valeur de la propriété z.
+                 * DÃ©finit la valeur de la propriÃ©tÃ© z.
                  * 
                  * @param value
                  *     allowed object is
@@ -1112,7 +1112,7 @@ public class Starmap {
                 }
 
                 /**
-                 * Obtient la valeur de la propriété eod.
+                 * Obtient la valeur de la propriÃ©tÃ© eod.
                  * 
                  * @return
                  *     possible object is
@@ -1124,7 +1124,7 @@ public class Starmap {
                 }
 
                 /**
-                 * Définit la valeur de la propriété eod.
+                 * DÃ©finit la valeur de la propriÃ©tÃ© eod.
                  * 
                  * @param value
                  *     allowed object is
@@ -1139,7 +1139,7 @@ public class Starmap {
                 /**
                  * <p>Classe Java pour anonymous complex type.
                  * 
-                 * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+                 * <p>Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
                  * 
                  * <pre>
                  * &lt;complexType>
@@ -1350,7 +1350,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Obtient la valeur de la propriété planetId.
+                     * Obtient la valeur de la propriÃ©tÃ© planetId.
                      * 
                      * @return
                      *     possible object is
@@ -1362,7 +1362,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Définit la valeur de la propriété planetId.
+                     * DÃ©finit la valeur de la propriÃ©tÃ© planetId.
                      * 
                      * @param value
                      *     allowed object is
@@ -1374,7 +1374,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Obtient la valeur de la propriété name.
+                     * Obtient la valeur de la propriÃ©tÃ© name.
                      * 
                      * @return
                      *     possible object is
@@ -1386,7 +1386,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Définit la valeur de la propriété name.
+                     * DÃ©finit la valeur de la propriÃ©tÃ© name.
                      * 
                      * @param value
                      *     allowed object is
@@ -1398,7 +1398,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Obtient la valeur de la propriété bodyType.
+                     * Obtient la valeur de la propriÃ©tÃ© bodyType.
                      * 
                      * @return
                      *     possible object is
@@ -1410,7 +1410,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Définit la valeur de la propriété bodyType.
+                     * DÃ©finit la valeur de la propriÃ©tÃ© bodyType.
                      * 
                      * @param value
                      *     allowed object is
@@ -1422,7 +1422,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Obtient la valeur de la propriété orbit.
+                     * Obtient la valeur de la propriÃ©tÃ© orbit.
                      * 
                      * @return
                      *     possible object is
@@ -1434,7 +1434,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Définit la valeur de la propriété orbit.
+                     * DÃ©finit la valeur de la propriÃ©tÃ© orbit.
                      * 
                      * @param value
                      *     allowed object is
@@ -1446,7 +1446,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Obtient la valeur de la propriété zone.
+                     * Obtient la valeur de la propriÃ©tÃ© zone.
                      * 
                      * @return
                      *     possible object is
@@ -1458,7 +1458,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Définit la valeur de la propriété zone.
+                     * DÃ©finit la valeur de la propriÃ©tÃ© zone.
                      * 
                      * @param value
                      *     allowed object is
@@ -1473,7 +1473,7 @@ public class Starmap {
                     /**
                      * <p>Classe Java pour anonymous complex type.
                      * 
-                     * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+                     * <p>Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
                      * 
                      * <pre>
                      * &lt;complexType>
@@ -1530,7 +1530,7 @@ public class Starmap {
                         }
 
                         /**
-                         * Obtient la valeur de la propriété composition.
+                         * Obtient la valeur de la propriÃ©tÃ© composition.
                          * 
                          * @return
                          *     possible object is
@@ -1542,7 +1542,7 @@ public class Starmap {
                         }
 
                         /**
-                         * Définit la valeur de la propriété composition.
+                         * DÃ©finit la valeur de la propriÃ©tÃ© composition.
                          * 
                          * @param value
                          *     allowed object is
@@ -1559,7 +1559,7 @@ public class Starmap {
                     /**
                      * <p>Classe Java pour anonymous complex type.
                      * 
-                     * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+                     * <p>Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
                      * 
                      * <pre>
                      * &lt;complexType>
@@ -1619,7 +1619,7 @@ public class Starmap {
                         }
 
                         /**
-                         * Obtient la valeur de la propriété fauna.
+                         * Obtient la valeur de la propriÃ©tÃ© fauna.
                          * 
                          * @return
                          *     possible object is
@@ -1631,7 +1631,7 @@ public class Starmap {
                         }
 
                         /**
-                         * Définit la valeur de la propriété fauna.
+                         * DÃ©finit la valeur de la propriÃ©tÃ© fauna.
                          * 
                          * @param value
                          *     allowed object is
@@ -1643,7 +1643,7 @@ public class Starmap {
                         }
 
                         /**
-                         * Obtient la valeur de la propriété flora.
+                         * Obtient la valeur de la propriÃ©tÃ© flora.
                          * 
                          * @return
                          *     possible object is
@@ -1655,7 +1655,7 @@ public class Starmap {
                         }
 
                         /**
-                         * Définit la valeur de la propriété flora.
+                         * DÃ©finit la valeur de la propriÃ©tÃ© flora.
                          * 
                          * @param value
                          *     allowed object is
@@ -1672,7 +1672,7 @@ public class Starmap {
                     /**
                      * <p>Classe Java pour anonymous complex type.
                      * 
-                     * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+                     * <p>Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
                      * 
                      * <pre>
                      * &lt;complexType>
@@ -1732,7 +1732,7 @@ public class Starmap {
                         }
 
                         /**
-                         * Obtient la valeur de la propriété diameter.
+                         * Obtient la valeur de la propriÃ©tÃ© diameter.
                          * 
                          * @return
                          *     possible object is
@@ -1744,7 +1744,7 @@ public class Starmap {
                         }
 
                         /**
-                         * Définit la valeur de la propriété diameter.
+                         * DÃ©finit la valeur de la propriÃ©tÃ© diameter.
                          * 
                          * @param value
                          *     allowed object is
@@ -1756,7 +1756,7 @@ public class Starmap {
                         }
 
                         /**
-                         * Obtient la valeur de la propriété resourceZones.
+                         * Obtient la valeur de la propriÃ©tÃ© resourceZones.
                          * 
                          * @return
                          *     possible object is
@@ -1768,7 +1768,7 @@ public class Starmap {
                         }
 
                         /**
-                         * Définit la valeur de la propriété resourceZones.
+                         * DÃ©finit la valeur de la propriÃ©tÃ© resourceZones.
                          * 
                          * @param value
                          *     allowed object is
@@ -1785,7 +1785,7 @@ public class Starmap {
                     /**
                      * <p>Classe Java pour anonymous complex type.
                      * 
-                     * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+                     * <p>Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
                      * 
                      * <pre>
                      * &lt;complexType>
@@ -1842,7 +1842,7 @@ public class Starmap {
                         }
 
                         /**
-                         * Obtient la valeur de la propriété surfaceLiquid.
+                         * Obtient la valeur de la propriÃ©tÃ© surfaceLiquid.
                          * 
                          * @return
                          *     possible object is
@@ -1854,7 +1854,7 @@ public class Starmap {
                         }
 
                         /**
-                         * Définit la valeur de la propriété surfaceLiquid.
+                         * DÃ©finit la valeur de la propriÃ©tÃ© surfaceLiquid.
                          * 
                          * @param value
                          *     allowed object is
@@ -1873,7 +1873,7 @@ public class Starmap {
                 /**
                  * <p>Classe Java pour anonymous complex type.
                  * 
-                 * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+                 * <p>Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
                  * 
                  * <pre>
                  * &lt;complexType>
@@ -1951,7 +1951,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Obtient la valeur de la propriété starId.
+                     * Obtient la valeur de la propriÃ©tÃ© starId.
                      * 
                      * @return
                      *     possible object is
@@ -1963,7 +1963,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Définit la valeur de la propriété starId.
+                     * DÃ©finit la valeur de la propriÃ©tÃ© starId.
                      * 
                      * @param value
                      *     allowed object is
@@ -1975,7 +1975,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Obtient la valeur de la propriété name.
+                     * Obtient la valeur de la propriÃ©tÃ© name.
                      * 
                      * @return
                      *     possible object is
@@ -1987,7 +1987,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Définit la valeur de la propriété name.
+                     * DÃ©finit la valeur de la propriÃ©tÃ© name.
                      * 
                      * @param value
                      *     allowed object is
@@ -1999,7 +1999,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Obtient la valeur de la propriété orbit.
+                     * Obtient la valeur de la propriÃ©tÃ© orbit.
                      * 
                      * @return
                      *     possible object is
@@ -2011,7 +2011,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Définit la valeur de la propriété orbit.
+                     * DÃ©finit la valeur de la propriÃ©tÃ© orbit.
                      * 
                      * @param value
                      *     allowed object is
@@ -2023,7 +2023,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Obtient la valeur de la propriété spectralClass.
+                     * Obtient la valeur de la propriÃ©tÃ© spectralClass.
                      * 
                      * @return
                      *     possible object is
@@ -2035,7 +2035,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Définit la valeur de la propriété spectralClass.
+                     * DÃ©finit la valeur de la propriÃ©tÃ© spectralClass.
                      * 
                      * @param value
                      *     allowed object is
@@ -2047,7 +2047,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Obtient la valeur de la propriété size.
+                     * Obtient la valeur de la propriÃ©tÃ© size.
                      * 
                      * @return
                      *     possible object is
@@ -2059,7 +2059,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Définit la valeur de la propriété size.
+                     * DÃ©finit la valeur de la propriÃ©tÃ© size.
                      * 
                      * @param value
                      *     allowed object is
@@ -2071,7 +2071,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Obtient la valeur de la propriété hab.
+                     * Obtient la valeur de la propriÃ©tÃ© hab.
                      * 
                      * @return
                      *     possible object is
@@ -2083,7 +2083,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Définit la valeur de la propriété hab.
+                     * DÃ©finit la valeur de la propriÃ©tÃ© hab.
                      * 
                      * @param value
                      *     allowed object is
@@ -2095,7 +2095,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Obtient la valeur de la propriété shell.
+                     * Obtient la valeur de la propriÃ©tÃ© shell.
                      * 
                      * @return
                      *     possible object is
@@ -2107,7 +2107,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Définit la valeur de la propriété shell.
+                     * DÃ©finit la valeur de la propriÃ©tÃ© shell.
                      * 
                      * @param value
                      *     allowed object is
@@ -2119,7 +2119,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Obtient la valeur de la propriété diameter.
+                     * Obtient la valeur de la propriÃ©tÃ© diameter.
                      * 
                      * @return
                      *     possible object is
@@ -2131,7 +2131,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Définit la valeur de la propriété diameter.
+                     * DÃ©finit la valeur de la propriÃ©tÃ© diameter.
                      * 
                      * @param value
                      *     allowed object is
@@ -2148,7 +2148,7 @@ public class Starmap {
                 /**
                  * <p>Classe Java pour anonymous complex type.
                  * 
-                 * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+                 * <p>Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
                  * 
                  * <pre>
                  * &lt;complexType>
@@ -2185,7 +2185,7 @@ public class Starmap {
                     protected String explored;
 
                     /**
-                     * Obtient la valeur de la propriété destX.
+                     * Obtient la valeur de la propriÃ©tÃ© destX.
                      * 
                      * @return
                      *     possible object is
@@ -2197,7 +2197,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Définit la valeur de la propriété destX.
+                     * DÃ©finit la valeur de la propriÃ©tÃ© destX.
                      * 
                      * @param value
                      *     allowed object is
@@ -2209,7 +2209,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Obtient la valeur de la propriété destY.
+                     * Obtient la valeur de la propriÃ©tÃ© destY.
                      * 
                      * @return
                      *     possible object is
@@ -2221,7 +2221,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Définit la valeur de la propriété destY.
+                     * DÃ©finit la valeur de la propriÃ©tÃ© destY.
                      * 
                      * @param value
                      *     allowed object is
@@ -2233,7 +2233,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Obtient la valeur de la propriété destZ.
+                     * Obtient la valeur de la propriÃ©tÃ© destZ.
                      * 
                      * @return
                      *     possible object is
@@ -2245,7 +2245,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Définit la valeur de la propriété destZ.
+                     * DÃ©finit la valeur de la propriÃ©tÃ© destZ.
                      * 
                      * @param value
                      *     allowed object is
@@ -2257,7 +2257,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Obtient la valeur de la propriété destSystemId.
+                     * Obtient la valeur de la propriÃ©tÃ© destSystemId.
                      * 
                      * @return
                      *     possible object is
@@ -2269,7 +2269,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Définit la valeur de la propriété destSystemId.
+                     * DÃ©finit la valeur de la propriÃ©tÃ© destSystemId.
                      * 
                      * @param value
                      *     allowed object is
@@ -2281,7 +2281,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Obtient la valeur de la propriété polarity.
+                     * Obtient la valeur de la propriÃ©tÃ© polarity.
                      * 
                      * @return
                      *     possible object is
@@ -2293,7 +2293,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Définit la valeur de la propriété polarity.
+                     * DÃ©finit la valeur de la propriÃ©tÃ© polarity.
                      * 
                      * @param value
                      *     allowed object is
@@ -2305,7 +2305,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Obtient la valeur de la propriété explored.
+                     * Obtient la valeur de la propriÃ©tÃ© explored.
                      * 
                      * @return
                      *     possible object is
@@ -2317,7 +2317,7 @@ public class Starmap {
                     }
 
                     /**
-                     * Définit la valeur de la propriété explored.
+                     * DÃ©finit la valeur de la propriÃ©tÃ© explored.
                      * 
                      * @param value
                      *     allowed object is

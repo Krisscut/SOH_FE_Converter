@@ -1,12 +1,13 @@
 package com.shores.fe.starmap.viewer.models;
 
+import com.shores.fe.starmap.viewer.interfaces.ITreeItemSOH;
 import com.shores.fe.starmap.viewer.models.starmap.SOHObjectType;
+import javafx.scene.control.TreeItem;
 
-public class TreeItemSOH {
+public class TreeItemSOH implements ITreeItemSOH{
     String name = "";
     SOHObjectType type = SOHObjectType.Unknown;
     String coordinates = "";
-    /** Habitable zone ... ) */
     String zone = ""; 
     String qualityZone1 = null;
     String qualityZone2 = null;
@@ -42,17 +43,11 @@ public class TreeItemSOH {
         return coordinates;
     }
 
-    public String getType() {
+    public SOHObjectType getType() {
         if (type == null){
-            return SOHObjectType.Unknown.name();
+            return SOHObjectType.Unknown;
         }
-        return type.name();
-    }
-
-    @Override
-    public String toString() {
-        
-        return "TreeItemSOH{" + "name=" + name + ", type=" + type + ", coordinates=" + coordinates + '}';
+        return type;
     }
 
     public String getZone() {
@@ -66,6 +61,7 @@ public class TreeItemSOH {
         return qualityZone1;
     }
         
+    @Override
     public String getQualityZone2() {
         if (qualityZone2 == null){
             return "";
@@ -73,10 +69,31 @@ public class TreeItemSOH {
         return qualityZone2;
     }
             
+    @Override
     public String getQualityZone3() {
         if (qualityZone3 == null){
             return "";
         }
         return qualityZone3;
+    }
+
+    @Override
+    public TreeItem<ITreeItemSOH> getTreeItem() {
+        return new TreeItem<>(this);
+    }
+
+    @Override
+    public String getExportBBCode() {
+        return toString();
+    }
+
+    @Override
+    public ITreeItemSOH getParent() {
+        return null; //no parent
+    }
+
+    @Override
+    public boolean isValidData() {
+        return true;
     }
 }

@@ -1,6 +1,7 @@
 package com.shores.fe.starmap.viewer.views;
 
 import com.shores.fe.starmap.viewer.controllers.TableTreeExplorerController;
+import com.shores.fe.starmap.viewer.interfaces.ITreeItemSOH;
 import com.shores.fe.starmap.viewer.interfaces.IView;
 import com.shores.fe.starmap.viewer.models.FeedbackCode;
 import com.shores.fe.starmap.viewer.models.TreeItemSOH;
@@ -21,7 +22,7 @@ public class TableTreeExplorerView implements IView, Observer{
     );
     */
     
-    TreeTableView<TreeItemSOH> treeTableView;
+    TreeTableView<ITreeItemSOH> treeTableView;
     private TableTreeExplorerController controller = null;
 
     public TableTreeExplorerView(TableTreeExplorerController tableTreeExplorerController) {
@@ -35,59 +36,59 @@ public class TableTreeExplorerView implements IView, Observer{
         });
         */
 
-        TreeTableColumn<TreeItemSOH, String> objectColumn = new TreeTableColumn<>("Object");
+        TreeTableColumn<ITreeItemSOH, String> objectColumn = new TreeTableColumn<>("Object");
         objectColumn.setPrefWidth(300);
         objectColumn.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<TreeItemSOH, String> param) -> 
+            (TreeTableColumn.CellDataFeatures<ITreeItemSOH, String> param) -> 
             new ReadOnlyStringWrapper(param.getValue().getValue().getName())
         );
         
-        TreeTableColumn<TreeItemSOH, String> typeColumn = new TreeTableColumn<>("Type");
+        TreeTableColumn<ITreeItemSOH, String> typeColumn = new TreeTableColumn<>("Type");
         typeColumn.setPrefWidth(60);
         typeColumn.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<TreeItemSOH, String> param) -> 
-            new ReadOnlyStringWrapper(param.getValue().getValue().getType())
+            (TreeTableColumn.CellDataFeatures<ITreeItemSOH, String> param) -> 
+            new ReadOnlyStringWrapper(param.getValue().getValue().getType().name())
         );
 
-        TreeTableColumn<TreeItemSOH, String> coordinatesColumn = new TreeTableColumn<>("Coordinates");
+        TreeTableColumn<ITreeItemSOH, String> coordinatesColumn = new TreeTableColumn<>("Coordinates");
         coordinatesColumn.setPrefWidth(100);
         coordinatesColumn.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<TreeItemSOH, String> param) -> 
+            (TreeTableColumn.CellDataFeatures<ITreeItemSOH, String> param) -> 
             new ReadOnlyStringWrapper(param.getValue().getValue().getCoordinates())
         );
         
-        TreeTableColumn<TreeItemSOH, String> zoneColumn = new TreeTableColumn<>("Zone");
+        TreeTableColumn<ITreeItemSOH, String> zoneColumn = new TreeTableColumn<>("Zone");
         zoneColumn.setPrefWidth(70);
         zoneColumn.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<TreeItemSOH, String> param) -> 
+            (TreeTableColumn.CellDataFeatures<ITreeItemSOH, String> param) -> 
             new ReadOnlyStringWrapper(param.getValue().getValue().getZone())
         );
         
-        TreeTableColumn<TreeItemSOH, String> qualityZone1Column = new TreeTableColumn<>("Quality Zone 1");
+        TreeTableColumn<ITreeItemSOH, String> qualityZone1Column = new TreeTableColumn<>("Quality Zone 1");
         qualityZone1Column.setPrefWidth(70);
         qualityZone1Column.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<TreeItemSOH, String> param) -> 
+            (TreeTableColumn.CellDataFeatures<ITreeItemSOH, String> param) -> 
             new ReadOnlyStringWrapper(param.getValue().getValue().getQualityZone1())
         );
         
-        TreeTableColumn<TreeItemSOH, String> qualityZone2Column = new TreeTableColumn<>("Quality Zone 2");
+        TreeTableColumn<ITreeItemSOH, String> qualityZone2Column = new TreeTableColumn<>("Quality Zone 2");
         qualityZone2Column.setPrefWidth(70);
         qualityZone2Column.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<TreeItemSOH, String> param) -> 
+            (TreeTableColumn.CellDataFeatures<ITreeItemSOH, String> param) -> 
             new ReadOnlyStringWrapper(param.getValue().getValue().getQualityZone2())
         );
         
-        TreeTableColumn<TreeItemSOH, String> qualityZone3Column = new TreeTableColumn<>("Quality Zone 3");
+        TreeTableColumn<ITreeItemSOH, String> qualityZone3Column = new TreeTableColumn<>("Quality Zone 3");
         qualityZone3Column.setPrefWidth(70);
         qualityZone3Column.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<TreeItemSOH, String> param) -> 
+            (TreeTableColumn.CellDataFeatures<ITreeItemSOH, String> param) -> 
             new ReadOnlyStringWrapper(param.getValue().getValue().getQualityZone3())
         );
         
         //Cell colorization
                 // Custom rendering of the table cell.
         typeColumn.setCellFactory(column -> {
-            return new TreeTableCell<TreeItemSOH, String>() {
+            return new TreeTableCell<ITreeItemSOH, String>() {
                 @Override
                 protected void updateItem(String item, boolean empty) {
                     super.updateItem(item, empty);

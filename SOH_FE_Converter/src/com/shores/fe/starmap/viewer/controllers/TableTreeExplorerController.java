@@ -3,9 +3,9 @@ package com.shores.fe.starmap.viewer.controllers;
 
 import com.shores.fe.starmap.viewer.core.SOH_FE_Converter;
 import com.shores.fe.starmap.viewer.interfaces.IController;
+import com.shores.fe.starmap.viewer.interfaces.ITreeItemSOH;
 import com.shores.fe.starmap.viewer.models.AbstractModel;
 import com.shores.fe.starmap.viewer.models.ConverterData;
-import com.shores.fe.starmap.viewer.models.TreeItemSOH;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
 import org.apache.log4j.Logger;
@@ -43,7 +43,7 @@ public class TableTreeExplorerController implements IController{
         this.model = model;
     }
 
-    public void treeSelectionChanged(ObservableList<TreeItem<TreeItemSOH>> selectedItems) {
+    public void treeSelectionChanged(ObservableList<TreeItem<ITreeItemSOH>> selectedItems) {
         model.setCurrentSelection(selectedItems);
     }
 

@@ -67,7 +67,9 @@ public class MenuController implements IController{
             Unmarshaller unmarshaller = jc.createUnmarshaller();
             Starmap starmap = (Starmap) unmarshaller.unmarshal(file);
             
-            model.setStarmap(new StarmapImpl(starmap));
+            StarmapImpl starmapExtended = new StarmapImpl(starmap);
+            starmapExtended.isValidData();
+            model.setStarmap(starmapExtended);
             model.computeNewTreeRoot();
 /*
             Marshaller marshaller = jc.createMarshaller();

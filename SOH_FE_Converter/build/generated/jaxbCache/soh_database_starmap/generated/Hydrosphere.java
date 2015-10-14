@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.5-2 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par l'implÃ©mentation de rÃ©fÃ©rence JavaTM Architecture for XML Binding (JAXB), v2.2.5-2 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2015.10.06 à 02:17:29 PM CEST 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2015.10.14 Ã  11:11:20 AM CEST 
 //
 
 
@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>Classe Java pour anonymous complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * <p>Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType>
@@ -49,7 +49,7 @@ public class Hydrosphere {
     protected String surfaceLiquid;
 
     /**
-     * Obtient la valeur de la propriété resource.
+     * Obtient la valeur de la propriÃ©tÃ© resource.
      * 
      * @return
      *     possible object is
@@ -61,7 +61,7 @@ public class Hydrosphere {
     }
 
     /**
-     * Définit la valeur de la propriété resource.
+     * DÃ©finit la valeur de la propriÃ©tÃ© resource.
      * 
      * @param value
      *     allowed object is
@@ -73,7 +73,7 @@ public class Hydrosphere {
     }
 
     /**
-     * Obtient la valeur de la propriété surfaceLiquid.
+     * Obtient la valeur de la propriÃ©tÃ© surfaceLiquid.
      * 
      * @return
      *     possible object is
@@ -85,7 +85,7 @@ public class Hydrosphere {
     }
 
     /**
-     * Définit la valeur de la propriété surfaceLiquid.
+     * DÃ©finit la valeur de la propriÃ©tÃ© surfaceLiquid.
      * 
      * @param value
      *     allowed object is

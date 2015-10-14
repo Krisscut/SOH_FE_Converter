@@ -1,30 +1,83 @@
 package com.shores.fe.starmap.viewer.models.starmap;
 
 import com.shores.fe.starmap.viewer.interfaces.ITreeItemSOH;
-import com.shores.fe.starmap.viewer.models.TreeItemSOH;
-import generated.Biosphere;
 import generated.Hydrosphere;
-import generated.Resource;
+import java.util.ArrayList;
+import java.util.List;
 import javafx.scene.control.TreeItem;
 
-public class HydrosphereImpl extends Hydrosphere implements ITreeItemSOH{
-
+public class HydrosphereImpl implements ITreeItemSOH{
+    /** Parent */
+    PlanetImpl planet;
+    /** Data Holder */
     Hydrosphere hydrosphere;
-    HydrosphereImpl(Hydrosphere hydrosphere) {
+    /** Children */
+    List<ResourceImpl> resources = new ArrayList<>();
+    
+    HydrosphereImpl(PlanetImpl planet, Hydrosphere hydrosphere) {
+        this.planet = planet;
         this.hydrosphere = hydrosphere;
+        
+        resources.add(new ResourceImpl(this, hydrosphere.getResource()));
     }
 
     @Override
-    public TreeItem<TreeItemSOH> getTreeItem() {
-        TreeItem<TreeItemSOH> treeRoot = new TreeItem<>(new TreeItemSOH(
-                "Hydrosphere (" + hydrosphere.getSurfaceLiquid() + ")",
-                SOHObjectType.Hydrosphere,
-                ""
-                ));
-        if (hydrosphere.getResource() != null) {
-            treeRoot.getChildren().add(new ResourceImpl(hydrosphere.getResource()).getTreeItem());
+    public TreeItem<ITreeItemSOH> getTreeItem() {
+        TreeItem<ITreeItemSOH> treeRoot = new TreeItem<>(this);
+        for (ResourceImpl resource : resources){
+            treeRoot.getChildren().add(resource.getTreeItem());
         }
         return treeRoot;
     }
     
+    @Override
+    public String getName() {
+        return "Hydrosphere (" + hydrosphere.getSurfaceLiquid() + ")";
+    }
+
+    @Override
+    public String getCoordinates() {
+        return DEFAULT_VALUE_STRING;
+    }
+
+    @Override
+    public SOHObjectType getType() {
+        return SOHObjectType.Hydrosphere;
+    }
+
+    @Override
+    public String getZone() {
+        return DEFAULT_VALUE_STRING;
+    }
+
+    @Override
+    public String getQualityZone1() {
+        return DEFAULT_VALUE_STRING;
+    }
+
+    @Override
+    public String getQualityZone2() {
+        return DEFAULT_VALUE_STRING;
+    }
+
+    @Override
+    public String getQualityZone3() {
+        return DEFAULT_VALUE_STRING;
+    }
+
+    @Override
+    public String getExportBBCode() {
+        return DEFAULT_VALUE_STRING;
+    }
+
+    @Override
+    public ITreeItemSOH getParent() {
+        return null;    /** Starmap is the root node */
+    }
+
+    @Override
+    public boolean isValidData() {
+        if (resources.isEmpty()) return false;
+        return true;
+    }
 }

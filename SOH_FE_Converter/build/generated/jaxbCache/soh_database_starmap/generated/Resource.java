@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.5-2 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par l'implÃ©mentation de rÃ©fÃ©rence JavaTM Architecture for XML Binding (JAXB), v2.2.5-2 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2015.10.06 à 02:17:29 PM CEST 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2015.10.14 Ã  11:11:20 AM CEST 
 //
 
 
@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>Classe Java pour anonymous complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * <p>Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType>
@@ -68,7 +68,7 @@ public class Resource {
     protected BigInteger qualityZone3;
 
     /**
-     * Obtient la valeur de la propriété abundance.
+     * Obtient la valeur de la propriÃ©tÃ© abundance.
      * 
      * @return
      *     possible object is
@@ -80,7 +80,7 @@ public class Resource {
     }
 
     /**
-     * Définit la valeur de la propriété abundance.
+     * DÃ©finit la valeur de la propriÃ©tÃ© abundance.
      * 
      * @param value
      *     allowed object is
@@ -92,7 +92,7 @@ public class Resource {
     }
 
     /**
-     * Obtient la valeur de la propriété abundanceZone1.
+     * Obtient la valeur de la propriÃ©tÃ© abundanceZone1.
      * 
      * @return
      *     possible object is
@@ -104,7 +104,7 @@ public class Resource {
     }
 
     /**
-     * Définit la valeur de la propriété abundanceZone1.
+     * DÃ©finit la valeur de la propriÃ©tÃ© abundanceZone1.
      * 
      * @param value
      *     allowed object is
@@ -116,7 +116,7 @@ public class Resource {
     }
 
     /**
-     * Obtient la valeur de la propriété abundanceZone2.
+     * Obtient la valeur de la propriÃ©tÃ© abundanceZone2.
      * 
      * @return
      *     possible object is
@@ -128,7 +128,7 @@ public class Resource {
     }
 
     /**
-     * Définit la valeur de la propriété abundanceZone2.
+     * DÃ©finit la valeur de la propriÃ©tÃ© abundanceZone2.
      * 
      * @param value
      *     allowed object is
@@ -140,7 +140,7 @@ public class Resource {
     }
 
     /**
-     * Obtient la valeur de la propriété abundanceZone3.
+     * Obtient la valeur de la propriÃ©tÃ© abundanceZone3.
      * 
      * @return
      *     possible object is
@@ -152,7 +152,7 @@ public class Resource {
     }
 
     /**
-     * Définit la valeur de la propriété abundanceZone3.
+     * DÃ©finit la valeur de la propriÃ©tÃ© abundanceZone3.
      * 
      * @param value
      *     allowed object is
@@ -164,7 +164,7 @@ public class Resource {
     }
 
     /**
-     * Obtient la valeur de la propriété name.
+     * Obtient la valeur de la propriÃ©tÃ© name.
      * 
      * @return
      *     possible object is
@@ -176,7 +176,7 @@ public class Resource {
     }
 
     /**
-     * Définit la valeur de la propriété name.
+     * DÃ©finit la valeur de la propriÃ©tÃ© name.
      * 
      * @param value
      *     allowed object is
@@ -188,7 +188,7 @@ public class Resource {
     }
 
     /**
-     * Obtient la valeur de la propriété quality.
+     * Obtient la valeur de la propriÃ©tÃ© quality.
      * 
      * @return
      *     possible object is
@@ -200,7 +200,7 @@ public class Resource {
     }
 
     /**
-     * Définit la valeur de la propriété quality.
+     * DÃ©finit la valeur de la propriÃ©tÃ© quality.
      * 
      * @param value
      *     allowed object is
@@ -212,7 +212,7 @@ public class Resource {
     }
 
     /**
-     * Obtient la valeur de la propriété qualityZone1.
+     * Obtient la valeur de la propriÃ©tÃ© qualityZone1.
      * 
      * @return
      *     possible object is
@@ -224,7 +224,7 @@ public class Resource {
     }
 
     /**
-     * Définit la valeur de la propriété qualityZone1.
+     * DÃ©finit la valeur de la propriÃ©tÃ© qualityZone1.
      * 
      * @param value
      *     allowed object is
@@ -236,7 +236,7 @@ public class Resource {
     }
 
     /**
-     * Obtient la valeur de la propriété qualityZone2.
+     * Obtient la valeur de la propriÃ©tÃ© qualityZone2.
      * 
      * @return
      *     possible object is
@@ -248,7 +248,7 @@ public class Resource {
     }
 
     /**
-     * Définit la valeur de la propriété qualityZone2.
+     * DÃ©finit la valeur de la propriÃ©tÃ© qualityZone2.
      * 
      * @param value
      *     allowed object is
@@ -260,7 +260,7 @@ public class Resource {
     }
 
     /**
-     * Obtient la valeur de la propriété qualityZone3.
+     * Obtient la valeur de la propriÃ©tÃ© qualityZone3.
      * 
      * @return
      *     possible object is
@@ -272,7 +272,7 @@ public class Resource {
     }
 
     /**
-     * Définit la valeur de la propriété qualityZone3.
+     * DÃ©finit la valeur de la propriÃ©tÃ© qualityZone3.
      * 
      * @param value
      *     allowed object is

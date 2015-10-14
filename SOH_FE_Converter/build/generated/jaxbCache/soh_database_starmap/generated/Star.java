@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.5-2 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par l'implÃ©mentation de rÃ©fÃ©rence JavaTM Architecture for XML Binding (JAXB), v2.2.5-2 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2015.10.06 à 02:17:29 PM CEST 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2015.10.14 Ã  11:11:20 AM CEST 
 //
 
 
@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 /**
  * <p>Classe Java pour anonymous complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * <p>Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType>
@@ -83,7 +83,7 @@ public class Star {
     protected String starId;
 
     /**
-     * Obtient la valeur de la propriété resource.
+     * Obtient la valeur de la propriÃ©tÃ© resource.
      * 
      * @return
      *     possible object is
@@ -95,7 +95,7 @@ public class Star {
     }
 
     /**
-     * Définit la valeur de la propriété resource.
+     * DÃ©finit la valeur de la propriÃ©tÃ© resource.
      * 
      * @param value
      *     allowed object is
@@ -107,7 +107,7 @@ public class Star {
     }
 
     /**
-     * Obtient la valeur de la propriété diameter.
+     * Obtient la valeur de la propriÃ©tÃ© diameter.
      * 
      * @return
      *     possible object is
@@ -119,7 +119,7 @@ public class Star {
     }
 
     /**
-     * Définit la valeur de la propriété diameter.
+     * DÃ©finit la valeur de la propriÃ©tÃ© diameter.
      * 
      * @param value
      *     allowed object is
@@ -131,7 +131,7 @@ public class Star {
     }
 
     /**
-     * Obtient la valeur de la propriété hab.
+     * Obtient la valeur de la propriÃ©tÃ© hab.
      * 
      * @return
      *     possible object is
@@ -143,7 +143,7 @@ public class Star {
     }
 
     /**
-     * Définit la valeur de la propriété hab.
+     * DÃ©finit la valeur de la propriÃ©tÃ© hab.
      * 
      * @param value
      *     allowed object is
@@ -155,7 +155,7 @@ public class Star {
     }
 
     /**
-     * Obtient la valeur de la propriété name.
+     * Obtient la valeur de la propriÃ©tÃ© name.
      * 
      * @return
      *     possible object is
@@ -167,7 +167,7 @@ public class Star {
     }
 
     /**
-     * Définit la valeur de la propriété name.
+     * DÃ©finit la valeur de la propriÃ©tÃ© name.
      * 
      * @param value
      *     allowed object is
@@ -179,7 +179,7 @@ public class Star {
     }
 
     /**
-     * Obtient la valeur de la propriété orbit.
+     * Obtient la valeur de la propriÃ©tÃ© orbit.
      * 
      * @return
      *     possible object is
@@ -191,7 +191,7 @@ public class Star {
     }
 
     /**
-     * Définit la valeur de la propriété orbit.
+     * DÃ©finit la valeur de la propriÃ©tÃ© orbit.
      * 
      * @param value
      *     allowed object is
@@ -203,7 +203,7 @@ public class Star {
     }
 
     /**
-     * Obtient la valeur de la propriété shell.
+     * Obtient la valeur de la propriÃ©tÃ© shell.
      * 
      * @return
      *     possible object is
@@ -215,7 +215,7 @@ public class Star {
     }
 
     /**
-     * Définit la valeur de la propriété shell.
+     * DÃ©finit la valeur de la propriÃ©tÃ© shell.
      * 
      * @param value
      *     allowed object is
@@ -227,7 +227,7 @@ public class Star {
     }
 
     /**
-     * Obtient la valeur de la propriété size.
+     * Obtient la valeur de la propriÃ©tÃ© size.
      * 
      * @return
      *     possible object is
@@ -239,7 +239,7 @@ public class Star {
     }
 
     /**
-     * Définit la valeur de la propriété size.
+     * DÃ©finit la valeur de la propriÃ©tÃ© size.
      * 
      * @param value
      *     allowed object is
@@ -251,7 +251,7 @@ public class Star {
     }
 
     /**
-     * Obtient la valeur de la propriété spectralClass.
+     * Obtient la valeur de la propriÃ©tÃ© spectralClass.
      * 
      * @return
      *     possible object is
@@ -263,7 +263,7 @@ public class Star {
     }
 
     /**
-     * Définit la valeur de la propriété spectralClass.
+     * DÃ©finit la valeur de la propriÃ©tÃ© spectralClass.
      * 
      * @param value
      *     allowed object is
@@ -275,7 +275,7 @@ public class Star {
     }
 
     /**
-     * Obtient la valeur de la propriété starId.
+     * Obtient la valeur de la propriÃ©tÃ© starId.
      * 
      * @return
      *     possible object is
@@ -287,7 +287,7 @@ public class Star {
     }
 
     /**
-     * Définit la valeur de la propriété starId.
+     * DÃ©finit la valeur de la propriÃ©tÃ© starId.
      * 
      * @param value
      *     allowed object is
