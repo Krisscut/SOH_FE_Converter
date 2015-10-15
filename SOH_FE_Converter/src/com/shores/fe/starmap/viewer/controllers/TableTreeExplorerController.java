@@ -19,6 +19,7 @@ public class TableTreeExplorerController implements IController{
     private static TableTreeExplorerController instance = null;
 
     private TableTreeExplorerController() {
+        
     }
 
     public static TableTreeExplorerController getInstance() {

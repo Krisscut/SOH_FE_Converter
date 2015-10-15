@@ -18,8 +18,6 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
-import javafx.scene.input.Clipboard;
-import javafx.scene.input.DataFormat;
 import javafx.scene.input.KeyCombination;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
@@ -121,7 +119,6 @@ public class MenuView implements IView, Observer{
             @Override
             public void handle(ActionEvent t) {
                 menuController.handleShowSearchFieldsAction(displaySearch.isSelected());
-                
             }
         });
         

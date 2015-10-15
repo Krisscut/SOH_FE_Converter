@@ -5,6 +5,7 @@ import javafx.scene.control.TreeItem;
 
 public interface ITreeItemSOH {
     public String DEFAULT_VALUE_STRING = "";
+    public Integer DEFAULT_VALUE_INTEGER = null;
     
     public TreeItem<ITreeItemSOH> getTreeItem();
     
@@ -16,11 +17,11 @@ public interface ITreeItemSOH {
 
     public String getZone();
     
-    public String getQualityZone1();
+    public Integer getQualityZone1();
         
-    public String getQualityZone2();
+    public Integer getQualityZone2();
             
-    public String getQualityZone3();
+    public Integer getQualityZone3();
     
     public String getExportBBCode();
     

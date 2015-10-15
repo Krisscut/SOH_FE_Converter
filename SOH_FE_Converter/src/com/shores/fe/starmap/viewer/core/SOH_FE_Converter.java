@@ -5,22 +5,37 @@ import com.shores.fe.starmap.viewer.controllers.MenuController;
 import com.shores.fe.starmap.viewer.controllers.SearchModuleController;
 import com.shores.fe.starmap.viewer.controllers.TableTreeExplorerController;
 import com.shores.fe.starmap.viewer.models.ConverterData;
-import com.shores.fe.starmap.viewer.utils.DialogUtils;
 import com.shores.fe.starmap.viewer.views.BBCodeExporterView;
 import com.shores.fe.starmap.viewer.views.MenuView;
 import com.shores.fe.starmap.viewer.views.SearchModuleView;
 import com.shores.fe.starmap.viewer.views.TableTreeExplorerView;
+import java.io.File;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.TransferMode;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javax.swing.AbstractAction;
+import org.controlsfx.control.NotificationPane;
+import org.controlsfx.dialog.ExceptionDialog;
 
 public class SOH_FE_Converter extends Application {
+    public Image depimg;
+    public ImageView depIcon;
+    
     //Controller
     private BBCodeExporterController bbCodeExporterController = null;
     private MenuController menuController = null;
@@ -33,14 +48,22 @@ public class SOH_FE_Converter extends Application {
     private SearchModuleView searchModuleView = null;
     private TableTreeExplorerView tableTreeExplorerView = null;
     
-    VBox vbox , mainVBox= null;
-    SplitPane split =null;
+    VBox vbox , mainVBox = null;
+    SplitPane split = null;
     
     @Override
     public void start(Stage stage) {
-        //Thread.setDefaultUncaughtExceptionHandler(SOH_FE_Converter::showError);
+        Thread.setDefaultUncaughtExceptionHandler(SOH_FE_Converter::showError);
+        Thread.currentThread().setName("SOH_FE_CONVERTER_MAIN");
         mainVBox = new VBox();
         mainVBox.setAlignment(Pos.TOP_CENTER);
+        
+        depimg = new Image(getClass().getClassLoader().getResourceAsStream("com/shores/fe/starmap/viewer/resources/icons/planet.png"));
+        depIcon = new ImageView (depimg);
+        depIcon.setFitWidth(16);
+        depIcon.setPreserveRatio(true);
+        depIcon.setSmooth(true);
+        depIcon.setCache(true);
 
         vbox = new VBox();
 
@@ -96,13 +119,56 @@ public class SOH_FE_Converter extends Application {
         tab.setContent(vbox);
         tabPane.getTabs().add(tab);
         * */
-
         mainVBox.getChildren().addAll(menuView.getViewElement(), label, vbox);
 
+        /*
+        // Wrap it inside a NotificationPane
+        NotificationPane notificationPane = new NotificationPane(mainVBox);
+        notificationPane.getStyleClass().add(NotificationPane.STYLE_CLASS_DARK);
+
+        notificationPane.setText("Do you want to save your password?");
+        notificationPane.setShowFromTop(false);
+        notificationPane.show();
+        */
+
+        
         Scene scene = new Scene(mainVBox, 1200, 700);
 
         //Global CSS
         //scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+        
+        /** Drag and drop part*/
+        scene.setOnDragOver(new EventHandler<DragEvent>() {
+            @Override
+            public void handle(DragEvent event) {
+                Dragboard db = event.getDragboard();
+                if (db.hasFiles()) {
+                    event.acceptTransferModes(TransferMode.COPY);
+                } else {
+                    event.consume();
+                }
+            }
+        });
+        scene.setOnDragDropped(new EventHandler<DragEvent>() {
+            @Override
+            public void handle(DragEvent event) {
+                Dragboard db = event.getDragboard();
+                boolean success = false;
+                if (db.hasFiles()) {
+                    success = true;
+                    String filePath = null;
+                    for (File file:db.getFiles()) {
+                        filePath = file.getAbsolutePath();
+                        System.out.println(filePath);
+                        //TODO : handle drag and drop
+                    }
+                }
+                event.setDropCompleted(success);
+                event.consume();
+            }
+        });
+        
+        
 
         stage.setTitle("SOH FE Converter");
         stage.setScene(scene);
@@ -112,7 +178,8 @@ public class SOH_FE_Converter extends Application {
     private static void showError(Thread t, Throwable e) {
         System.err.println("***Default exception handler***");
         if (Platform.isFxApplicationThread()) {
-            DialogUtils.showExceptionDialog(e);
+            new ExceptionDialog(e).showAndWait();
+            //DialogUtils.showExceptionDialog(e);
         } else {
             System.err.println("An unexpected error occurred in "+t);
         }

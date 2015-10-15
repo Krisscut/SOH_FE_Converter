@@ -7,7 +7,9 @@ import com.shores.fe.starmap.viewer.models.FeedbackCode;
 import com.shores.fe.starmap.viewer.models.TreeItemSOH;
 import com.shores.fe.starmap.viewer.models.observability.Observer;
 import com.shores.fe.starmap.viewer.models.starmap.SOHObjectType;
-import com.shores.fe.starmap.viewer.models.ui.QualityColorization;
+import com.shores.fe.starmap.viewer.models.ui.table.rendering.ObjectRendering;
+import com.shores.fe.starmap.viewer.models.ui.table.rendering.QualityColorization;
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.scene.Node;
 import javafx.scene.control.SelectionMode;
@@ -64,29 +66,35 @@ public class TableTreeExplorerView implements IView, Observer{
             new ReadOnlyStringWrapper(param.getValue().getValue().getZone())
         );
         
-        TreeTableColumn<ITreeItemSOH, String> qualityZone1Column = new TreeTableColumn<>("Quality Zone 1");
+        TreeTableColumn<ITreeItemSOH, String> atmoType = new TreeTableColumn<>("AtmoType");
+        zoneColumn.setPrefWidth(70);
+        zoneColumn.setCellValueFactory(
+            (TreeTableColumn.CellDataFeatures<ITreeItemSOH, String> param) -> 
+            new ReadOnlyStringWrapper("tmp")
+        );
+        
+        TreeTableColumn<ITreeItemSOH, Integer> qualityZone1Column = new TreeTableColumn<>("Quality Zone 1");
         qualityZone1Column.setPrefWidth(70);
-        qualityZone1Column.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<ITreeItemSOH, String> param) -> 
-            new ReadOnlyStringWrapper(param.getValue().getValue().getQualityZone1())
-        );
+        qualityZone1Column.setCellValueFactory(param -> {
+            return new ReadOnlyObjectWrapper<>(param.getValue().getValue().getQualityZone1());
+        });
         
-        TreeTableColumn<ITreeItemSOH, String> qualityZone2Column = new TreeTableColumn<>("Quality Zone 2");
+        TreeTableColumn<ITreeItemSOH, Integer> qualityZone2Column = new TreeTableColumn<>("Quality Zone 2");
         qualityZone2Column.setPrefWidth(70);
-        qualityZone2Column.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<ITreeItemSOH, String> param) -> 
-            new ReadOnlyStringWrapper(param.getValue().getValue().getQualityZone2())
-        );
+        qualityZone2Column.setCellValueFactory(param -> {
+            return new ReadOnlyObjectWrapper<>(param.getValue().getValue().getQualityZone2());
+        });
         
-        TreeTableColumn<ITreeItemSOH, String> qualityZone3Column = new TreeTableColumn<>("Quality Zone 3");
+        TreeTableColumn<ITreeItemSOH, Integer> qualityZone3Column = new TreeTableColumn<>("Quality Zone 3");
         qualityZone3Column.setPrefWidth(70);
-        qualityZone3Column.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<ITreeItemSOH, String> param) -> 
-            new ReadOnlyStringWrapper(param.getValue().getValue().getQualityZone3())
-        );
+        qualityZone3Column.setCellValueFactory(param -> {
+            return new ReadOnlyObjectWrapper<>(param.getValue().getValue().getQualityZone3());
+        });
         
-        //Cell colorization
-                // Custom rendering of the table cell.
+        //Cell colorization & rendering
+        objectColumn.setCellFactory(ObjectRendering.forTreeTableColumn());
+        
+        // Custom rendering of the table cell.
         typeColumn.setCellFactory(column -> {
             return new TreeTableCell<ITreeItemSOH, String>() {
                 @Override
@@ -122,7 +130,7 @@ public class TableTreeExplorerView implements IView, Observer{
 
         treeTableView = new TreeTableView<>();
         treeTableView.setColumnResizePolicy(TreeTableView.CONSTRAINED_RESIZE_POLICY);
-        treeTableView.getColumns().setAll(objectColumn, typeColumn, coordinatesColumn, zoneColumn, qualityZone1Column, qualityZone2Column, qualityZone3Column);
+        treeTableView.getColumns().setAll(objectColumn, typeColumn, coordinatesColumn, zoneColumn, atmoType, qualityZone1Column, qualityZone2Column, qualityZone3Column);
         treeTableView.setTableMenuButtonVisible(true);
         
         //Multiple row selection

@@ -1,10 +1,9 @@
 package com.shores.fe.starmap.viewer.models.starmap;
 
 import com.shores.fe.starmap.viewer.interfaces.ITreeItemSOH;
+import com.shores.fe.starmap.viewer.utils.QualityUtils;
 import generated.Resource;
 import javafx.scene.control.TreeItem;
-
-
 
 public class ResourceImpl implements ITreeItemSOH{
     /** Parent */ 
@@ -43,35 +42,35 @@ public class ResourceImpl implements ITreeItemSOH{
     }
 
     @Override
-    public String getQualityZone1() {
+    public Integer getQualityZone1() {
         if (resource.getQualityZone1() == null && resource.getQualityZone2() == null && resource.getQualityZone3() == null && resource.getQuality() != null)
-            return resource.getQuality() + "";
+            return DEFAULT_VALUE_INTEGER;
         else
-            if (resource.getQualityZone1() != null) return resource.getQualityZone1() + "";
+            if (resource.getQualityZone1() != null) return ((Number) resource.getQualityZone1()).intValue();
             else {
-                return "";
+                return null;
             }
     }
 
     @Override
-    public String getQualityZone2() {
+    public Integer getQualityZone2() {
         if (resource.getQualityZone1() == null && resource.getQualityZone2() == null && resource.getQualityZone3() == null && resource.getQuality() != null)
-            return resource.getQuality() + "";
+            return DEFAULT_VALUE_INTEGER;
         else
-            if (resource.getQualityZone2() != null) return resource.getQualityZone2() + "";
+            if (resource.getQualityZone2() != null) return ((Number) resource.getQualityZone2()).intValue();
             else {
-                return "";
+                return null;
             }
     }
     
     @Override
-    public String getQualityZone3() {
+    public Integer getQualityZone3() {
         if (resource.getQualityZone1() == null && resource.getQualityZone2() == null && resource.getQualityZone3() == null && resource.getQuality() != null)
-            return resource.getQuality() + "";
+            return DEFAULT_VALUE_INTEGER;
         else
-            if (resource.getQualityZone3() != null) return resource.getQualityZone3() + "";
+            if (resource.getQualityZone3() != null) return ((Number) resource.getQualityZone3()).intValue();
             else {
-                return "";
+                return null;
             }
     }
     
@@ -89,7 +88,8 @@ public class ResourceImpl implements ITreeItemSOH{
         String zone = "";
         String sectorName = "";
         String sectorCoordinates = "";
-        String cross = ":*cross*:";
+        String cross = ":cross:";
+
         if (parent instanceof AtmosphereImpl || parent instanceof BiosphereImpl || parent instanceof GeosphereImpl || parent instanceof HydrosphereImpl) {
             PlanetImpl planet = (PlanetImpl) parent.getParent();
             numberPlanet = planet.getName();
@@ -104,15 +104,18 @@ public class ResourceImpl implements ITreeItemSOH{
             sectorCoordinates = sectorTmp.getCoordinates();
         }
         if (parent instanceof StarImpl) {
-            //TODO
+            
         }
+        int bestQualityInt = QualityUtils.GetBestQualityInt(getQualities());
+        String bestQualityZone = QualityUtils.GetBestQualityZone(getQualities());
+        int bestQualityTL = QualityUtils.QualityToTechLevel(bestQualityInt);
         
-        bbCodeGenerated += "[*color=#009900*] System " + systemName + " - " + sectorName + " " + sectorCoordinates + "[/color] - Q" + getQualityZone1() + " - TlXX [*color=#FF0000*]Planete : " + numberPlanet + " (" + zonePlanet + ")  [/color] " +  isHabitableSystem + " " + cross;
+        bbCodeGenerated += 
+        bbCodeGenerated += "[color=#009900] System " + systemName + " - " + sectorName + " " + sectorCoordinates + "[/color] - Q" + QualityUtils.GetBestQualityInt(getQualities())+ " - Tl "+ bestQualityTL +" [color=#FF0000]Planete : " + numberPlanet + "  "+ bestQualityZone + " (" + zonePlanet + ")  [/color] " +  isHabitableSystem + " " + cross;
                 
         
         return bbCodeGenerated;
     }
-    
 
     @Override
     public ITreeItemSOH getParent() {
@@ -122,5 +125,9 @@ public class ResourceImpl implements ITreeItemSOH{
     @Override
     public boolean isValidData() {
         return true;    // leaf node, always valid
+    }
+    
+    private Integer[] getQualities(){
+        return new Integer[] { getQualityZone1(), getQualityZone2(), getQualityZone3() };
     }
 }

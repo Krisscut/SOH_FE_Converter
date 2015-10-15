@@ -9,9 +9,9 @@ public class TreeItemSOH implements ITreeItemSOH{
     SOHObjectType type = SOHObjectType.Unknown;
     String coordinates = "";
     String zone = ""; 
-    String qualityZone1 = null;
-    String qualityZone2 = null;
-    String qualityZone3 = null;
+    Integer qualityZone1 = null;
+    Integer qualityZone2 = null;
+    Integer qualityZone3 = null;
     
     public TreeItemSOH(String name, SOHObjectType type, String coordinates) {
         this.name = name;
@@ -26,7 +26,7 @@ public class TreeItemSOH implements ITreeItemSOH{
         this.zone = zone;
     }
     
-    public TreeItemSOH(String name, SOHObjectType type, String coordinates, String zone, String qualityZone1, String qualityZone2, String qualityZone3) {
+    public TreeItemSOH(String name, SOHObjectType type, String coordinates, String zone, Integer qualityZone1, Integer qualityZone2, Integer qualityZone3) {
         this.name = name;
         this.type = type;
         this.coordinates = coordinates;
@@ -54,25 +54,25 @@ public class TreeItemSOH implements ITreeItemSOH{
         return this.zone;
     }
     
-    public String getQualityZone1() {
+    public Integer getQualityZone1() {
         if (qualityZone1 == null){
-            return "";
+            return null;
         }
         return qualityZone1;
     }
         
     @Override
-    public String getQualityZone2() {
+    public Integer getQualityZone2() {
         if (qualityZone2 == null){
-            return "";
+            return null;
         }
         return qualityZone2;
     }
             
     @Override
-    public String getQualityZone3() {
+    public Integer getQualityZone3() {
         if (qualityZone3 == null){
-            return "";
+            return null;
         }
         return qualityZone3;
     }

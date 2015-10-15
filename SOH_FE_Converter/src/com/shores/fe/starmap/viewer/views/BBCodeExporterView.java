@@ -12,6 +12,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
@@ -20,9 +22,7 @@ public class BBCodeExporterView implements IView, Observer{
     private VBox bbCodeContainer;
     private GridPane bbCodeGrid;
     
-    Button exportAll = null;
-    Button exportSelection = null;
-    Button exportFiltered = null;
+    Button exportAll, exportFiltered, exportSelection, exportToClipboard;
     TextArea bbcodePreview = null;
     
     public BBCodeExporterView(BBCodeExporterController bbCodeExporterController) {
@@ -41,8 +41,12 @@ public class BBCodeExporterView implements IView, Observer{
        
         exportFiltered = ButtonUtils.generateButton("Export Filtered");
         GridPane.setConstraints(exportFiltered, 2, 0);
-
         bbCodeGrid.getChildren().add(exportFiltered);
+        
+        exportToClipboard = ButtonUtils.generateButton("Copy content to clipboard");
+        GridPane.setConstraints(exportToClipboard, 3, 0);
+        bbCodeGrid.getChildren().add(exportToClipboard);
+        
         bbCodeGrid.setAlignment(Pos.CENTER);
         
         bbcodePreview = new TextArea();
@@ -53,8 +57,9 @@ public class BBCodeExporterView implements IView, Observer{
         String bbCodeDefault = "Generated bbcode will appear here.";
         bbcodePreview.setText(bbCodeDefault);
         bbcodePreview.setPrefHeight(2000);
+
         
-        bbCodeContainer.getChildren().addAll(bbCodeGrid, bbcodePreview);
+        bbCodeContainer.getChildren().addAll(bbCodeGrid, bbcodePreview);       //add /remove the preview if necessary
 
         //Events handler
         exportAll.setOnAction(new EventHandler<ActionEvent>() {
@@ -75,6 +80,16 @@ public class BBCodeExporterView implements IView, Observer{
             }
         });
         
+        exportToClipboard.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                //Action handle on the view to prevent javafx components inport into the controller.
+                final Clipboard clipboard = Clipboard.getSystemClipboard();
+                final ClipboardContent content = new ClipboardContent();
+                content.putString(controller.getModel().getGeneratedBBCode());
+                clipboard.setContent(content);
+            }
+        });
+        
         bbCodeContainer.setStyle("-fx-background-color: #336699;");
         
     }
@@ -85,6 +100,17 @@ public class BBCodeExporterView implements IView, Observer{
     }
     
     private void setBBCodePreview(){
+        /*
+        if (controller.getModel().getGeneratedBBCode().isEmpty()) {
+            if (bbCodeContainer.getChildren().contains(bbcodePreview)){
+                bbCodeContainer.getChildren().remove(bbcodePreview);
+            }
+            controller.getCore();
+        } else {
+            bbCodeContainer.getChildren().add(bbcodePreview);
+            bbcodePreview.setText(controller.getModel().getGeneratedBBCode());
+        }
+        */
         bbcodePreview.setText(controller.getModel().getGeneratedBBCode());
     }
     

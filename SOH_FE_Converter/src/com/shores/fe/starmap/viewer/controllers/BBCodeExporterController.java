@@ -8,6 +8,7 @@ import com.shores.fe.starmap.viewer.models.ConverterData;
 import com.shores.fe.starmap.viewer.models.FeedbackCode;
 import com.shores.fe.starmap.viewer.models.TreeItemSOH;
 import com.shores.fe.starmap.viewer.models.starmap.SOHObjectType;
+import com.shores.fe.starmap.viewer.utils.DialogUtils;
 import javafx.scene.control.TreeItem;
 import org.apache.log4j.Logger;
 
@@ -39,8 +40,11 @@ public class BBCodeExporterController implements IController{
     }
 
     public void handleExportAll(){
+        DialogUtils.notImplementedYetDialog();
+        /*
         model.setGeneratedBBCode(model.generateBBCode(model.getStarmap().getTreeItem()));
         model.notifyObservers(FeedbackCode.BBCODE_GENERATED);
+        */
     }
 
     public void handleExportSelection() {
@@ -53,8 +57,11 @@ public class BBCodeExporterController implements IController{
     }
 
     public void handleFilteredExport() {
+        DialogUtils.notImplementedYetDialog();
+        /*
         model.setGeneratedBBCode(model.generateBBCode(model.getTreeRoot()));
         model.notifyObservers(FeedbackCode.BBCODE_GENERATED);
+                */
     }
     
     public SOH_FE_Converter getCore() {

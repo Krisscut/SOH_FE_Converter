@@ -1,5 +1,6 @@
 package com.shores.fe.starmap.viewer.models.starmap;
 
+import com.shores.fe.starmap.viewer.controllers.TableTreeExplorerController;
 import com.shores.fe.starmap.viewer.interfaces.ITreeItemSOH;
 import generated.Planet;
 import javafx.scene.control.TreeItem;
@@ -81,18 +82,18 @@ public class PlanetImpl implements ITreeItemSOH{
     }
 
     @Override
-    public String getQualityZone1() {
-        return DEFAULT_VALUE_STRING;
+    public Integer getQualityZone1() {
+        return DEFAULT_VALUE_INTEGER;
     }
 
     @Override
-    public String getQualityZone2() {
-        return DEFAULT_VALUE_STRING;
+    public Integer getQualityZone2() {
+        return DEFAULT_VALUE_INTEGER;
     }
 
     @Override
-    public String getQualityZone3() {
-        return DEFAULT_VALUE_STRING;
+    public Integer getQualityZone3() {
+        return DEFAULT_VALUE_INTEGER;
     }
 
     @Override

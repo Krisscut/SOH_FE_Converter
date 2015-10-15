@@ -44,7 +44,7 @@ public class SystemImpl implements ITreeItemSOH{
     
     @Override
     public String getName() {
-        return system.getName()+ " (id : " + system.getSystemId()+ ")";
+        return system.getName();
     }
 
     @Override
@@ -63,18 +63,18 @@ public class SystemImpl implements ITreeItemSOH{
     }
 
     @Override
-    public String getQualityZone1() {
-        return DEFAULT_VALUE_STRING;
+    public Integer getQualityZone1() {
+        return DEFAULT_VALUE_INTEGER;
     }
 
     @Override
-    public String getQualityZone2() {
-        return DEFAULT_VALUE_STRING;
+    public Integer getQualityZone2() {
+        return DEFAULT_VALUE_INTEGER;
     }
 
     @Override
-    public String getQualityZone3() {
-        return DEFAULT_VALUE_STRING;
+    public Integer getQualityZone3() {
+        return DEFAULT_VALUE_INTEGER;
     }
 
     @Override
