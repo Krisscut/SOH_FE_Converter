@@ -18,9 +18,11 @@ public class QualityUtils {
     
     public static String GetBestQualityZone(Integer[] qualities){
         int zone = -1;
-        for (int i = 0 ; i < qualities.length-1; i++) {
+        for (int i = 0 ; i < qualities.length; i++) {
             if (qualities[i] != null) {
-                if (zone == -1) zone = i;
+                if (zone == -1) {
+                    zone = i;
+                }
                 else {
                     if (qualities[i] > qualities[zone] ) zone = i;
                 }
@@ -28,7 +30,7 @@ public class QualityUtils {
         }
         if (zone == -1) return null;
         else {
-            return "Zone " + zone;
+            return "Zone " + (zone + 1);
         }
     }
 }

@@ -11,6 +11,7 @@
             <file>file:/D:/Dev/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/controllers/TableTreeExplorerController.java</file>
             <file>file:/D:/Dev/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/models/starmap/GeosphereImpl.java</file>
             <file>file:/D:/Dev/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/core/SOH_FE_Converter.java</file>
+            <file>file:/D:/Dev/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/build/generated-sources/jaxb/generated/Resource.java</file>
             <file>file:/D:/Dev/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/models/starmap/SOHObjectType.java</file>
             <file>file:/D:/Dev/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/models/starmap/GalaxyImpl.java</file>
             <file>file:/D:/Dev/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/views/BBCodeExporterView.java</file>
@@ -41,7 +42,10 @@
             <file>file:/D:/Dev/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/utils/QualityUtils.java</file>
             <file>file:/D:/Dev/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/utils/DialogUtils.java</file>
             <file>file:/D:/Dev/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/controllers/BBCodeExporterController.java</file>
+            <file>file:/D:/Dev/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/models/export/ExportResult.java</file>
             <file>file:/D:/Dev/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/models/starmap/CityImpl.java</file>
+            <file>file:/D:/Dev/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/models/filtering/Filter.java</file>
+            <file>file:/D:/Dev/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/models/starmap/HierarchySelector.java</file>
             <file>file:/D:/Dev/Projects/tests/JAVAFX/JAVAFX/SOH_FE_Converter/src/com/shores/fe/starmap/viewer/models/ui/table/rendering/ObjectRendering.java</file>
         </group>
     </open-files>

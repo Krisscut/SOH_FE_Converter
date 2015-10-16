@@ -1,6 +1,7 @@
 package com.shores.fe.starmap.viewer.models;
 
 import com.shores.fe.starmap.viewer.interfaces.ITreeItemSOH;
+import com.shores.fe.starmap.viewer.models.export.ExportResult;
 import com.shores.fe.starmap.viewer.models.starmap.SOHObjectType;
 import javafx.scene.control.TreeItem;
 
@@ -83,8 +84,8 @@ public class TreeItemSOH implements ITreeItemSOH{
     }
 
     @Override
-    public String getExportBBCode() {
-        return toString();
+    public ExportResult getExportBBCode() {
+        return new ExportResult("TreeItemSOH", toString());
     }
 
     @Override

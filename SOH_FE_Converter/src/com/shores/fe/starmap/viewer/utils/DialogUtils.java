@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
+import org.controlsfx.control.Notifications;
 
 public class DialogUtils {
     
@@ -52,6 +53,13 @@ public class DialogUtils {
         alert.setContentText("Sorry, this feature is not implemented yet, please try again later !");
 
         alert.showAndWait();
+    }
+    
+    public static void showInformationNotification(String title, String text){
+        Notifications.create()
+                    .title(title)
+                    .text(text)
+                    .showWarning();
     }
     
 }

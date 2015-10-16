@@ -1,6 +1,7 @@
 package com.shores.fe.starmap.viewer.models.starmap;
 
 import com.shores.fe.starmap.viewer.interfaces.ITreeItemSOH;
+import com.shores.fe.starmap.viewer.models.export.ExportResult;
 import com.shores.fe.starmap.viewer.utils.QualityUtils;
 import generated.Resource;
 import javafx.scene.control.TreeItem;
@@ -79,12 +80,12 @@ public class ResourceImpl implements ITreeItemSOH{
  */
     
     @Override
-    public String getExportBBCode() {
+    public ExportResult getExportBBCode() {
         String bbCodeGenerated = "";
         String systemName = "";
         String numberPlanet = "";
         String zonePlanet = "";
-        boolean isHabitableSystem = false;
+        String isHabitableSystem = "";
         String zone = "";
         String sectorName = "";
         String sectorCoordinates = "";
@@ -97,8 +98,7 @@ public class ResourceImpl implements ITreeItemSOH{
             
             SystemImpl systemTmp = (SystemImpl) planet.getParent();
             systemName = systemTmp.getName();
-            isHabitableSystem = ((SystemImpl) planet.getParent()).searchForHabitableInSystem();
-            
+            isHabitableSystem = ((SystemImpl) planet.getParent()).searchForHabitableInSystem() == true ? "Habitable in system" : "No habitable in system";
             SectorImpl sectorTmp = (SectorImpl) systemTmp.getParent();
             sectorName = sectorTmp.getName();
             sectorCoordinates = sectorTmp.getCoordinates();
@@ -106,15 +106,14 @@ public class ResourceImpl implements ITreeItemSOH{
         if (parent instanceof StarImpl) {
             
         }
-        int bestQualityInt = QualityUtils.GetBestQualityInt(getQualities());
-        String bestQualityZone = QualityUtils.GetBestQualityZone(getQualities());
+        Integer[] qualities = getQualities();
+        int bestQualityInt = QualityUtils.GetBestQualityInt(qualities);
+        String bestQualityZone = QualityUtils.GetBestQualityZone(qualities);
         int bestQualityTL = QualityUtils.QualityToTechLevel(bestQualityInt);
         
-        bbCodeGenerated += 
-        bbCodeGenerated += "[color=#009900] System " + systemName + " - " + sectorName + " " + sectorCoordinates + "[/color] - Q" + QualityUtils.GetBestQualityInt(getQualities())+ " - Tl "+ bestQualityTL +" [color=#FF0000]Planete : " + numberPlanet + "  "+ bestQualityZone + " (" + zonePlanet + ")  [/color] " +  isHabitableSystem + " " + cross;
-                
+        bbCodeGenerated += "[color=#009900] System " + systemName + " - " + sectorName + " " + sectorCoordinates + "[/color] - Q" + QualityUtils.GetBestQualityInt(qualities)+ " - Tl "+ bestQualityTL +" [color=#FF0000]Planete : " + numberPlanet + "  "+ bestQualityZone + " (" + zonePlanet + ")  [/color] " +  isHabitableSystem + " " + cross;
         
-        return bbCodeGenerated;
+        return new ExportResult(getName(), bbCodeGenerated);
     }
 
     @Override

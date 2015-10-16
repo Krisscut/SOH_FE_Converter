@@ -1,4 +1,4 @@
-package com.shores.fe.starmap.viewer.models.observability;
+package com.shores.fe.starmap.viewer.interfaces.observability;
 
 import com.shores.fe.starmap.viewer.models.FeedbackCode;
 

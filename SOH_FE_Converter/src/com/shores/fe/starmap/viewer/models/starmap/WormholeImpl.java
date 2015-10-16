@@ -1,8 +1,7 @@
 package com.shores.fe.starmap.viewer.models.starmap;
 
 import com.shores.fe.starmap.viewer.interfaces.ITreeItemSOH;
-import com.shores.fe.starmap.viewer.models.TreeItemSOH;
-import generated.Wormhole;
+import com.shores.fe.starmap.viewer.models.export.ExportResult;
 import javafx.scene.control.TreeItem;
 
 public class WormholeImpl implements ITreeItemSOH{
@@ -48,8 +47,8 @@ public class WormholeImpl implements ITreeItemSOH{
     }
 
     @Override
-    public String getExportBBCode() {
-        return DEFAULT_VALUE_STRING;
+    public ExportResult getExportBBCode() {
+        return DEFAULT_EXPORT_RESULT;
     }
 
     @Override

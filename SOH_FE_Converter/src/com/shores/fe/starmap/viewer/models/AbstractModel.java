@@ -1,7 +1,7 @@
 package com.shores.fe.starmap.viewer.models;
 
-import com.shores.fe.starmap.viewer.models.observability.Observable;
-import com.shores.fe.starmap.viewer.models.observability.Observer;
+import com.shores.fe.starmap.viewer.interfaces.observability.Observable;
+import com.shores.fe.starmap.viewer.interfaces.observability.Observer;
 import java.util.ArrayList;
 
 

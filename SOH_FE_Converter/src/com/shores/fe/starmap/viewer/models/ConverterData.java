@@ -1,8 +1,13 @@
 package com.shores.fe.starmap.viewer.models;
 
+import com.shores.fe.starmap.viewer.core.Configuration.Configuration;
 import com.shores.fe.starmap.viewer.interfaces.ITreeItemSOH;
+import com.shores.fe.starmap.viewer.models.export.ExportResult;
 import com.shores.fe.starmap.viewer.models.starmap.SOHObjectType;
 import com.shores.fe.starmap.viewer.models.starmap.StarmapImpl;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
 
@@ -29,11 +34,11 @@ public class ConverterData extends AbstractModel{
         GETTERS & SETTERS
     */
     
-    public void setCurrentSelection(ObservableList<TreeItem<ITreeItemSOH>> selectedItems) {
+    public synchronized void setCurrentSelection(ObservableList<TreeItem<ITreeItemSOH>> selectedItems) {
         currentSelection = selectedItems;
     }
     
-    public ObservableList<TreeItem<ITreeItemSOH>> getCurrentSelection() {
+    public synchronized ObservableList<TreeItem<ITreeItemSOH>>  getCurrentSelection() {
         return currentSelection;
     }
     
@@ -60,23 +65,54 @@ public class ConverterData extends AbstractModel{
 
     public void setGeneratedBBCode(String generatedBBCode) {
         this.generatedBBCode = generatedBBCode;
+        notifyObservers(FeedbackCode.BBCODE_GENERATED);
     }
     
     public void resetGeneratedBBCode(){
         this.generatedBBCode = "";
     }
+    
+    /** Generates the bbCode !*/
+    public String generateBBCode() {
+        List<ExportResult> globalList = new ArrayList<>();
+        HashMap<String,String> sortedBBCode = new HashMap<>();
+        
+        //First, get all the export results
+        for (TreeItem<ITreeItemSOH> item : getCurrentSelection()) {
+            globalList.addAll(generateBBCode(item));
+        }
+        
+        //Then, populate the hash map to sort the export result by resource.
+        for (ExportResult result : globalList){
+            if (sortedBBCode.containsKey(result.getExportType())){
+                sortedBBCode.put(result.getExportType(), sortedBBCode.get(result.getExportType()) + Configuration.LINE_SEPARATOR + result.getResultExport());
+            } else {
+                sortedBBCode.put(result.getExportType(), result.getExportType() + Configuration.LINE_SEPARATOR + result.getResultExport());
+            }
+        }
+        
+        Metrics.SetExportCounter(globalList.size());
+        
+        String bbCodeGenerated = "";
+        //Finally, concat all the section to generate the final bbCode
+        for (String section : sortedBBCode.values()){
+            bbCodeGenerated += section + Configuration.LINE_SEPARATOR;
+        }
+        return bbCodeGenerated;
+    }
 
-    public String generateBBCode(TreeItem<ITreeItemSOH> treeItem) {
+    /** old function */
+    public List<ExportResult> generateBBCode(TreeItem<ITreeItemSOH> treeItem) {
+        List<ExportResult> exportResults = new ArrayList<>();
         ITreeItemSOH tmpItem = treeItem.getValue();
-        String tmpBBCode = "";
+        ExportResult exportResultTmp;
         if (tmpItem.getType() == SOHObjectType.Resource ){
-            tmpBBCode = treeItem.getValue().getExportBBCode();
+            exportResults.add(treeItem.getValue().getExportBBCode());
         }
         for (TreeItem<ITreeItemSOH> item : treeItem.getChildren()) {
-            if (!tmpBBCode.isEmpty()) tmpBBCode += "\n";
-            tmpBBCode += generateBBCode(item);
+            exportResults.addAll(generateBBCode(item));
         }
-        return tmpBBCode;
+        return exportResults;
     }
 
     public boolean isShowViewSearch() {

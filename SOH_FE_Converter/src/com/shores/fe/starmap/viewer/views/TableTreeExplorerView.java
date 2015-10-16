@@ -5,7 +5,7 @@ import com.shores.fe.starmap.viewer.interfaces.ITreeItemSOH;
 import com.shores.fe.starmap.viewer.interfaces.IView;
 import com.shores.fe.starmap.viewer.models.FeedbackCode;
 import com.shores.fe.starmap.viewer.models.TreeItemSOH;
-import com.shores.fe.starmap.viewer.models.observability.Observer;
+import com.shores.fe.starmap.viewer.interfaces.observability.Observer;
 import com.shores.fe.starmap.viewer.models.starmap.SOHObjectType;
 import com.shores.fe.starmap.viewer.models.ui.table.rendering.ObjectRendering;
 import com.shores.fe.starmap.viewer.models.ui.table.rendering.QualityColorization;
@@ -138,10 +138,12 @@ public class TableTreeExplorerView implements IView, Observer{
         treeTableView.getSelectionModel().setCellSelectionEnabled(false);
 
         //Selection changed
+        //TODO sync
         treeTableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             tableTreeExplorerController.treeSelectionChanged(treeTableView.getSelectionModel().getSelectedItems());
         });
         
+        //Takes maximum size
         treeTableView.setPrefHeight(2000);
     }
     

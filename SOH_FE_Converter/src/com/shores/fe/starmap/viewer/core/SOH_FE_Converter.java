@@ -12,15 +12,12 @@ import com.shores.fe.starmap.viewer.views.TableTreeExplorerView;
 import java.io.File;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
@@ -28,8 +25,8 @@ import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javax.swing.AbstractAction;
 import org.controlsfx.control.NotificationPane;
+import org.controlsfx.control.action.Action;
 import org.controlsfx.dialog.ExceptionDialog;
 
 public class SOH_FE_Converter extends Application {
@@ -53,17 +50,20 @@ public class SOH_FE_Converter extends Application {
     
     @Override
     public void start(Stage stage) {
-        Thread.setDefaultUncaughtExceptionHandler(SOH_FE_Converter::showError);
+        //Thread.setDefaultUncaughtExceptionHandler(SOH_FE_Converter::showError);
         Thread.currentThread().setName("SOH_FE_CONVERTER_MAIN");
-        mainVBox = new VBox();
-        mainVBox.setAlignment(Pos.TOP_CENTER);
         
+
         depimg = new Image(getClass().getClassLoader().getResourceAsStream("com/shores/fe/starmap/viewer/resources/icons/planet.png"));
         depIcon = new ImageView (depimg);
         depIcon.setFitWidth(16);
         depIcon.setPreserveRatio(true);
         depIcon.setSmooth(true);
         depIcon.setCache(true);
+        
+        
+        mainVBox = new VBox();
+        mainVBox.setAlignment(Pos.TOP_CENTER);
 
         vbox = new VBox();
 
@@ -119,8 +119,31 @@ public class SOH_FE_Converter extends Application {
         tab.setContent(vbox);
         tabPane.getTabs().add(tab);
         * */
+        
         mainVBox.getChildren().addAll(menuView.getViewElement(), label, vbox);
 
+        /** Notification pane test */
+        
+        NotificationPane notificationPane = new NotificationPane();
+        
+        ImageView notifIcon = new ImageView (depimg);
+        notifIcon.setFitWidth(40);
+        notifIcon.setPreserveRatio(true);
+        notifIcon.setSmooth(true);
+        notifIcon.setCache(true);
+        
+        notificationPane.setGraphic(notifIcon);
+        notificationPane.setShowFromTop(false);
+        notificationPane.getStyleClass().add(NotificationPane.STYLE_CLASS_DARK);
+        notificationPane.setText("Ceci est une magnifique notification de test");
+        
+        notificationPane.getActions().addAll(new Action("Sync", ae -> {
+                // do sync
+                
+                // then hide...
+                notificationPane.hide();
+        }));
+        notificationPane.setContent(mainVBox);
         /*
         // Wrap it inside a NotificationPane
         NotificationPane notificationPane = new NotificationPane(mainVBox);
@@ -131,11 +154,7 @@ public class SOH_FE_Converter extends Application {
         notificationPane.show();
         */
 
-        
-        Scene scene = new Scene(mainVBox, 1200, 700);
-
-        //Global CSS
-        //scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+        Scene scene = new Scene(notificationPane, 1250, 700);
         
         /** Drag and drop part*/
         scene.setOnDragOver(new EventHandler<DragEvent>() {
@@ -168,11 +187,16 @@ public class SOH_FE_Converter extends Application {
             }
         });
         
-        
 
+        //Global CSS
+        //scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+        
         stage.setTitle("SOH FE Converter");
         stage.setScene(scene);
         stage.show();
+        
+        
+        notificationPane.show();
     }
     
     private static void showError(Thread t, Throwable e) {
@@ -235,6 +259,4 @@ public class SOH_FE_Converter extends Application {
     public SplitPane getSplit() {
         return split;
     }
-    
-    
 }

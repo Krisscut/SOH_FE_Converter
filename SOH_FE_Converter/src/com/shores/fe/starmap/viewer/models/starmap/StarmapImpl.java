@@ -1,6 +1,7 @@
 package com.shores.fe.starmap.viewer.models.starmap;
 
 import com.shores.fe.starmap.viewer.interfaces.ITreeItemSOH;
+import com.shores.fe.starmap.viewer.models.export.ExportResult;
 import generated.Galaxy;
 import generated.Starmap;
 import java.util.ArrayList;
@@ -66,8 +67,8 @@ public class StarmapImpl implements ITreeItemSOH{
     }
 
     @Override
-    public String getExportBBCode() {
-        return DEFAULT_VALUE_STRING;
+    public ExportResult getExportBBCode() {
+        return DEFAULT_EXPORT_RESULT;
     }
 
     @Override

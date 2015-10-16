@@ -3,7 +3,7 @@ package com.shores.fe.starmap.viewer.views;
 import com.shores.fe.starmap.viewer.controllers.MenuController;
 import com.shores.fe.starmap.viewer.interfaces.IView;
 import com.shores.fe.starmap.viewer.models.FeedbackCode;
-import com.shores.fe.starmap.viewer.models.observability.Observer;
+import com.shores.fe.starmap.viewer.interfaces.observability.Observer;
 import com.shores.fe.starmap.viewer.utils.DialogUtils;
 import java.io.File;
 import java.util.Optional;

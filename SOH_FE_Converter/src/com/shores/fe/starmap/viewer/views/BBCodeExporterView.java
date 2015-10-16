@@ -2,9 +2,11 @@ package com.shores.fe.starmap.viewer.views;
 
 import com.shores.fe.starmap.viewer.controllers.BBCodeExporterController;
 import com.shores.fe.starmap.viewer.interfaces.IView;
+import com.shores.fe.starmap.viewer.interfaces.observability.Observer;
 import com.shores.fe.starmap.viewer.models.FeedbackCode;
-import com.shores.fe.starmap.viewer.models.observability.Observer;
+import com.shores.fe.starmap.viewer.models.Metrics;
 import com.shores.fe.starmap.viewer.models.ui.ButtonUtils;
+import com.shores.fe.starmap.viewer.utils.DialogUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
@@ -22,7 +24,7 @@ public class BBCodeExporterView implements IView, Observer{
     private VBox bbCodeContainer;
     private GridPane bbCodeGrid;
     
-    Button exportAll, exportFiltered, exportSelection, exportToClipboard;
+    Button exportSelection, exportToClipboard;
     TextArea bbcodePreview = null;
     
     public BBCodeExporterView(BBCodeExporterController bbCodeExporterController) {
@@ -31,20 +33,13 @@ public class BBCodeExporterView implements IView, Observer{
         bbCodeContainer = new VBox();
         
         bbCodeGrid = new GridPane();
-        exportAll = ButtonUtils.generateButton("Export all");
-        GridPane.setConstraints(exportAll, 0, 0);
-        bbCodeGrid.getChildren().add(exportAll);
         
         exportSelection = ButtonUtils.generateButton("Export Selection");
-        GridPane.setConstraints(exportSelection, 1, 0);
+        GridPane.setConstraints(exportSelection, 0, 0);
         bbCodeGrid.getChildren().add(exportSelection);
-       
-        exportFiltered = ButtonUtils.generateButton("Export Filtered");
-        GridPane.setConstraints(exportFiltered, 2, 0);
-        bbCodeGrid.getChildren().add(exportFiltered);
         
         exportToClipboard = ButtonUtils.generateButton("Copy content to clipboard");
-        GridPane.setConstraints(exportToClipboard, 3, 0);
+        GridPane.setConstraints(exportToClipboard, 1, 0);
         bbCodeGrid.getChildren().add(exportToClipboard);
         
         bbCodeGrid.setAlignment(Pos.CENTER);
@@ -62,21 +57,9 @@ public class BBCodeExporterView implements IView, Observer{
         bbCodeContainer.getChildren().addAll(bbCodeGrid, bbcodePreview);       //add /remove the preview if necessary
 
         //Events handler
-        exportAll.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
-                controller.handleExportAll();
-            }
-        });
-        
         exportSelection.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 controller.handleExportSelection();
-            }
-        });
-        
-        exportFiltered.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
-                controller.handleFilteredExport();
             }
         });
         
@@ -111,7 +94,10 @@ public class BBCodeExporterView implements IView, Observer{
             bbcodePreview.setText(controller.getModel().getGeneratedBBCode());
         }
         */
-        bbcodePreview.setText(controller.getModel().getGeneratedBBCode());
+        if (!controller.getModel().getGeneratedBBCode().isEmpty()){
+            bbcodePreview.setText(controller.getModel().getGeneratedBBCode());
+            DialogUtils.showInformationNotification("BBCode export", "BBCode generated, contains " + Metrics.GetExportCounter() + " entries !");
+        }
     }
     
     private void updateVisibility() {

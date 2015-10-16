@@ -1,11 +1,13 @@
 package com.shores.fe.starmap.viewer.interfaces;
 
+import com.shores.fe.starmap.viewer.models.export.ExportResult;
 import com.shores.fe.starmap.viewer.models.starmap.SOHObjectType;
 import javafx.scene.control.TreeItem;
 
 public interface ITreeItemSOH {
     public String DEFAULT_VALUE_STRING = "";
     public Integer DEFAULT_VALUE_INTEGER = null;
+    public ExportResult DEFAULT_EXPORT_RESULT = new ExportResult("Default", "Export result default");
     
     public TreeItem<ITreeItemSOH> getTreeItem();
     
@@ -23,7 +25,7 @@ public interface ITreeItemSOH {
             
     public Integer getQualityZone3();
     
-    public String getExportBBCode();
+    public ExportResult getExportBBCode();
     
     public ITreeItemSOH getParent();
     

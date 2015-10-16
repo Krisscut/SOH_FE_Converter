@@ -1,6 +1,7 @@
 package com.shores.fe.starmap.viewer.models.starmap;
 
 import com.shores.fe.starmap.viewer.interfaces.ITreeItemSOH;
+import com.shores.fe.starmap.viewer.models.export.ExportResult;
 import generated.Hydrosphere;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,9 @@ public class HydrosphereImpl implements ITreeItemSOH{
         this.planet = planet;
         this.hydrosphere = hydrosphere;
         
-        resources.add(new ResourceImpl(this, hydrosphere.getResource()));
+        if (hydrosphere.getResource() != null){
+            resources.add(new ResourceImpl(this, hydrosphere.getResource()));
+        }
     }
 
     @Override
@@ -66,8 +69,8 @@ public class HydrosphereImpl implements ITreeItemSOH{
     }
 
     @Override
-    public String getExportBBCode() {
-        return DEFAULT_VALUE_STRING;
+    public ExportResult getExportBBCode() {
+        return DEFAULT_EXPORT_RESULT;
     }
 
     @Override
