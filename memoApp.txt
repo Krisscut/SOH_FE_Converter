@@ -1,0 +1,1 @@
+java -Xmx1024m -jar SOH_FE_Converter.jar
