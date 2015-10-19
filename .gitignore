@@ -1,3 +1,6 @@
-SOH_FE_converter/build
+**/build
+SOH_FE_Converter/build
+SOH_FE_Converter/build/
+build/
 test_data.xml
 test_light_data.xml

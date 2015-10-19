@@ -3,7 +3,7 @@ package com.shores.fe.starmap.viewer.models;
 import com.shores.fe.starmap.viewer.core.Configuration.Configuration;
 import com.shores.fe.starmap.viewer.interfaces.ITreeItemSOH;
 import com.shores.fe.starmap.viewer.models.export.ExportResult;
-import com.shores.fe.starmap.viewer.models.starmap.SOHObjectType;
+import com.shores.fe.starmap.viewer.models.starmap.enums.SOHObjectType;
 import com.shores.fe.starmap.viewer.models.starmap.StarmapImpl;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,7 +19,7 @@ public class ConverterData extends AbstractModel{
     boolean showViewTableTree = true;
     boolean showViewExporter = true;
     
-    TreeItem<ITreeItemSOH> treeRoot = new TreeItem<>(new TreeItemSOH("My Body", SOHObjectType.Unknown, "coordinates")); //, depIcon);
+    TreeItem<ITreeItemSOH> treeRoot = null; //new TreeItem<>(new TreeItemSOH("My Body", SOHObjectType.Unknown, "coordinates")); //, depIcon);
     ObservableList<TreeItem<ITreeItemSOH>> currentSelection = null;
     String generatedBBCode = "";
     

@@ -1,14 +1,15 @@
 package com.shores.fe.starmap.viewer.models.starmap;
 
 import com.shores.fe.starmap.viewer.interfaces.ITreeItemSOH;
-import com.shores.fe.starmap.viewer.models.export.ExportResult;
+import com.shores.fe.starmap.viewer.models.TreeItemSOH;
+import com.shores.fe.starmap.viewer.models.starmap.enums.SOHObjectType;
 import generated.Geosphere;
 import generated.Resource;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.control.TreeItem;
 
-public class GeosphereImpl implements ITreeItemSOH{
+public class GeosphereImpl extends TreeItemSOH implements ITreeItemSOH{
     /** Parent */
     PlanetImpl planet;
     /** Data Holder */
@@ -40,38 +41,8 @@ public class GeosphereImpl implements ITreeItemSOH{
     }
 
     @Override
-    public String getCoordinates() {
-        return DEFAULT_VALUE_STRING;
-    }
-
-    @Override
     public SOHObjectType getType() {
         return SOHObjectType.Geosphere;
-    }
-
-    @Override
-    public String getZone() {
-        return DEFAULT_VALUE_STRING;
-    }
-
-    @Override
-    public Integer getQualityZone1() {
-        return DEFAULT_VALUE_INTEGER;
-    }
-
-    @Override
-    public Integer getQualityZone2() {
-        return DEFAULT_VALUE_INTEGER;
-    }
-
-    @Override
-    public Integer getQualityZone3() {
-        return DEFAULT_VALUE_INTEGER;
-    }
-
-    @Override
-    public ExportResult getExportBBCode() {
-        return DEFAULT_EXPORT_RESULT;
     }
 
     @Override

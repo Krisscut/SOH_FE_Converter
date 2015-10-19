@@ -2,80 +2,55 @@ package com.shores.fe.starmap.viewer.models;
 
 import com.shores.fe.starmap.viewer.interfaces.ITreeItemSOH;
 import com.shores.fe.starmap.viewer.models.export.ExportResult;
-import com.shores.fe.starmap.viewer.models.starmap.SOHObjectType;
+import com.shores.fe.starmap.viewer.models.starmap.enums.SOHAtmoType;
+import com.shores.fe.starmap.viewer.models.starmap.enums.SOHObjectType;
+import com.shores.fe.starmap.viewer.models.starmap.enums.SOHZoneType;
 import javafx.scene.control.TreeItem;
 
-public class TreeItemSOH implements ITreeItemSOH{
-    String name = "";
-    SOHObjectType type = SOHObjectType.Unknown;
-    String coordinates = "";
-    String zone = ""; 
-    Integer qualityZone1 = null;
-    Integer qualityZone2 = null;
-    Integer qualityZone3 = null;
-    
-    public TreeItemSOH(String name, SOHObjectType type, String coordinates) {
-        this.name = name;
-        this.type = type;
-        this.coordinates = coordinates;
-    }
-    
-    public TreeItemSOH(String name, SOHObjectType type, String coordinates, String zone) {
-        this.name = name;
-        this.type = type;
-        this.coordinates = coordinates;
-        this.zone = zone;
-    }
-    
-    public TreeItemSOH(String name, SOHObjectType type, String coordinates, String zone, Integer qualityZone1, Integer qualityZone2, Integer qualityZone3) {
-        this.name = name;
-        this.type = type;
-        this.coordinates = coordinates;
-        this.zone = zone;
-        this.qualityZone1 = qualityZone1;
-        this.qualityZone2 = qualityZone2;
-        this.qualityZone3 = qualityZone3;
-    }
+/**
+ * Default implementation for the @see TreeItemSOH interface
+ * ( return default values ... )
+ */
+public abstract class TreeItemSOH implements ITreeItemSOH{
+
+    @Override
     public String getName(){
-        return name;
+        return DEFAULT_VALUE_STRING;
     }
     
+    @Override
     public String getCoordinates(){
-        return coordinates;
-    }
-
-    public SOHObjectType getType() {
-        if (type == null){
-            return SOHObjectType.Unknown;
-        }
-        return type;
-    }
-
-    public String getZone() {
-        return this.zone;
+        return DEFAULT_VALUE_STRING;
     }
     
+    @Override
+    public SOHObjectType getType() {
+        return SOHObjectType.Unknown;
+    }
+
+    @Override
+    public SOHZoneType getZone() {
+        return SOHZoneType.NA;
+    }
+    
+    @Override
+    public SOHAtmoType getAtmoType() {
+        return SOHAtmoType.NA;
+    }
+    
+    @Override
     public Integer getQualityZone1() {
-        if (qualityZone1 == null){
-            return null;
-        }
-        return qualityZone1;
+        return DEFAULT_VALUE_INTEGER;
     }
         
     @Override
     public Integer getQualityZone2() {
-        if (qualityZone2 == null){
-            return null;
-        }
-        return qualityZone2;
+        return DEFAULT_VALUE_INTEGER;
     }
             
     @Override
     public Integer getQualityZone3() {
-        if (qualityZone3 == null){
-            return null;
-        }
-        return qualityZone3;
+        return DEFAULT_VALUE_INTEGER;
     }
 
     @Override

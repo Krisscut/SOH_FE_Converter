@@ -4,7 +4,7 @@ import com.shores.fe.starmap.viewer.controllers.SearchModuleController;
 import com.shores.fe.starmap.viewer.interfaces.IView;
 import com.shores.fe.starmap.viewer.interfaces.observability.Observer;
 import com.shores.fe.starmap.viewer.models.FeedbackCode;
-import com.shores.fe.starmap.viewer.models.starmap.SOHResource;
+import com.shores.fe.starmap.viewer.models.starmap.enums.SOHResource;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -17,6 +17,7 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Control;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
@@ -26,6 +27,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import org.controlsfx.control.CheckComboBox;
+import org.controlsfx.control.HyperlinkLabel;
 import org.controlsfx.control.Notifications;
 import org.controlsfx.control.RangeSlider;
 import org.controlsfx.control.SegmentedButton;
@@ -55,13 +57,28 @@ public class SearchModuleView implements IView, Observer{
         
         int column = 0;
         
-        Label searchBarTitle = new Label("FILTER PANEL");
+        HyperlinkLabel searchBarTitle = new HyperlinkLabel("[FILTER PANEL]");
         searchBarTitle.setStyle(""
         + " -fx-font-size: 20px;"
         + " -fx-text-fill: DarkGrey;");
         GridPane.setConstraints(searchBarTitle, column, 0);
         searchBar.getChildren().add(searchBarTitle);
         column ++;
+        
+        searchBarTitle.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event) {
+                Hyperlink link = (Hyperlink)event.getSource();
+                final String str = link == null ? "" : link.getText();
+                switch(str) {
+                    case "FILTER PANEL": // do 'here' action
+                        System.out.println("CLICK LINK");
+                                 break;
+                    case "exit": // do exit action
+                        System.out.println("ELSE !");
+                                 break;
+                }
+            }
+        });
         
         Region spacerStart = new Region();
         GridPane.setConstraints(spacerStart, column, 0, 1, 1, HPos.LEFT, VPos.TOP, Priority.SOMETIMES, Priority.NEVER);

@@ -1,12 +1,14 @@
 package com.shores.fe.starmap.viewer.models.starmap;
 
 import com.shores.fe.starmap.viewer.interfaces.ITreeItemSOH;
+import com.shores.fe.starmap.viewer.models.TreeItemSOH;
 import com.shores.fe.starmap.viewer.models.export.ExportResult;
+import com.shores.fe.starmap.viewer.models.starmap.enums.SOHObjectType;
 import com.shores.fe.starmap.viewer.utils.QualityUtils;
 import generated.Resource;
 import javafx.scene.control.TreeItem;
 
-public class ResourceImpl implements ITreeItemSOH{
+public class ResourceImpl extends TreeItemSOH implements ITreeItemSOH{
     /** Parent */ 
     ITreeItemSOH parent;
     /** Data holder */
@@ -28,18 +30,8 @@ public class ResourceImpl implements ITreeItemSOH{
     }
 
     @Override
-    public String getCoordinates() {
-        return DEFAULT_VALUE_STRING;
-    }
-
-    @Override
     public SOHObjectType getType() {
         return SOHObjectType.Resource;
-    }
-
-    @Override
-    public String getZone() {
-        return DEFAULT_VALUE_STRING;
     }
 
     @Override
@@ -94,7 +86,7 @@ public class ResourceImpl implements ITreeItemSOH{
         if (parent instanceof AtmosphereImpl || parent instanceof BiosphereImpl || parent instanceof GeosphereImpl || parent instanceof HydrosphereImpl) {
             PlanetImpl planet = (PlanetImpl) parent.getParent();
             numberPlanet = planet.getName();
-            zonePlanet = planet.getZone();
+            zonePlanet = planet.getZone().toString();
             
             SystemImpl systemTmp = (SystemImpl) planet.getParent();
             systemName = systemTmp.getName();
@@ -104,7 +96,7 @@ public class ResourceImpl implements ITreeItemSOH{
             sectorCoordinates = sectorTmp.getCoordinates();
         }
         if (parent instanceof StarImpl) {
-            
+            //TODO
         }
         Integer[] qualities = getQualities();
         int bestQualityInt = QualityUtils.GetBestQualityInt(qualities);

@@ -1,7 +1,9 @@
 package com.shores.fe.starmap.viewer.interfaces;
 
 import com.shores.fe.starmap.viewer.models.export.ExportResult;
-import com.shores.fe.starmap.viewer.models.starmap.SOHObjectType;
+import com.shores.fe.starmap.viewer.models.starmap.enums.SOHAtmoType;
+import com.shores.fe.starmap.viewer.models.starmap.enums.SOHObjectType;
+import com.shores.fe.starmap.viewer.models.starmap.enums.SOHZoneType;
 import javafx.scene.control.TreeItem;
 
 public interface ITreeItemSOH {
@@ -17,7 +19,9 @@ public interface ITreeItemSOH {
 
     public SOHObjectType getType();
 
-    public String getZone();
+    public SOHZoneType getZone();
+    
+    public SOHAtmoType getAtmoType();
     
     public Integer getQualityZone1();
         
@@ -29,6 +33,7 @@ public interface ITreeItemSOH {
     
     public ITreeItemSOH getParent();
     
-    /** Checks if the data contained into the model is usefull ( item without child ressources can be deleted ! )*/
+    /** Checks if the data contained into the model is usefull ( item without child ressources can be deleted ! )
+     * @return boolean */
     public boolean isValidData();
 }

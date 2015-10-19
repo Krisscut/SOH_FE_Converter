@@ -4,19 +4,25 @@ import com.shores.fe.starmap.viewer.controllers.BBCodeExporterController;
 import com.shores.fe.starmap.viewer.controllers.MenuController;
 import com.shores.fe.starmap.viewer.controllers.SearchModuleController;
 import com.shores.fe.starmap.viewer.controllers.TableTreeExplorerController;
+import com.shores.fe.starmap.viewer.core.Configuration.Configuration;
 import com.shores.fe.starmap.viewer.models.ConverterData;
 import com.shores.fe.starmap.viewer.views.BBCodeExporterView;
 import com.shores.fe.starmap.viewer.views.MenuView;
 import com.shores.fe.starmap.viewer.views.SearchModuleView;
+import com.shores.fe.starmap.viewer.views.StatusBarView;
 import com.shores.fe.starmap.viewer.views.TableTreeExplorerView;
+import com.shores.fe.starmap.viewer.views.ToolbarView;
+import java.awt.Desktop;
 import java.io.File;
+import java.net.URI;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -28,7 +34,9 @@ import javafx.stage.Stage;
 import org.controlsfx.control.NotificationPane;
 import org.controlsfx.control.action.Action;
 import org.controlsfx.dialog.ExceptionDialog;
+import org.controlsfx.glyphfont.FontAwesome;
 
+//TODO : singleton pattern
 public class SOH_FE_Converter extends Application {
     public Image depimg;
     public ImageView depIcon;
@@ -47,6 +55,8 @@ public class SOH_FE_Converter extends Application {
     
     VBox vbox , mainVBox = null;
     SplitPane split = null;
+    
+    FontAwesome fontAwesome = new FontAwesome();
     
     @Override
     public void start(Stage stage) {
@@ -73,17 +83,6 @@ public class SOH_FE_Converter extends Application {
         menuController = MenuController.getInstance();
         menuController.init(model, this);
         menuView = new MenuView(stage, menuController);
-
-        Label label = new Label("This is a WORK IN PROGRESS software");
-        label.setPrefWidth(5000);
-        label.setStyle(""
-                + " -fx-font: 50px Tahoma;"
-                + " -fx-text-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);"
-                + " -fx-stroke: black;"
-                + " -fx-background-color: #A7BDDB;"
-                + " -fx-stroke-width: 1;");
-        label.setAlignment(Pos.CENTER);
-
         searchModuleController = SearchModuleController.getInstance();
         searchModuleController.init(model, this);
         searchModuleView = new SearchModuleView(searchModuleController);
@@ -120,7 +119,10 @@ public class SOH_FE_Converter extends Application {
         tabPane.getTabs().add(tab);
         * */
         
-        mainVBox.getChildren().addAll(menuView.getViewElement(), label, vbox);
+        StatusBarView statusBar = StatusBarView.getInstance();
+        ToolbarView toolbarView = ToolbarView.getInstance();
+        
+        mainVBox.getChildren().addAll(menuView.getViewElement(), toolbarView.getViewElement(),vbox, statusBar.getViewElement());
 
         /** Notification pane test */
         
@@ -135,24 +137,17 @@ public class SOH_FE_Converter extends Application {
         notificationPane.setGraphic(notifIcon);
         notificationPane.setShowFromTop(false);
         notificationPane.getStyleClass().add(NotificationPane.STYLE_CLASS_DARK);
-        notificationPane.setText("Ceci est une magnifique notification de test");
+        notificationPane.setText("This is a work in progress software, please give feedback using the github issues system !");
         
-        notificationPane.getActions().addAll(new Action("Sync", ae -> {
-                // do sync
-                
-                // then hide...
-                notificationPane.hide();
+        notificationPane.getActions().addAll(new Action("Feedback", ae -> {
+            try {
+                Desktop.getDesktop().browse(new URI(Configuration.GITHUB_ISSUES_URL));
+            } catch (Exception ex) {
+                Logger.getLogger(SOH_FE_Converter.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            notificationPane.hide();
         }));
         notificationPane.setContent(mainVBox);
-        /*
-        // Wrap it inside a NotificationPane
-        NotificationPane notificationPane = new NotificationPane(mainVBox);
-        notificationPane.getStyleClass().add(NotificationPane.STYLE_CLASS_DARK);
-
-        notificationPane.setText("Do you want to save your password?");
-        notificationPane.setShowFromTop(false);
-        notificationPane.show();
-        */
 
         Scene scene = new Scene(notificationPane, 1250, 700);
         
@@ -194,7 +189,8 @@ public class SOH_FE_Converter extends Application {
         stage.setTitle("SOH FE Converter");
         stage.setScene(scene);
         stage.show();
-        
+        stage.setMinHeight(Configuration.MAIN_WINDOW_HEIGHT);
+        stage.setMinWidth(Configuration.MAIN_WINDOW_WIDTH);
         
         notificationPane.show();
     }

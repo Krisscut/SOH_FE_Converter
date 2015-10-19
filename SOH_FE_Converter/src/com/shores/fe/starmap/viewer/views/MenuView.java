@@ -1,12 +1,18 @@
 package com.shores.fe.starmap.viewer.views;
 
 import com.shores.fe.starmap.viewer.controllers.MenuController;
+import com.shores.fe.starmap.viewer.core.Configuration.Configuration;
+import com.shores.fe.starmap.viewer.core.SOH_FE_Converter;
 import com.shores.fe.starmap.viewer.interfaces.IView;
-import com.shores.fe.starmap.viewer.models.FeedbackCode;
 import com.shores.fe.starmap.viewer.interfaces.observability.Observer;
+import com.shores.fe.starmap.viewer.models.FeedbackCode;
 import com.shores.fe.starmap.viewer.utils.DialogUtils;
+import java.awt.Desktop;
 import java.io.File;
+import java.net.URI;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
@@ -19,9 +25,12 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.input.KeyCombination;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
+import org.controlsfx.control.Notifications;
+import org.controlsfx.glyphfont.FontAwesome;
 
 public class MenuView implements IView, Observer{
     final FileChooser fileChooser = new FileChooser();
@@ -32,6 +41,8 @@ public class MenuView implements IView, Observer{
     CheckMenuItem displaySearch, displayTableTree, displayExporter;
     
     private File lastDataLocation = new File("D:\\Dev\\Projects\\tests\\JAVAFX\\JAVAFX");
+    
+    FontAwesome fontAwesome = new FontAwesome();
             
     public MenuView(Stage stage, MenuController menuController) {
         /**
@@ -90,6 +101,7 @@ public class MenuView implements IView, Observer{
         });
         
         MenuItem loadXML = new MenuItem("Load XML File");
+        loadXML.setGraphic(fontAwesome.create(FontAwesome.Glyph.FILE).size(16).color(Color.DARKCYAN));
         loadXML.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent t) {
                 if (lastDataLocation.exists()) {
@@ -145,7 +157,70 @@ public class MenuView implements IView, Observer{
         menuView.getItems().addAll(displaySearch,displayTableTree, displayExporter);
         
         Menu menuHelp = new Menu("?");
-        menuBar.getMenus().addAll(menuFile, menuEdit, menuView);
+        
+        MenuItem websiteItem = new MenuItem("Website");
+        websiteItem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent t) {
+                try {
+                Desktop.getDesktop().browse(new URI(Configuration.MAIN_WEBSITE));
+            } catch (Exception ex) {
+                Logger.getLogger(SOH_FE_Converter.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            }
+        });
+        
+        MenuItem trelloItem = new MenuItem("Trello board");
+        trelloItem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent t) {
+                try {
+                Desktop.getDesktop().browse(new URI(Configuration.TRELLO_BOARD));
+            } catch (Exception ex) {
+                Logger.getLogger(SOH_FE_Converter.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            }
+        });
+        
+        MenuItem repositoryItem = new MenuItem("Github repository");
+        repositoryItem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent t) {
+                try {
+                Desktop.getDesktop().browse(new URI(Configuration.GITHUB_MAIN_URL));
+            } catch (Exception ex) {
+                Logger.getLogger(SOH_FE_Converter.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            }
+        });
+        
+        MenuItem bugTrackerItem = new MenuItem("Bug tracker");
+        bugTrackerItem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent t) {
+                try {
+                Desktop.getDesktop().browse(new URI(Configuration.GITHUB_ISSUES_URL));
+            } catch (Exception ex) {
+                Logger.getLogger(SOH_FE_Converter.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            }
+        });
+        
+        //TODO : about dialog
+        MenuItem aboutItem = new MenuItem("About");
+        aboutItem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent t) {
+                Notifications.create()
+                    .title("Not implemented Yet")
+                    .text("Sorry, this functionnality has not been implemented yet")
+                    .showWarning();
+            }
+        });
+        
+        menuHelp.getItems().addAll(websiteItem,trelloItem, repositoryItem, bugTrackerItem, aboutItem);
+
+        menuBar.getMenus().addAll(menuFile, menuEdit, menuView, menuHelp);
     }
     
     @Override

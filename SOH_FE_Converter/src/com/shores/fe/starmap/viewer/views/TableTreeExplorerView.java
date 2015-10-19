@@ -3,17 +3,17 @@ package com.shores.fe.starmap.viewer.views;
 import com.shores.fe.starmap.viewer.controllers.TableTreeExplorerController;
 import com.shores.fe.starmap.viewer.interfaces.ITreeItemSOH;
 import com.shores.fe.starmap.viewer.interfaces.IView;
-import com.shores.fe.starmap.viewer.models.FeedbackCode;
-import com.shores.fe.starmap.viewer.models.TreeItemSOH;
 import com.shores.fe.starmap.viewer.interfaces.observability.Observer;
-import com.shores.fe.starmap.viewer.models.starmap.SOHObjectType;
+import com.shores.fe.starmap.viewer.models.FeedbackCode;
+import com.shores.fe.starmap.viewer.models.ui.table.rendering.AtmosphereColorization;
 import com.shores.fe.starmap.viewer.models.ui.table.rendering.ObjectRendering;
 import com.shores.fe.starmap.viewer.models.ui.table.rendering.QualityColorization;
+import com.shores.fe.starmap.viewer.models.ui.table.rendering.TypeColorization;
+import com.shores.fe.starmap.viewer.models.ui.table.rendering.ZoneColorization;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.scene.Node;
 import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TreeTableCell;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
 
@@ -63,14 +63,14 @@ public class TableTreeExplorerView implements IView, Observer{
         zoneColumn.setPrefWidth(70);
         zoneColumn.setCellValueFactory(
             (TreeTableColumn.CellDataFeatures<ITreeItemSOH, String> param) -> 
-            new ReadOnlyStringWrapper(param.getValue().getValue().getZone())
+            new ReadOnlyStringWrapper(param.getValue().getValue().getZone().toString())
         );
         
-        TreeTableColumn<ITreeItemSOH, String> atmoType = new TreeTableColumn<>("AtmoType");
-        zoneColumn.setPrefWidth(70);
-        zoneColumn.setCellValueFactory(
+        TreeTableColumn<ITreeItemSOH, String> atmoTypeColumn = new TreeTableColumn<>("AtmoType");
+        atmoTypeColumn.setPrefWidth(70);
+        atmoTypeColumn.setCellValueFactory(
             (TreeTableColumn.CellDataFeatures<ITreeItemSOH, String> param) -> 
-            new ReadOnlyStringWrapper("tmp")
+            new ReadOnlyStringWrapper(param.getValue().getValue().getAtmoType().toString())
         );
         
         TreeTableColumn<ITreeItemSOH, Integer> qualityZone1Column = new TreeTableColumn<>("Quality Zone 1");
@@ -93,44 +93,16 @@ public class TableTreeExplorerView implements IView, Observer{
         
         //Cell colorization & rendering
         objectColumn.setCellFactory(ObjectRendering.forTreeTableColumn());
-        
-        // Custom rendering of the table cell.
-        typeColumn.setCellFactory(column -> {
-            return new TreeTableCell<ITreeItemSOH, String>() {
-                @Override
-                protected void updateItem(String item, boolean empty) {
-                    super.updateItem(item, empty);
-
-                    String text = null;
-                    Node graphic = null;
-                    String style = "";
-                    if (item != null && !empty) {
-                        text = item;
-                        // Style all dates in March with a different color.
-                        if (item.equals(SOHObjectType.Sector.name())) {
-                            style = "-fx-background-color: yellow; -fx-text-fill: rgb(49, 0, 23);";
-                        } else if (item.equals(SOHObjectType.Galaxy.name())) {
-                            style = "-fx-background-color: red ; -fx-text-fill: rgb(49, 255, 23);";
-                        } else if (item.equals(SOHObjectType.Starmap.name())) {
-                            style = "-fx-background-color: green ; -fx-text-fill: rgb(49, 0, 255);";
-                        } else {
-                            setStyle("");
-                        }
-                    }
-                    setText(text);
-                    setStyle(style);
-                    setGraphic(graphic);
-                }
-            };
-        });
-        
+        typeColumn.setCellFactory(TypeColorization.forTreeTableColumn());
+        zoneColumn.setCellFactory(ZoneColorization.forTreeTableColumn());
+        atmoTypeColumn.setCellFactory(AtmosphereColorization.forTreeTableColumn());
         qualityZone1Column.setCellFactory(QualityColorization.forTreeTableColumn());
         qualityZone2Column.setCellFactory(QualityColorization.forTreeTableColumn());
         qualityZone3Column.setCellFactory(QualityColorization.forTreeTableColumn());
 
         treeTableView = new TreeTableView<>();
         treeTableView.setColumnResizePolicy(TreeTableView.CONSTRAINED_RESIZE_POLICY);
-        treeTableView.getColumns().setAll(objectColumn, typeColumn, coordinatesColumn, zoneColumn, atmoType, qualityZone1Column, qualityZone2Column, qualityZone3Column);
+        treeTableView.getColumns().setAll(objectColumn, typeColumn, coordinatesColumn, zoneColumn, atmoTypeColumn, qualityZone1Column, qualityZone2Column, qualityZone3Column);
         treeTableView.setTableMenuButtonVisible(true);
         
         //Multiple row selection

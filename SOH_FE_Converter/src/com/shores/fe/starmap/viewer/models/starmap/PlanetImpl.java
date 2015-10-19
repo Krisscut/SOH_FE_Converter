@@ -1,11 +1,13 @@
 package com.shores.fe.starmap.viewer.models.starmap;
 
 import com.shores.fe.starmap.viewer.interfaces.ITreeItemSOH;
-import com.shores.fe.starmap.viewer.models.export.ExportResult;
+import com.shores.fe.starmap.viewer.models.TreeItemSOH;
+import com.shores.fe.starmap.viewer.models.starmap.enums.SOHObjectType;
+import com.shores.fe.starmap.viewer.models.starmap.enums.SOHZoneType;
 import generated.Planet;
 import javafx.scene.control.TreeItem;
 
-public class PlanetImpl implements ITreeItemSOH{
+public class PlanetImpl extends TreeItemSOH implements ITreeItemSOH{
     /** Parent*/
     SystemImpl system;
     /** Data holder */
@@ -77,28 +79,8 @@ public class PlanetImpl implements ITreeItemSOH{
     }
 
     @Override
-    public String getZone() {
-        return planet.getZone();
-    }
-
-    @Override
-    public Integer getQualityZone1() {
-        return DEFAULT_VALUE_INTEGER;
-    }
-
-    @Override
-    public Integer getQualityZone2() {
-        return DEFAULT_VALUE_INTEGER;
-    }
-
-    @Override
-    public Integer getQualityZone3() {
-        return DEFAULT_VALUE_INTEGER;
-    }
-
-    @Override
-    public ExportResult getExportBBCode() {
-        return DEFAULT_EXPORT_RESULT;
+    public SOHZoneType getZone() {
+        return SOHZoneType.fromString(planet.getZone());
     }
 
     @Override

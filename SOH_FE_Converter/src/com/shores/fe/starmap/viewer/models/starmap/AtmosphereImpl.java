@@ -1,14 +1,16 @@
 package com.shores.fe.starmap.viewer.models.starmap;
 
 import com.shores.fe.starmap.viewer.interfaces.ITreeItemSOH;
-import com.shores.fe.starmap.viewer.models.export.ExportResult;
+import com.shores.fe.starmap.viewer.models.TreeItemSOH;
+import com.shores.fe.starmap.viewer.models.starmap.enums.SOHAtmoType;
+import com.shores.fe.starmap.viewer.models.starmap.enums.SOHObjectType;
 import generated.Atmosphere;
 import generated.Resource;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.control.TreeItem;
 
-public class AtmosphereImpl implements ITreeItemSOH{
+public class AtmosphereImpl extends TreeItemSOH implements ITreeItemSOH{
     /** Parent */
     PlanetImpl planet;
     /** Data holder */
@@ -41,40 +43,15 @@ public class AtmosphereImpl implements ITreeItemSOH{
     }
 
     @Override
-    public String getCoordinates() {
-        return "";
-    }
-
-    @Override
     public SOHObjectType getType() {
         return SOHObjectType.Atmosphere;
     }
-
+    
     @Override
-    public String getZone() {
-        return DEFAULT_VALUE_STRING;
+    public SOHAtmoType getAtmoType(){
+        return SOHAtmoType.fromString(atmosphere.getComposition());
     }
-
-    @Override
-    public Integer getQualityZone1() {
-        return DEFAULT_VALUE_INTEGER;
-    }
-
-    @Override
-    public Integer getQualityZone2() {
-        return DEFAULT_VALUE_INTEGER;
-    }
-
-    @Override
-    public Integer getQualityZone3() {
-        return DEFAULT_VALUE_INTEGER;
-    }
-
-    @Override
-    public ExportResult getExportBBCode() {
-        return DEFAULT_EXPORT_RESULT;
-    }
-
+   
     @Override
     public ITreeItemSOH getParent() {
         return planet;    /** Starmap is the root node */
