@@ -22,4 +22,7 @@ public class Configuration {
     
     public static final int             MAIN_WINDOW_WIDTH       = 1250;
     public static final int             MAIN_WINDOW_HEIGHT      = 700;
+    
+    //Resources folder
+    public static final String          DEFAULT_LOCALIZATION_LOCATION   = "localization.";
 }

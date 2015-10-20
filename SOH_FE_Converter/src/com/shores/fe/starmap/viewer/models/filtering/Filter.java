@@ -12,6 +12,9 @@ public class Filter {
     int tlMin = 0;
     int tlMax = 32;
 
+    public Filter() {
+    }
+
     public Filter(String name, List<SOHResource> resourcesSelected, HierarchySelector start, int tlLow, int tlMax) {
         this.name = name;
         this.resources = resourcesSelected;
@@ -19,6 +22,4 @@ public class Filter {
         this.tlMin = tlLow;
         this.tlMax = tlMax;
     }
-    
-    
 }

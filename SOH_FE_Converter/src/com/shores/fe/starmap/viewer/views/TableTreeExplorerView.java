@@ -1,6 +1,7 @@
 package com.shores.fe.starmap.viewer.views;
 
 import com.shores.fe.starmap.viewer.controllers.TableTreeExplorerController;
+import com.shores.fe.starmap.viewer.core.SOH_FE_Converter;
 import com.shores.fe.starmap.viewer.interfaces.ITreeItemSOH;
 import com.shores.fe.starmap.viewer.interfaces.IView;
 import com.shores.fe.starmap.viewer.interfaces.observability.Observer;
@@ -132,10 +133,10 @@ public class TableTreeExplorerView implements IView, Observer{
     
     private void updateVisibility() {
        if (controller.getModel().isShowViewTableTree()) {
-            this.controller.getCore().getSplit().getItems().add(0, this.treeTableView);
+           SOH_FE_Converter.coreView.getSplit().getItems().add(0, this.treeTableView);
        }
        else {
-           this.controller.getCore().getSplit().getItems().remove(this.treeTableView);
+           SOH_FE_Converter.coreView.getSplit().getItems().remove(this.treeTableView);
        }
     }
 
@@ -152,5 +153,20 @@ public class TableTreeExplorerView implements IView, Observer{
                 break;
         } 
         
+    }
+
+    @Override
+    public void initUIComponents() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setUpComponentsLocation() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void addEventHandler() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

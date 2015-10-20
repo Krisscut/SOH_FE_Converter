@@ -2,12 +2,16 @@
 package com.shores.fe.starmap.viewer.views;
 
 import com.shores.fe.starmap.viewer.interfaces.IView;
+import com.shores.fe.starmap.viewer.utils.DialogUtils;
 import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import static javafx.geometry.Orientation.VERTICAL;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.Separator;
+import javafx.scene.control.Tooltip;
 import javafx.scene.paint.Color;
 import org.controlsfx.control.StatusBar;
 import org.controlsfx.glyphfont.FontAwesome;
@@ -28,11 +32,12 @@ public class StatusBarView implements IView{
         
         statusBar.progressProperty().bindBidirectional(progressIndicator.progressProperty());
         
-        
         //TODO : popover task
-        Button buttonMore = new Button();
-        buttonMore.setGraphic(fontAwesome.create(Glyph.TASKS).size(16).color(Color.DARKBLUE));
-        statusBar.getRightItems().addAll(new Separator(VERTICAL), progressIndicator,buttonMore);
+        Button buttonTasks = new Button();
+        buttonTasks.setGraphic(fontAwesome.create(Glyph.TASKS).size(16).color(Color.DARKBLUE));
+        buttonTasks.setTooltip(new Tooltip("View tasks history"));
+        buttonTasks.setOnAction(onTaskButtonAction());
+        statusBar.getRightItems().addAll(new Separator(VERTICAL), progressIndicator, buttonTasks);
     }
 
     public static StatusBarView getInstance() {
@@ -100,6 +105,31 @@ public class StatusBarView implements IView{
         });
 
         new Thread(task).start();
+    }
+
+    private EventHandler<ActionEvent> onTaskButtonAction() {
+        return new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                DialogUtils.notImplementedYetDialog();
+            }
+        };
+    }
+
+    @Override
+    public void initUIComponents() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setUpComponentsLocation() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void addEventHandler() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 

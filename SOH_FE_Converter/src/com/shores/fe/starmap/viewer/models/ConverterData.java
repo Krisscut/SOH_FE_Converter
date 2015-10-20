@@ -3,8 +3,9 @@ package com.shores.fe.starmap.viewer.models;
 import com.shores.fe.starmap.viewer.core.Configuration.Configuration;
 import com.shores.fe.starmap.viewer.interfaces.ITreeItemSOH;
 import com.shores.fe.starmap.viewer.models.export.ExportResult;
-import com.shores.fe.starmap.viewer.models.starmap.enums.SOHObjectType;
+import com.shores.fe.starmap.viewer.models.filtering.Filter;
 import com.shores.fe.starmap.viewer.models.starmap.StarmapImpl;
+import com.shores.fe.starmap.viewer.models.starmap.enums.SOHObjectType;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,6 +19,9 @@ public class ConverterData extends AbstractModel{
     boolean showViewSearch = true;
     boolean showViewTableTree = true;
     boolean showViewExporter = true;
+    
+    boolean isFilterActive = false;
+    Filter currentFilter = new Filter();
     
     TreeItem<ITreeItemSOH> treeRoot = null; //new TreeItem<>(new TreeItemSOH("My Body", SOHObjectType.Unknown, "coordinates")); //, depIcon);
     ObservableList<TreeItem<ITreeItemSOH>> currentSelection = null;

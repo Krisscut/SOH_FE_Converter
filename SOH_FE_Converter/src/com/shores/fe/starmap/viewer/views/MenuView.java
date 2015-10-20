@@ -256,6 +256,21 @@ public class MenuView implements IView, Observer{
     public CheckMenuItem getDisplayExporter() {
         return displayExporter;
     }
+
+    @Override
+    public void initUIComponents() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setUpComponentsLocation() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void addEventHandler() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }
