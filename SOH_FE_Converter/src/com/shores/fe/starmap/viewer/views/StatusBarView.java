@@ -2,10 +2,8 @@
 package com.shores.fe.starmap.viewer.views;
 
 import com.shores.fe.starmap.viewer.interfaces.IView;
-import com.shores.fe.starmap.viewer.utils.DialogUtils;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import static javafx.geometry.Orientation.VERTICAL;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -13,6 +11,7 @@ import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.Separator;
 import javafx.scene.control.Tooltip;
 import javafx.scene.paint.Color;
+import org.controlsfx.control.PopOver;
 import org.controlsfx.control.StatusBar;
 import org.controlsfx.glyphfont.FontAwesome;
 import org.controlsfx.glyphfont.FontAwesome.Glyph;
@@ -23,6 +22,8 @@ public class StatusBarView implements IView{
     private int itemCounter;
     private ProgressIndicator progressIndicator;
     private static StatusBarView instance = null;
+    PopOver popOver;
+    Button buttonTasks;
     
     FontAwesome fontAwesome = new FontAwesome();
 
@@ -33,18 +34,39 @@ public class StatusBarView implements IView{
         statusBar.progressProperty().bindBidirectional(progressIndicator.progressProperty());
         
         //TODO : popover task
-        Button buttonTasks = new Button();
+        buttonTasks = new Button();
         buttonTasks.setGraphic(fontAwesome.create(Glyph.TASKS).size(16).color(Color.DARKBLUE));
         buttonTasks.setTooltip(new Tooltip("View tasks history"));
-        buttonTasks.setOnAction(onTaskButtonAction());
+        buttonTasks.setOnAction(evt -> onTaskButtonAction(evt));
+        
         statusBar.getRightItems().addAll(new Separator(VERTICAL), progressIndicator, buttonTasks);
+        
+        popOver = new PopOver();
+        popOver.setHideOnEscape(true);
+        popOver.setDetachable(true);
+        popOver.setDetached(false);
+        popOver.setHeaderAlwaysVisible(true);
+        
+        popOver.setTitle("Task history");
+        
+        /*
+        popOver.arrowSizeProperty().bind(masterArrowSize);
+        popOver.arrowIndentProperty().bind(masterArrowIndent);
+        popOver.arrowLocationProperty().bind(masterArrowLocation);
+        popOver.cornerRadiusProperty().bind(masterCornerRadius);
+        popOver.headerAlwaysVisibleProperty().bind(masterHeaderAlwaysVisible);
+        */
+        
+        TaskHistoryView historyView = new TaskHistoryView();
+        popOver.setContentNode(historyView.getViewElement());
+        
     }
 
     public static StatusBarView getInstance() {
             if (instance == null) {
-                    instance = new StatusBarView();
-            }
-            return instance;
+            instance = new StatusBarView();
+        }
+        return instance;
     }
 
     @Override
@@ -107,15 +129,10 @@ public class StatusBarView implements IView{
         new Thread(task).start();
     }
 
-    private EventHandler<ActionEvent> onTaskButtonAction() {
-        return new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent event) {
-                DialogUtils.notImplementedYetDialog();
-            }
-        };
+    private void onTaskButtonAction(ActionEvent evt) {
+        popOver.show(buttonTasks);
     }
+
 
     @Override
     public void initUIComponents() {

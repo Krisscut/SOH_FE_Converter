@@ -9,6 +9,8 @@ import com.shores.fe.starmap.viewer.models.starmap.enums.SOHObjectType;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
 
@@ -16,11 +18,11 @@ public class ConverterData extends AbstractModel{
     StarmapImpl starmap = null;
     
     /** Views state */
-    boolean showViewSearch = true;
-    boolean showViewTableTree = true;
-    boolean showViewExporter = true;
+    BooleanProperty showViewSearch = new SimpleBooleanProperty(true);
+    BooleanProperty showViewTableTree = new SimpleBooleanProperty(true);
+    BooleanProperty showViewExporter = new SimpleBooleanProperty(true);
     
-    boolean isFilterActive = false;
+    BooleanProperty isSearchDisabled = new SimpleBooleanProperty(true);
     Filter currentFilter = new Filter();
     
     TreeItem<ITreeItemSOH> treeRoot = null; //new TreeItem<>(new TreeItemSOH("My Body", SOHObjectType.Unknown, "coordinates")); //, depIcon);
@@ -119,32 +121,34 @@ public class ConverterData extends AbstractModel{
         return exportResults;
     }
 
-    public boolean isShowViewSearch() {
+    public BooleanProperty isShowViewSearch() {
         return showViewSearch;
     }
 
     public void setShowViewSearch(boolean showViewSearch) {
-        this.showViewSearch = showViewSearch;
+        this.showViewSearch.set(showViewSearch);
         notifyObservers(FeedbackCode.SEARCH_VIEW_CHANGED);
     }
 
-    public boolean isShowViewTableTree() {
+    public BooleanProperty isShowViewTableTree() {
         return showViewTableTree;
     }
 
     public void setShowViewTableTree(boolean showViewTableTree) {
-        this.showViewTableTree = showViewTableTree;
+        this.showViewTableTree.set(showViewTableTree);
         notifyObservers(FeedbackCode.TREETABLE_VIEW_CHANGED);
     }
 
-    public boolean isShowViewExporter() {
+    public BooleanProperty isShowViewExporter() {
         return showViewExporter;
     }
 
     public void setShowViewExporter(boolean showViewExporter) {
-        this.showViewExporter = showViewExporter;
+        this.showViewExporter.set(showViewExporter);
         notifyObservers(FeedbackCode.EXPORTER_VIEW_CHANGED);
     }
-    
-    
+
+    public BooleanProperty getIsSearchDisabled() {
+        return isSearchDisabled;
+    }
 }

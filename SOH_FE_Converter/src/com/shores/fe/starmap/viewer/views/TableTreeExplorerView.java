@@ -132,7 +132,7 @@ public class TableTreeExplorerView implements IView, Observer{
     }
     
     private void updateVisibility() {
-       if (controller.getModel().isShowViewTableTree()) {
+       if (controller.getModel().isShowViewTableTree().get()) {
            SOH_FE_Converter.coreView.getSplit().getItems().add(0, this.treeTableView);
        }
        else {

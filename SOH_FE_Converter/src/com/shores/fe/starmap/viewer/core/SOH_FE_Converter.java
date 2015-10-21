@@ -122,7 +122,6 @@ public class SOH_FE_Converter extends Application {
                 event.consume();
             }
         });
-        
 
         //Global CSS
         //scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());

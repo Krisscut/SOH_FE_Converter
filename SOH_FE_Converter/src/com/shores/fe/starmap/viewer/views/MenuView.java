@@ -33,43 +33,108 @@ import org.controlsfx.control.Notifications;
 import org.controlsfx.glyphfont.FontAwesome;
 
 public class MenuView implements IView, Observer{
-    final FileChooser fileChooser = new FileChooser();
-    private MenuBar menuBar;
-    private MenuController menuController;
+    //controller
+    private MenuController controller;
     
-    Menu menuView;
+    //UI Components
+    MenuBar menuBar;
+    Menu menuFile, menuEdit, menuView, menuHelp;
+    MenuItem clear, exit, paste, loadXML, websiteItem, trelloItem, repositoryItem, bugTrackerItem, aboutItem;
     CheckMenuItem displaySearch, displayTableTree, displayExporter;
     
+    //Others vars
+    final FileChooser fileChooser = new FileChooser();
     private File lastDataLocation = new File("D:\\Dev\\Projects\\tests\\JAVAFX\\JAVAFX");
-    
     FontAwesome fontAwesome = new FontAwesome();
+    Stage stage;
             
     public MenuView(Stage stage, MenuController menuController) {
-        /**
-         * DEBUG
-         */
+        this.controller = menuController;
+        this.stage = stage;
+        
         fileChooser.getExtensionFilters().clear();
         ExtensionFilter filter = new ExtensionFilter("XML Files", "*.xml");
         fileChooser.getExtensionFilters().add(filter);
         fileChooser.setSelectedExtensionFilter(filter);
         fileChooser.setTitle("Please select a valid starmap XML file");
         
-        
-        this.menuController = menuController;
-        
+        initUIComponents();
+        setUpComponentsLocation();
+        addEventHandler();
+    }
+    
+    @Override
+    public Node getViewElement() {
+        return menuBar;
+    }
+
+    @Override
+    public void initUIComponents() {
         menuBar = new MenuBar();
-        // --- Menu File
-        Menu menuFile = new Menu("File");
         
-        MenuItem clear = new MenuItem("Clear");
+        // --- Menu File
+        menuFile = new Menu("File");
+        
+        clear = new MenuItem("Clear");
         clear.setAccelerator(KeyCombination.keyCombination("Ctrl+X"));
+        
+        exit = new MenuItem("Exit");
+
+        // --- Menu Edit
+        menuEdit = new Menu("Edit");
+        
+        //Paste from clipboard into the application
+        paste = new MenuItem("Paste Clipboard");
+        
+        loadXML = new MenuItem("Load XML File");
+        loadXML.setGraphic(fontAwesome.create(FontAwesome.Glyph.FILE).size(16).color(Color.DARKCYAN));
+
+        // --- Menu View
+        menuView = new Menu("View");
+        
+        displaySearch = new CheckMenuItem("Show Search Fields");
+        displaySearch.setSelected(true);
+        
+        displayTableTree = new CheckMenuItem("Show data table");
+        displayTableTree.setSelected(true);
+        
+        displayExporter = new CheckMenuItem("Show Exporter");
+        displayExporter.setSelected(true);
+        
+        menuView.getItems().addAll(displaySearch,displayTableTree, displayExporter);
+        
+        menuHelp = new Menu("?");
+        
+        websiteItem = new MenuItem("Website");
+
+        trelloItem = new MenuItem("Trello board");
+        
+        repositoryItem = new MenuItem("Github repository");
+        
+        bugTrackerItem = new MenuItem("Bug tracker");
+        
+        //TODO : about dialog
+        aboutItem = new MenuItem("About");
+        
+        menuHelp.getItems().addAll(websiteItem,trelloItem, repositoryItem, bugTrackerItem, aboutItem);
+
+        menuBar.getMenus().addAll(menuFile, menuEdit, menuView, menuHelp);
+    }
+
+    @Override
+    public void setUpComponentsLocation() {
+        menuFile.getItems().addAll(clear, new SeparatorMenuItem(), exit);
+        menuEdit.getItems().addAll(paste, loadXML);
+    }
+
+    @Override
+    public void addEventHandler() {
         clear.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent t) {
                 DialogUtils.notImplementedYetDialog();
             }
         });
         
-        MenuItem exit = new MenuItem("Exit");
         exit.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent t) {
                 Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -86,12 +151,7 @@ public class MenuView implements IView, Observer{
 
             }
         });
-        menuFile.getItems().addAll(clear, new SeparatorMenuItem(), exit);
-        // --- Menu Edit
-        Menu menuEdit = new Menu("Edit");
         
-        //Paste from clipboard into the application
-        MenuItem paste = new MenuItem("Paste Clipboard");
         paste.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent t) {
@@ -100,8 +160,6 @@ public class MenuView implements IView, Observer{
             }
         });
         
-        MenuItem loadXML = new MenuItem("Load XML File");
-        loadXML.setGraphic(fontAwesome.create(FontAwesome.Glyph.FILE).size(16).color(Color.DARKCYAN));
         loadXML.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent t) {
                 if (lastDataLocation.exists()) {
@@ -110,7 +168,7 @@ public class MenuView implements IView, Observer{
                 File file = fileChooser.showOpenDialog(stage );
                 if (file != null && file.exists()){
                     lastDataLocation = file.getParentFile();
-                    menuController.loadXMLFromFile(file);
+                    controller.loadXMLFromFile(file);
                 } else {
                     Alert alert = new Alert(AlertType.ERROR);
                     alert.setTitle("Error Dialog");
@@ -120,45 +178,30 @@ public class MenuView implements IView, Observer{
                 }
             }
         });
-        menuEdit.getItems().addAll(paste,loadXML);
         
-        // --- Menu View
-        menuView = new Menu("View");
-        
-        displaySearch = new CheckMenuItem("Show Search Fields");
-        displaySearch.setSelected(true);
         displaySearch.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent t) {
-                menuController.handleShowSearchFieldsAction(displaySearch.isSelected());
+                controller.handleShowSearchFieldsAction(displaySearch.isSelected());
             }
         });
         
-        displayTableTree = new CheckMenuItem("Show data table");
-        displayTableTree.setSelected(true);
         displayTableTree.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent t) {
-                menuController.handleShowTableTreeAction(displayTableTree.isSelected());
+                controller.handleShowTableTreeAction(displayTableTree.isSelected());
                 
             }
         });
         
-        displayExporter = new CheckMenuItem("Show Exporter");
-        displayExporter.setSelected(true);
         displayExporter.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent t) {
-                menuController.handleShowExporterAction(displayExporter.isSelected());
+                controller.handleShowExporterAction(displayExporter.isSelected());
                 
             }
         });
         
-        menuView.getItems().addAll(displaySearch,displayTableTree, displayExporter);
-        
-        Menu menuHelp = new Menu("?");
-        
-        MenuItem websiteItem = new MenuItem("Website");
         websiteItem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent t) {
@@ -170,7 +213,6 @@ public class MenuView implements IView, Observer{
             }
         });
         
-        MenuItem trelloItem = new MenuItem("Trello board");
         trelloItem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent t) {
@@ -182,7 +224,6 @@ public class MenuView implements IView, Observer{
             }
         });
         
-        MenuItem repositoryItem = new MenuItem("Github repository");
         repositoryItem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent t) {
@@ -194,7 +235,6 @@ public class MenuView implements IView, Observer{
             }
         });
         
-        MenuItem bugTrackerItem = new MenuItem("Bug tracker");
         bugTrackerItem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent t) {
@@ -206,8 +246,6 @@ public class MenuView implements IView, Observer{
             }
         });
         
-        //TODO : about dialog
-        MenuItem aboutItem = new MenuItem("About");
         aboutItem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent t) {
@@ -218,20 +256,10 @@ public class MenuView implements IView, Observer{
             }
         });
         
-        menuHelp.getItems().addAll(websiteItem,trelloItem, repositoryItem, bugTrackerItem, aboutItem);
-
-        menuBar.getMenus().addAll(menuFile, menuEdit, menuView, menuHelp);
-    }
-    
-    @Override
-    public Node getViewElement() {
-        return menuBar;
-    }
-    
-    private void updateViewMenuItems(){
-        displayExporter.setSelected(menuController.getModel().isShowViewExporter());
-        displaySearch.setSelected(menuController.getModel().isShowViewSearch());
-        displayTableTree.setSelected(menuController.getModel().isShowViewTableTree());
+        //Bind the boolean from the model to the button state
+        controller.getModel().isShowViewExporter().bindBidirectional(displayExporter.selectedProperty());
+        controller.getModel().isShowViewSearch().bindBidirectional(displaySearch.selectedProperty());
+        controller.getModel().isShowViewTableTree().bindBidirectional(displayTableTree.selectedProperty());
     }
 
     @Override
@@ -241,7 +269,6 @@ public class MenuView implements IView, Observer{
             case GLOBAL_VIEW_CHANGED:
             case SEARCH_VIEW_CHANGED:
             case TREETABLE_VIEW_CHANGED:
-                updateViewMenuItems();
         } 
     }
 
@@ -256,21 +283,4 @@ public class MenuView implements IView, Observer{
     public CheckMenuItem getDisplayExporter() {
         return displayExporter;
     }
-
-    @Override
-    public void initUIComponents() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void setUpComponentsLocation() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void addEventHandler() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    
 }

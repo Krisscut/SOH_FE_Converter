@@ -17,7 +17,6 @@ import org.controlsfx.control.NotificationPane;
 import org.controlsfx.control.action.Action;
 
 public class CoreView implements IView{
-    
     //UI components
     VBox vbox , mainVBox = null;
     SplitPane split = null;

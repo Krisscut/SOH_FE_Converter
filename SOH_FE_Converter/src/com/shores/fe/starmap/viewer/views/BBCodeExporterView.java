@@ -67,7 +67,7 @@ public class BBCodeExporterView implements IView, Observer{
     }
     
     private void updateVisibility() {
-        if (controller.getModel().isShowViewExporter()) {
+        if (controller.getModel().isShowViewExporter().get()) {
             SOH_FE_Converter.coreView.getSplit().getItems().add(this.bbCodeContainer);
         }
         else {

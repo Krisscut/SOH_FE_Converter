@@ -4,6 +4,9 @@ import com.shores.fe.starmap.viewer.core.SOH_FE_Converter;
 import com.shores.fe.starmap.viewer.interfaces.IController;
 import com.shores.fe.starmap.viewer.models.AbstractModel;
 import com.shores.fe.starmap.viewer.models.ConverterData;
+import javafx.collections.ObservableList;
+import javafx.scene.control.Toggle;
+import javafx.scene.control.ToggleButton;
 import org.apache.log4j.Logger;
 
 public class SearchModuleController implements IController{
@@ -36,6 +39,10 @@ public class SearchModuleController implements IController{
     
     public SOH_FE_Converter getCore() {
         return core;
+    }
+
+    public void refreshFilter(String searchKey, ObservableList checkedItems, Toggle selectedToggle, String minTL, String maxTL) {
+        System.out.println(searchKey + " | " + checkedItems.toString() + " | " + ((ToggleButton) selectedToggle).getText() + " | " + minTL + " | " + maxTL);
     }
     
 }
