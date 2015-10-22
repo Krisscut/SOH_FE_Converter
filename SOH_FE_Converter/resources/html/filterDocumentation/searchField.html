@@ -1,0 +1,38 @@
+<!doctype html>  
+<html lang="en">  
+  <head>
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/assets/css/docs.min.css" rel="stylesheet">
+    <style>
+      html,body {
+        background-color: rgba(255,255,255, 0);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bs-docs-header" id="content" tabindex="-1">
+      <div class="container">
+        <h1>Search field</h1>
+        <p>The documentation for the searchField, describes how to fill it in classic or complex mode.</p>
+      </div>
+    </div>
+      
+      <h2>Classic mode</h2>
+      <p>You can fill the search field with a simple string to search for an occurence into the table for the fields : <code>Galaxy Name, Sector name, System Name, Planet Name</code></p>
+      
+      <h2>Complex mode</h2>
+      <p>With this mode, you can launch complex research with multiple search key at the same time. <br>
+      The field will detect automatically the use of a complex expression, and a warning popup will show up if there are some errors with your expression</p>
+      <p>A complex research is composed of one or more <code>expression</code> which are used to filter the table</p>
+        <div class="highlight"><pre><code class="language-bash" data-lang="bash">expression1 ; expression2</code></pre></div>
+        <p><code>;</code> is the separator required between two search filter</p>
+        <ul>
+          <li><code>expression1</code> - First expression, for example to filter only the sector which contained "baleck" string</li>
+          <li><code>expression2</code> - another independant expression which filter with another field !</li>
+        </ul>
+  
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+        <script src="http://getbootstrap.com/assets/js/docs.min.js"></script>
+  </body>
+</html>

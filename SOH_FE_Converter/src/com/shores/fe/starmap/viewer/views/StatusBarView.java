@@ -4,6 +4,7 @@ package com.shores.fe.starmap.viewer.views;
 import com.shores.fe.starmap.viewer.interfaces.IView;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import static javafx.geometry.Orientation.VERTICAL;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -18,6 +19,8 @@ import org.controlsfx.glyphfont.FontAwesome.Glyph;
 
 
 public class StatusBarView implements IView{
+    TaskHistoryView historyView;
+    
     private StatusBar statusBar;
     private int itemCounter;
     private ProgressIndicator progressIndicator;
@@ -39,7 +42,10 @@ public class StatusBarView implements IView{
         buttonTasks.setTooltip(new Tooltip("View tasks history"));
         buttonTasks.setOnAction(evt -> onTaskButtonAction(evt));
         
-        statusBar.getRightItems().addAll(new Separator(VERTICAL), progressIndicator, buttonTasks);
+        Button buttonAddTask = new Button();
+        buttonAddTask.setGraphic(fontAwesome.create(Glyph.SUPPORT).size(16).color(Color.RED));
+        buttonAddTask.setTooltip(new Tooltip("DEBUG : ADD TASK FOR TEST"));
+        
         
         popOver = new PopOver();
         popOver.setHideOnEscape(true);
@@ -56,10 +62,20 @@ public class StatusBarView implements IView{
         popOver.cornerRadiusProperty().bind(masterCornerRadius);
         popOver.headerAlwaysVisibleProperty().bind(masterHeaderAlwaysVisible);
         */
-        
-        TaskHistoryView historyView = new TaskHistoryView();
+
+                
+        historyView = new TaskHistoryView();
         popOver.setContentNode(historyView.getViewElement());
         
+        buttonAddTask.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                historyView.startTask();
+                startTask();
+            }
+        });
+        statusBar.getRightItems().addAll(new Separator(VERTICAL), progressIndicator, new Separator(VERTICAL), buttonAddTask, buttonTasks);
     }
 
     public static StatusBarView getInstance() {
@@ -125,7 +141,6 @@ public class StatusBarView implements IView{
             statusBar.textProperty().unbind();    
             statusBar.progressProperty().unbind();
         });
-
         new Thread(task).start();
     }
 

@@ -32,10 +32,12 @@ public class TaskHistoryView implements IView {
     @Override
     public void initUIComponents() {
         taskView = new TaskProgressView<>();
+        taskView.setMaxWidth(250);
+        taskView.setMaxHeight(140);
         taskView.setGraphicFactory(task -> taskViewGraphicFactory(task));
         
         stackPane = new StackPane();
-        stackPane.setStyle("-fx-border-color: black; -fx-border-insets: 40;");
+        stackPane.setStyle("-fx-border-color: black; -fx-border-insets: 5;");
     }
 
     @Override
@@ -53,14 +55,12 @@ public class TaskHistoryView implements IView {
         return stackPane;
     }
     
-    private void startTask() {
+    public void startTask() {
         taskCounter++;
-
         ConverterTask task = new ConverterTask("Task #" + taskCounter);
-
+        
         // add to the UI
         taskView.getTasks().add(task);
-
         // execute task
         executorService.submit(task);
     }

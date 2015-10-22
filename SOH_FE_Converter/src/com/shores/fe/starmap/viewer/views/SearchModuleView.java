@@ -1,6 +1,7 @@
 package com.shores.fe.starmap.viewer.views;
 
 import com.shores.fe.starmap.viewer.controllers.SearchModuleController;
+import com.shores.fe.starmap.viewer.core.Configuration.Configuration;
 import com.shores.fe.starmap.viewer.core.SOH_FE_Converter;
 import com.shores.fe.starmap.viewer.interfaces.IView;
 import com.shores.fe.starmap.viewer.interfaces.observability.Observer;
@@ -35,10 +36,17 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
+import javafx.scene.web.WebView;
 import javafx.util.Duration;
 import org.controlsfx.control.CheckComboBox;
 import org.controlsfx.control.Notifications;
+import org.controlsfx.control.PopOver;
 import org.controlsfx.control.RangeSlider;
 import org.controlsfx.control.SegmentedButton;
 import org.controlsfx.control.textfield.TextFields;
@@ -62,6 +70,9 @@ public class SearchModuleView implements IView, Observer{
     RangeSlider hSlider;
     CheckBox filterOn;
     Button refresh;
+    
+    //Info popup
+    PopOver popOverTextField;
     
     //Other vars
     ValidationSupport validationSupport = new ValidationSupport();
@@ -109,6 +120,59 @@ public class SearchModuleView implements IView, Observer{
         searchField.getText();
         searchField.setMinWidth(200);
         searchField.setDisable(true);
+        
+        /** 
+         * Pop over text field start
+         */
+        String family = "Helvetica";
+        int titleSize = 16;
+        int contentSize = 10;
+        
+        WebView web = new WebView();   
+        String url = SearchModuleView.class.getResource("/html/filterDocumentation/searchField.html").toExternalForm();  
+        web.getEngine().load(url);
+        
+        Text globalTitle = new Text("Search field");
+        globalTitle.setFont(Font.font(family, titleSize + 2));
+        globalTitle.setFill(Color.DARKBLUE);
+        
+        Text expressionTitle = new Text("Expression parser");
+        expressionTitle.setFont(Font.font(family, titleSize));
+        expressionTitle.setFill(Color.DARKBLUE);
+        
+        Text expression = new Text("expression");
+        expression.setFont(Font.font(family, FontWeight.BOLD,contentSize));
+        expression.setFill(Color.ORANGE);
+        
+        Text spacer = new Text(";");
+        expression.setFont(Font.font(family, FontWeight.BOLD,contentSize));
+        expression.setFill(Color.RED);
+        
+        TextFlow popUpContent = new TextFlow(globalTitle,
+                new Text(Configuration.LINE_SEPARATOR),
+                //new Text("You can use this field as a search key for the database, if you don't use "), expression, new Text("(more explanation later). Without expression, the value entered on this field will be used to search for a specific planet/system/sector/galaxie name."), 
+                new Text(Configuration.LINE_SEPARATOR),
+                expressionTitle,
+                new Text(Configuration.LINE_SEPARATOR),
+                new Text("  To properly use this search field, you can use some "), expression, new Text(" which will be use to create the filter."),
+                new Text(Configuration.LINE_SEPARATOR),
+                new Text("If you want to add multiple expression to your filter, you hava to use a spacer between each of them : ") , spacer);
+        
+        StackPane stackPane = new StackPane();
+        stackPane.setMaxSize(500, 300);
+        stackPane.setStyle("-fx-padding: 5;");
+        stackPane.getChildren().addAll(popUpContent, web);
+        
+        popOverTextField = new PopOver(stackPane);
+        popOverTextField.setHideOnEscape(true);
+        popOverTextField.setDetachable(true);
+        popOverTextField.setDetached(false);
+        popOverTextField.setHeaderAlwaysVisible(true);
+        popOverTextField.setTitle("Tutoriel");
+        
+        /** 
+         Pop over text Field ended
+         */
         
         //TODO
         TextFields.bindAutoCompletion(
@@ -235,6 +299,17 @@ public class SearchModuleView implements IView, Observer{
     public void addEventHandler() {
         searchBarTitle.setOnAction(HandleFilterPanelButton());
         searchField.setOnAction(evt -> HandleFilterModification(evt));
+        searchField.focusedProperty().addListener(new ChangeListener<Boolean>() {
+
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if (newValue){
+                    popOverTextField.show(searchField);
+                } else {
+                    popOverTextField.hide(new Duration((1000)));
+                }
+            }
+        });
         resourceBox.getCheckModel().getCheckedItems().addListener(HandleResourceModification());
         
         b1.setOnAction(evt -> HandleFilterModification(evt));
